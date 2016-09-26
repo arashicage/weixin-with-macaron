@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>发票查验</title>
+    <link rel="stylesheet" href="/weui/style/weui.css"/>
+    <link rel="stylesheet" href="/weui/example/example.css"/>
+
+
+    <link href="/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</head>
+
+<style>
+
+
+</style>
+
+<body>
+
+<div class="bs-example" data-example-id="bordered-table">
+    <table class="table table-bordered table-responsive ">
+        <thead>
+        <tr>
+            <!-- <th>#</th> -->
+            <!-- <th>要素名称</th> -->
+            <th colspan="2" style="text-align:center;">查验结果:{{.result}}</th>
+        </tr>
+        <tr>
+            <!-- <th>#</th> -->
+            <!-- <th>要素名称</th> -->
+            <th colspan="2" style="text-align:center;">发票信息</th>
+        </tr>
+        </thead>
+        {{with .info}}
+        <tbody>
+        <tr>
+            <!-- <th scope="row">1</th> -->
+            <td style="width:75px;">发票代码</td>
+            <td>{{.Fpdm}}</td>
+        </tr>
+        <tr>
+            <!-- <th scope="row">2</th> -->
+            <td>发票号码</td>
+            <td>{{.Fphm}}</td>
+        </tr>
+        <tr>
+            <!-- <th scope="row">3</th> -->
+            <td>开票日期</td>
+            <td>{{.Kprq}}</td>
+        </tr>
+        <tr>
+            <!-- <th scope="row">3</th> -->
+            <td>金额</td>
+            <td>{{.Je}}</td>
+        </tr>
+        <tr>
+            <!-- <th scope="row">3</th> -->
+            <td>税额</td>
+            <td>{{.Se}}</td>
+        </tr>
+        <tr>
+            <!-- <th scope="row">3</th> -->
+            <td>价税合计</td>
+            <td>{{.Jshj}}</td>
+        </tr>
+
+        <tr>
+            <!-- <th scope="row">4</th> -->
+            <td>销方信息</td>
+            <td>
+                <div>
+                    <table style="font-size:10px;"> <!-- class="table"  -->
+                        <tbody>
+                        <tr>
+                            <td style="width:60px;">名称</td>
+                            <td>{{.Xfmc}}</td>
+                        </tr>
+                        <tr>
+                            <td>识别号</td>
+                            <td>{{.Xfsbh}}</td>
+                        </tr>
+                        <tr>
+                            <td>地址电话</td>
+                            <td>{{.Xfdzdh}}</td>
+                        </tr>
+                        <tr>
+                            <td>银行账号</td>
+                            <td>{{.Xfyhzh}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <!-- <th scope="row">4</th> -->
+            <td>购方信息</td>
+            <td>
+                <div>
+                    <table style="font-size:10px;">
+                        <tbody>
+                        <tr>
+                            <td style="width:60px;">名称</td>
+                            <td>{{.Gfmc}}</td>
+                        </tr>
+                        <tr>
+                            <td>识别号</td>
+                            <td>{{.Gfsbh}}</td>
+                        </tr>
+                        <tr>
+                            <td>地址电话</td>
+                            <td>{{.Gfdzdh}}</td>
+                        </tr>
+                        <tr>
+                            <td>银行账号</td>
+                            <td>{{.Gfyhzh}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+        </tr>
+
+        </tbody>
+        {{end}}
+    </table>
+</div>
+
+
+<!-- 货物或应税劳务信息 -->
+<!-- <div>
+    <table class="table table-bordered table-responsive ">
+        <thead>
+        <tr>
+            <th colspan="2" style="text-align:center;">货物或应税劳务信息<br>谁帮我做一下页面我填下面的数据</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row" style="text-align:center;">1</th>
+
+            <td>
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td style="width:75px;">名称</td>
+                            <td>计算机</td>
+                        </tr>
+                        <tr>
+                            <td>规格型号</td>
+                            <td>Mac</td>
+                        </tr>
+                        <tr>
+                            <td>单位</td>
+                            <td>台</td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>单价</td>
+                            <td>16000</td>
+                        </tr>
+                        <tr>
+                            <td>金额</td>
+                            <td>2160000</td>
+                        </tr>
+                        <tr>
+                            <td>税额</td>
+                            <td>121313</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </td>
+
+        </tr>
+
+        </tbody>
+    </table>
+</div> -->
+
+</body>
+</html>

@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <title>发票查验</title>
+    <link rel="stylesheet" href="/weui/css/weui.css"/>
+    <link rel="stylesheet" href="/weui/example/example.css"/>
+    <script src="/jquery/2.1.1/jquery.min.js"></script>
+    <link href="/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!--
+    <link href="/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+    -->
+
+</head>
+
+<body>
+
+<!--class="container"-->
+<div  style="padding-left: 5px;padding-right: 5px;">
+
+    <div class="panel panel-primary" style="margin-top: 5px; margin-bottom: 5px; display: none;">
+        <div class="panel-heading">调试信息</div>
+        <div id="debug" class="panel-body" style="padding-top: 5px;padding-bottom: 5px;">
+
+        </div>
+
+    </div>
+
+    <div id="panel01" class="panel panel-primary" style="margin-top: 5px; margin-bottom: 5px;">
+        <div class="panel-heading">查验结果</div>
+        <div class="panel-body" style="padding-top: 5px;padding-bottom: 5px;">
+            <div class="row" style="padding-left: 5px;padding-right: 5px;padding-top: 0px;padding-bottom: 0px;">
+                <div class="col-sm-8 col-xs-8" style="padding-left: 0px;padding-right: 0px;height: 75px;">
+                    <div id="pb01" class="panel-body" style="padding-left: 5px;">
+                        发票来源:&nbsp;-<br>发票类型:&nbsp;-<br>查验次数:&nbsp;-
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-4" style="height: 75px;">
+                    <img id="img_cyjg01" src="" alt=""
+                         style="height:100%;display: block; margin: 0px auto; vertical-align: middle;">
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped" style="padding-top: 5px;margin-top: 5px;">
+
+            <tbody>
+            <tr>
+                <td style="width: 40%;">发票代码</td>
+                <td id="fpdm01"></td>
+            </tr>
+            <tr>
+                <td>发票号码</td>
+                <td id="fphm01"></td>
+            </tr>
+            <tr>
+                <td>开票日期</td>
+                <td id="kprq01"></td>
+            </tr>
+            <tr>
+                <td>开票金额</td>
+                <td id="kpje01"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>税额</td>
+                <td id="se01"></td>
+            </tr>
+            <tr>
+                <td>价税合计</td>
+                <td id="jshj01"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>备注</td>
+                <td id="bz01"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>机器编号</td>
+                <td id="jqbh01"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>开票机号</td>
+                <td id="kpjh01"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>校验码</td>
+                <td id="jym01"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>作废标志</td>
+                <td id="zfbz01"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div id="panel02" class="panel panel-primary" style="margin-top: 5px; margin-bottom: 5px;">
+        <div class="panel-heading">查验结果</div>
+        <div class="panel-body" style="padding-top: 5px;padding-bottom: 5px;">
+            <div class="row" style="padding-left: 5px;padding-right: 5px;padding-top: 0px;padding-bottom: 0px;">
+                <div class="col-sm-8 col-xs-8" style="padding-left: 0px;padding-right: 0px;height: 75px;">
+                    <div id="pb02" class="panel-body" style="padding-left: 5px;">
+                        发票来源:&nbsp;-<br>发票类型:&nbsp;-<br>查验次数:&nbsp;-
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-4" style="height: 75px;">
+                    <img id="img_cyjg02" src="" alt=""
+                         style="height:100%;display: block; margin: 0px auto; vertical-align: middle;">
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped" style="padding-top: 5px;margin-top: 5px;">
+
+            <tbody>
+            <tr>
+                <td style="width: 40%;">发票代码</td>
+                <td id="fpdm02"></td>
+            </tr>
+            <tr>
+                <td>发票号码</td>
+                <td id="fphm02"></td>
+            </tr>
+            <tr>
+                <td>开票日期</td>
+                <td id="kprq02"></td>
+            </tr>
+            <tr>
+                <td>合计金额</td>
+                <td id="kpje02"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>运输货物信息</td>
+                <td id="yshwxx02"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>起运地</td>
+                <td id="qyd02"></td>
+            </tr>
+            <tr>
+                <td>税率</td>
+                <td id="sl02"></td>
+            </tr>
+            <tr>
+                <td>税额</td>
+                <td id="se02"></td>
+            </tr>
+            <tr>
+                <td>价税合计</td>
+                <td id="jshj02"></td>
+            </tr>
+            <tr>
+                <td>税控盘号</td>
+                <td id="skph02"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>车种车号</td>
+                <td id="czch02"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>车船吨位</td>
+                <td id="ccdw02"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>主管税务机关代码</td>
+                <td id="swjgdm02"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>主管税务机关名称</td>
+                <td id="swjgmc02"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>备注</td>
+                <td id="bz02"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>作废标志</td>
+                <td id="zfbz02"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div id="panel03" class="panel panel-primary" style="margin-top: 5px; margin-bottom: 5px;">
+        <div class="panel-heading">查验结果</div>
+        <div class="panel-body" style="padding-top: 5px;padding-bottom: 5px;">
+            <div class="row" style="padding-left: 5px;padding-right: 5px;padding-top: 0px;padding-bottom: 0px;">
+                <div class="col-sm-8 col-xs-8" style="padding-left: 0px;padding-right: 0px;height: 75px;">
+                    <div id="pb03" class="panel-body" style="padding-left: 5px;">
+                        发票来源:&nbsp;-<br>发票类型:&nbsp;-<br>查验次数:&nbsp;-
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-4" style="height: 75px;">
+                    <img id="img_cyjg03" src="" alt=""
+                         style="height:100%;display: block; margin: 0px auto; vertical-align: middle;">
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped" style="padding-top: 5px;margin-top: 5px;">
+
+            <tbody>
+            <tr>
+                <td style="width: 40%;">发票代码</td>
+                <td id="fpdm03"></td>
+            </tr>
+            <tr>
+                <td>发票号码</td>
+                <td id="fphm03"></td>
+            </tr>
+            <tr>
+                <td>开票日期</td>
+                <td id="kprq03"></td>
+            </tr>
+            <tr>
+                <td>税控盘号</td>
+                <td id="skph03"></td>
+            </tr>
+            <tr>
+                <td>购货单位</td>
+                <td id="ghdw03"></td>
+            </tr>
+            <tr>
+                <td>身份证号</td>
+                <td id="sfzhm03"></td>
+            </tr>
+            <!--<tr>
+                <td>购方识别号</td>
+                <td id="gfsbh03"></td>
+            </tr>-->
+            <tr>
+                <td>车辆类型</td>
+                <td id="cllx03"></td>
+            </tr>
+            <tr>
+                <td>厂牌型号</td>
+                <td id="cpxh03"></td>
+            </tr>
+            <tr>
+                <td>产地</td>
+                <td id="cd03"></td>
+            </tr>
+            <tr>
+                <td>合格证书</td>
+                <td id="hgzs03"></td>
+            </tr>
+            <tr>
+                <td>车价及价外费用</td>
+                <td id="cjfy03"></td>
+            </tr>
+            <tr>
+                <td>商检单号</td>
+                <td id="sjdh03"></td>
+            </tr>
+            <tr>
+                <td>发动机号码</td>
+                <td id="fdjhm03"></td>
+            </tr>
+            <tr>
+                <td>车架号码</td>
+                <td id="cjhm03"></td>
+            </tr>
+            <tr>
+                <td>进口说明书号</td>
+                <td id="jkzmsh03"></td>
+            </tr>
+            <tr>
+                <td>销货单位名称</td>
+                <td id="xhdwmc03"></td>
+            </tr>
+            <tr>
+                <td>电话</td>
+                <td id="dh03"></td>
+            </tr>
+            <tr>
+                <td>纳税人识别号</td>
+                <td id="nsrsbh03"></td>
+            </tr>
+            <tr>
+                <td>账号</td>
+                <td id="zh03"></td>
+            </tr>
+            <tr>
+                <td>地址</td>
+                <td id="dz03"></td>
+            </tr>
+            <tr>
+                <td>开户银行</td>
+                <td id="khyh03"></td>
+            </tr>
+            <tr>
+                <td>增值税税率</td>
+                <td id="zzssl03"></td>
+            </tr>
+            <tr>
+                <td>增值税税额</td>
+                <td id="zzsse03"></td>
+            </tr>
+            <tr>
+                <td>税务机构代码</td>
+                <td id="swjgdm03"></td>
+            </tr>
+            <tr>
+                <td>价税合计</td>
+                <td id="jshj03"></td>
+            </tr>
+            <tr>
+                <td>完税凭证号码</td>
+                <td id="wspzhm03"></td>
+            </tr>
+            <tr>
+                <td>吨位</td>
+                <td id="dw03"></td>
+            </tr>
+            <tr>
+                <td>限乘人数</td>
+                <td id="xcrs03"></td>
+            </tr>
+            <tr>
+                <td>作废标志</td>
+                <td id="zfbz03"></td>
+            </tr>
+            <tr>
+                <td>税务机构名称</td>
+                <td id="swjgmc03"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div id="panel04" class="panel panel-primary" style="margin-top: 5px; margin-bottom: 5px;">
+        <div class="panel-heading">查验结果</div>
+        <div class="panel-body" style="padding-top: 5px;padding-bottom: 5px;">
+            <div class="row" style="padding-left: 5px;padding-right: 5px;padding-top: 0px;padding-bottom: 0px;">
+                <div class="col-sm-8 col-xs-8" style="padding-left: 0px;padding-right: 0px;height: 75px;">
+                    <div id="pb04" class="panel-body" style="padding-left: 5px;">
+                        发票来源:&nbsp;-<br>发票类型:&nbsp;-<br>查验次数:&nbsp;-
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-4" style="height: 75px;">
+                    <img id="img_cyjg04" src="" alt=""
+                         style="height:100%;display: block; margin: 0px auto; vertical-align: middle;">
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped" style="padding-top: 5px;margin-top: 5px;">
+
+            <tbody>
+            <tr>
+                <td style="width: 40%;">发票代码</td>
+                <td id="fpdm04"></td>
+            </tr>
+            <tr>
+                <td>发票号码</td>
+                <td id="fphm04"></td>
+            </tr>
+            <tr>
+                <td>开票日期</td>
+                <td id="kprq04"></td>
+            </tr>
+            <tr>
+                <td>金额</td>
+                <td id="je04"></td>
+            </tr>
+            <tr>
+                <td>税额</td>
+                <td id="se04"></td>
+            </tr>
+            <tr>
+                <td>价税合计</td>
+                <td id="jshj04"></td>
+            </tr>
+            <tr>
+                <td>校验码</td>
+                <td id="jym04"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>备注</td>
+                <td id="bz04"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>机器盘号</td>
+                <td id="jqph04"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>开票机号</td>
+                <td id="kpjh04"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>作废标志</td>
+                <td id="zfbz04"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div id="panel10" class="panel panel-primary" style="margin-top: 5px; margin-bottom: 5px;">
+        <div class="panel-heading">查验结果</div>
+        <div class="panel-body" style="padding-top: 5px;padding-bottom: 5px;">
+            <div class="row" style="padding-left: 5px;padding-right: 5px;padding-top: 0px;padding-bottom: 0px;">
+                <div class="col-sm-8 col-xs-8" style="padding-left: 0px;padding-right: 0px;height: 75px;">
+                    <div id="pb10" class="panel-body" style="padding-left: 5px;">
+                        发票来源:&nbsp;-<br>发票类型:&nbsp;-<br>查验次数:&nbsp;-
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-4" style="height: 75px;">
+                    <img id="img_cyjg10" src="" alt=""
+                         style="height:100%;display: block; margin: 0px auto; vertical-align: middle;">
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped" style="padding-top: 5px;margin-top: 5px;">
+
+            <tbody>
+            <tr>
+                <td style="width: 40%;">发票代码</td>
+                <td id="fpdm10"></td>
+            </tr>
+            <tr>
+                <td>发票号码</td>
+                <td id="fphm10"></td>
+            </tr>
+            <tr>
+                <td>开票日期</td>
+                <td id="kprq10"></td>
+            </tr>
+
+            <tr>
+                <td>金额</td>
+                <td id="je10"></td>
+            </tr>
+            <tr>
+                <td>税额</td>
+                <td id="se10"></td>
+            </tr>
+            <tr>
+                <td>价税合计</td>
+                <td id="jshj10"></td>
+            </tr>
+            <tr>
+                <td>校验码</td>
+                <td id="jym10"></td>
+            </tr>
+            <tr>
+                <td>设备编号</td>
+                <td id="sbbh10"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>备注</td>
+                <td id="bz10"></td>
+            </tr>
+            <tr style="display: none;">
+                <td>作废标志</td>
+                <td id="zfbz10"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div id="tabs01" class="nav-tabs-custom" style="padding-top: 5px;">
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#t01_1" data-toggle="tab">销货单位</a></li>
+            <li><a href="#t01_2" data-toggle="tab">购货单位</a></li>
+            <li><a href="#t01_3" data-toggle="tab">货物或应税劳务信息</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="t01_1">
+                <p>
+
+                <table class="table table-striped table-bordered" style="font-size:12px;">
+                    <tbody>
+                    <tr>
+                        <td style="width: 38%;">名称</td>
+                        <td id="xfmc01"></td>
+                    </tr>
+                    <tr>
+                        <td>纳税人识别号</td>
+                        <td id="xfsbh01"></td>
+                    </tr>
+                    <tr>
+                        <td>地址、电话</td>
+                        <td id="xfdzdh01"></td>
+                    </tr>
+                    <tr>
+                        <td>开户行及账号</td>
+                        <td id="xfyhzh01"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="tab-pane" id="t01_2">
+                <p>
+
+                <table class="table table-striped table-bordered" style="font-size:12px;">
+                    <tbody>
+                    <tr>
+                        <td style="width: 38%;">名称</td>
+                        <td id="gfmc01"></td>
+                    </tr>
+                    <tr>
+                        <td>纳税人识别号</td>
+                        <td id="gfsbh01"></td>
+                    </tr>
+                    <tr>
+                        <td>地址、电话</td>
+                        <td id="gfdzdh01"></td>
+                    </tr>
+                    <tr>
+                        <td>开户行及账号</td>
+                        <td id="gfyhzh01"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                </p>
+            </div>
+            <div class="tab-pane" id="t01_3">
+                <p>
+                <table class="table" style="font-size:10px;">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>名称</th>
+                        <th>规格型号</th>
+                        <th>单位</th>
+                        <th>数量</th>
+                        <th>单价</th>
+                        <th>金额</th>
+                        <th>税率</th>
+                        <th>税额</th>
+                    </tr>
+                    </thead>
+                    <tbody id="t01_3_">
+
+                    </tbody>
+                </table>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="tabs02" class="nav-tabs-custom" style="padding-top: 5px;">
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#t02_1" data-toggle="tab">承运人受票方</a></li>
+            <li><a href="#t02_2" data-toggle="tab">发货人收货人</a></li>
+            <li><a href="#t02_3" data-toggle="tab">费用项目</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="t02_1">
+                <p>
+
+                <table class="table table-striped table-bordered" style="font-size:12px;">
+                    <tbody>
+                    <tr>
+                        <td style="width: 38%;">承运人名称</td>
+                        <td id="cyrmc02"></td>
+                    </tr>
+                    <tr>
+                        <td>承运人纳税人识别号</td>
+                        <td id="cyrsbh02"></td>
+                    </tr>
+                    <tr>
+                        <td>受票方名称</td>
+                        <td id="spfmc02"></td>
+                    </tr>
+                    <tr>
+                        <td>受票方纳税人识别号</td>
+                        <td id="spfsbh02"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="tab-pane" id="t02_2">
+                <p>
+
+                <table class="table table-striped table-bordered" style="font-size:12px;">
+                    <tbody>
+                    <tr>
+                        <td style="width: 38%;">发货人名称</td>
+                        <td id="fhrmc02"></td>
+                    </tr>
+                    <tr>
+                        <td>发货人纳税人识别号</td>
+                        <td id="fhrsbh02"></td>
+                    </tr>
+                    <tr>
+                        <td>收货人名称</td>
+                        <td id="shrmc02"></td>
+                    </tr>
+                    <tr>
+                        <td>收货人纳税人识别号</td>
+                        <td id="shrsbh02"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                </p>
+            </div>
+            <div class="tab-pane" id="t02_3">
+                <p>
+                <table class="table table-striped" style="font-size:12px;">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>费用项目</th>
+                        <th>金额</th>
+                    </tr>
+                    </thead>
+                    <tbody id="t02_3_">
+
+                    </tbody>
+                </table>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="tabs03" class="nav-tabs-custom" style="padding-top: 5px;">
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#t03_1" data-toggle="tab">-</a></li>
+            <li><a href="#t03_2" data-toggle="tab">-</a></li>
+            <li><a href="#t03_3" data-toggle="tab">-</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="t03_1">
+                <p>
+
+                <table class="table table-striped table-bordered" style="font-size:12px;">
+                    <tbody>
+                    <tr>
+                        <td style="width: 38%;">名称</td>
+                        <td id="xfmc03"></td>
+                    </tr>
+                    <tr>
+                        <td>纳税人识别号</td>
+                        <td id="xfsbh03"></td>
+                    </tr>
+                    <tr>
+                        <td>地址、电话</td>
+                        <td id="xfdzdh03"></td>
+                    </tr>
+                    <tr>
+                        <td>开户行及账号</td>
+                        <td id="xfyhzh03"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="tab-pane" id="t03_2">
+                <p>
+
+                <table class="table table-striped table-bordered" style="font-size:12px;">
+                    <tbody>
+                    <tr>
+                        <td style="width: 38%;">名称</td>
+                        <td id="gfmc03"></td>
+                    </tr>
+                    <tr>
+                        <td>纳税人识别号</td>
+                        <td id="gfsbh03"></td>
+                    </tr>
+                    <tr>
+                        <td>地址、电话</td>
+                        <td id="gfdzdh03"></td>
+                    </tr>
+                    <tr>
+                        <td>开户行及账号</td>
+                        <td id="gfyhzh03"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                </p>
+            </div>
+            <div class="tab-pane" id="t03_3">
+                <p>
+                <table class="table" style="font-size:10px;">
+                    <thead>
+
+                    </thead>
+                    <tbody id="t03_3_">
+
+                    </tbody>
+                </table>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="tabs04" class="nav-tabs-custom" style="padding-top: 5px;">
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#t04_1" data-toggle="tab">销货方</a></li>
+            <li><a href="#t04_2" data-toggle="tab">购货方</a></li>
+            <li><a href="#t04_3" data-toggle="tab">货物或应税劳务</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="t04_1">
+                <p>
+
+                <table class="table table-striped table-bordered" style="font-size:12px;">
+                    <tbody>
+                    <tr>
+                        <td style="width: 38%;">名称</td>
+                        <td id="xfmc04"></td>
+                    </tr>
+                    <tr>
+                        <td>纳税人识别号</td>
+                        <td id="xfsbh04"></td>
+                    </tr>
+                    <tr>
+                        <td>地址、电话</td>
+                        <td id="xfdzdh04"></td>
+                    </tr>
+                    <tr>
+                        <td>开户行及账号</td>
+                        <td id="xfyhzh04"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="tab-pane" id="t04_2">
+                <p>
+
+                <table class="table table-striped table-bordered" style="font-size:12px;">
+                    <tbody>
+                    <tr>
+                        <td style="width: 38%;">名称</td>
+                        <td id="gfmc04"></td>
+                    </tr>
+                    <tr>
+                        <td>纳税人识别号</td>
+                        <td id="gfsbh04"></td>
+                    </tr>
+                    <tr>
+                        <td>地址、电话</td>
+                        <td id="gfdzdh04"></td>
+                    </tr>
+                    <tr>
+                        <td>开户行及账号</td>
+                        <td id="gfyhzh04"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                </p>
+            </div>
+            <div class="tab-pane" id="t04_3">
+                <p>
+                <table class="table" style="font-size:10px;">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>名称</th>
+                        <th>规格型号</th>
+                        <th>单位</th>
+                        <th>数量</th>
+                        <th>单价</th>
+                        <th>金额</th>
+                        <th>税率</th>
+                        <th>税额</th>
+                    </tr>
+                    </thead>
+                    <tbody id="t04_3_">
+
+                    </tbody>
+                </table>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="tabs10" class="nav-tabs-custom" style="padding-top: 5px;">
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#t10_1" data-toggle="tab">收款单位</a></li>
+            <li><a href="#t10_2" data-toggle="tab">付款单位</a></li>
+            <li><a href="#t10_3" data-toggle="tab">项目</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="t10_1">
+                <p>
+
+                <table class="table table-striped table-bordered" style="font-size:12px;">
+                    <tbody>
+                    <tr>
+                        <td style="width: 38%;">名称</td>
+                        <td id="xfmc10"></td>
+                    </tr>
+                    <tr>
+                        <td>纳税人识别号</td>
+                        <td id="xfsbh10"></td>
+                    </tr>
+                    <tr>
+                        <td>地址、电话</td>
+                        <td id="xfdzdh10"></td>
+                    </tr>
+                    <tr style="display: none;">
+                        <td>开户行及账号</td>
+                        <td id="xfyhzh10"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="tab-pane" id="t10_2">
+                <p>
+
+                <table class="table table-striped table-bordered" style="font-size:12px;">
+                    <tbody>
+                    <tr>
+                        <td style="width: 38%;">名称</td>
+                        <td id="gfmc10"></td>
+                    </tr>
+                    <tr>
+                        <td>纳税人识别号</td>
+                        <td id="gfsbh10"></td>
+                    </tr>
+                    <tr style="display: none;">
+                        <td>地址、电话</td>
+                        <td id="gfdzdh10"></td>
+                    </tr>
+                    <tr style="display: none;">
+                        <td>开户行及账号</td>
+                        <td id="gfyhzh10"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                </p>
+            </div>
+            <div class="tab-pane" id="t10_3">
+                <p>
+                <table class="table" style="font-size:10px;">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>名称</th>
+                    <th>规格型号</th>
+                    <th>单位</th>
+                    <th>数量</th>
+                    <th>单价</th>
+                    <th>金额</th>
+                    <th>税率</th>
+                    <th>税额</th>
+                </tr>
+                </thead>
+                    <tbody id="t10_3_">
+
+                    </tbody>
+                </table>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Footer================================================== -->
+<!--class="container"-->
+<!--
+<footer class="bs-docs-footer" role="contentinfo">
+    <div style="padding-left: 0px; padding-top: 10px; padding-bottom: 10px;">
+        <div class="col-xs-8 col-md-8" style="width: 600px;">
+
+            <p>版权所有 © 2014-2015 长城计算机软件与系统有限公司</p>
+            给我们发送 <span class="glyphicon glyphicon-envelope"></span> <a
+                href="mailto:admin#gwssi.com.cn">反馈</a> 或者提交 <i
+                class="icon-tasks"></i> <a href="">网站问题</a>.
+        </div>
+
+    </div>
+</footer>
+-->
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+    var fplx = "";
+    var fpxx = "";
+    var hwxx = "";
+    var cyjg = "";
+
+    $(function () {
+
+        /*$('#example21').dataTable({
+         "bPaginate": true,
+         "bLengthChange": false,
+         "bFilter": false,
+         "bSort": false,
+         "bInfo": false,
+         "bAutoWidth": false
+         });*/
+
+        fplx = sessionStorage['fplx'];
+        cyjg = sessionStorage['cyjg'];
+
+        // 进入此页面只会有 001 一致 006 不一致 009 查无此票
+        if (cyjg == "001") {
+
+
+            fpxx = sessionStorage['fpxx'];
+            hwxx = sessionStorage['hwxx'];
+
+            //$('#debug').html(cyjg + "---" + fplx + "<br>" + fpxx+'<br>'+'<br>'+hwxx).parent().hide();
+
+            var x1 = fpxx.split('≡');  //基本信息slice
+            var x2 = hwxx.split('≡');  //货物信息slice 每个表示一个货物 需要再细分一层
+
+            switch (fplx) {
+                case '01':
+                    $('#panel01').show();
+                    $('#panel02').hide();
+                    $('#panel03').hide();
+                    $('#panel04').hide();
+                    $('#panel10').hide();
+
+                    $('#tabs01').show();
+                    $('#tabs02').hide();
+                    $('#tabs03').hide();
+                    $('#tabs04').hide();
+                    $('#tabs10').hide();
+
+                    $('#pb01').html("发票来源:&nbsp;" + x1[2] + "<br>" + "发票类型: 增值税专用发票" + "<br>" + "查验次数: "
+                            +(parseInt(x1[3])+1));
+
+                    $('#img_cyjg01').attr("src", "/img/4.png");
+
+                    $('#fpdm01').html(x1[0]);
+                    $('#fphm01').html(x1[1]);
+                    $('#kprq01').html(x1[4].substr(0, 4) + "-" + x1[4].substr(4, 2) + "-" + x1[4].substr(6, 2));
+                    $('#kpje01').html(x1[13]);
+                    $('#jshj01').html(x1[15]);
+
+                    $('#gfmc01').html(x1[5]);
+                    $('#gfsbh01').html(x1[6]);
+                    $('#gfdzdh01').html(x1[7]);
+                    $('#gfyhzh01').html(x1[8]);
+                    $('#xfmc01').html(x1[9]);
+                    $('#xfsbh01').html(x1[10]);
+                    $('#xfdzdh01').html(x1[11]);
+                    $('#xfyhzh01').html(x1[12]);
+
+                    for (var i = 0; i < x2.length; i++) {
+                        var x3 = x2[i].split('█');
+
+                        $("#t01_3_").append(
+                                '<tr>' +
+                                '<th>' + (parseInt(i)+1) + '</th>' +
+                                '<th>' + x3[0] + '</th>' +
+                                '<th>' + x3[1] + '</th>' +
+                                '<th>' + x3[2] + '</th>' +
+                                '<th>' + x3[3] + '</th>' +
+                                '<th>' + x3[4] + '</th>' +
+                                '<th>' + x3[5] + '</th>' +
+                                '<th>' + x3[6] + '</th>' +
+                                '<th>' + x3[7] + '</th>' +
+                                '</tr>'
+                        );
+                    }
+
+                    break;
+
+                case '02':
+                    $('#panel01').hide();
+                    $('#panel02').show();
+                    $('#panel03').hide();
+                    $('#panel04').hide();
+                    $('#panel10').hide();
+
+                    $('#tabs01').hide();
+                    $('#tabs02').show();
+                    $('#tabs03').hide();
+                    $('#tabs04').hide();
+                    $('#tabs10').hide();
+
+                    $('#pb02').html("发票来源:&nbsp;" + x1[2] + "<br>" + "发票类型: 货物运输业专用发票" + "<br>" + "查验次数: "
+                            +(parseInt(x1[3])+1));
+
+                    $('#img_cyjg02').attr("src", "/img/4.png");
+
+                    $('#fpdm02').html(x1[0]);
+                    $('#fphm02').html(x1[1]);
+                    $('#kprq02').html(x1[4].substr(0, 4) + "-" + x1[4].substr(4, 2) + "-" + x1[4].substr(6, 2));
+                    $('#kpje02').html(x1[13]);
+                    $('#jshj02').html(x1[19]);
+
+                    $('#yshwxx02').html(x1[14]);
+                    $('#qyd02').html(x1[15]);
+
+                    $('#sl02').html(x1[16]);
+                    $('#se02').html(x1[17]);
+
+                    $('#skph02').html(x1[18]);
+
+                    $('#czch02').html(x1[20]);
+                    $('#ccdw02').html(x1[21]);
+
+                    $('#swjgdm02').html(x1[22]);
+                    $('#swjgmc02').html(x1[23]);
+
+                    $('#bz02').html(x1[24]);
+                    $('#zfbz02').html(x1[25]);
+
+                    $('#cyrmc02').html(x1[5]);
+                    $('#cyrsbh02').html(x1[6]);
+                    $('#spfmc02').html(x1[7]);
+                    $('#spfsbh02').html(x1[8]);
+
+                    $('#shrmc02').html(x1[9]);
+                    $('#shrsbh02').html(x1[10]);
+                    $('#fhrmc02').html(x1[11]);
+                    $('#fhrsbh02').html(x1[12]);
+
+
+                    for (var i = 0; i < x2.length; i++) {
+                        var x3 = x2[i].split('█');
+
+                        $("#t02_3_").append(
+                                '<tr>' +
+                                '<td>' + (parseInt(i)+1) + '</td>' +
+                                '<td>' + x3[0] + '</td>' +
+                                '<td>' + x3[1] + '</td>' +
+                                '</tr>'
+                        );
+                    }
+
+                    break;
+                case '03':
+                    $('#panel01').hide();
+                    $('#panel02').hide();
+                    $('#panel03').show();
+                    $('#panel04').hide();
+                    $('#panel10').hide();
+
+                    $('#tabs01').hide();
+                    $('#tabs02').hide();
+                    $('#tabs03').hide();
+                    $('#tabs04').hide();
+                    $('#tabs10').hide();
+
+                    $('#pb03').html("发票来源:&nbsp;" + x1[2] + "<br>" + "发票类型: 货物运输业专用发票" + "<br>" + "查验次数: "
+                            +(parseInt(x1[3])+1));
+
+                    $('#img_cyjg03').attr("src", "/img/4.png");
+
+                    $('#fpdm03').html(x1[0]);
+                    $('#fphm03').html(x1[1]);
+                    $('#kprq03').html(x1[4].substr(0, 4) + "-" + x1[4].substr(4, 2) + "-" + x1[4].substr(6, 2));
+
+                    $('#skph03').html(x1[5]);
+                    $('#ghdw03').html(x1[6]);
+                    $('#sfzhm03').html(x1[7]);
+                    $('#gfsbh03').html(x1[8]);
+                    $('#cllx03').html(x1[9]);
+                    $('#cpxh03').html(x1[10]);
+                    $('#cd03').html(x1[11]);
+                    $('#hgzs03').html(x1[12]);
+                    $('#cjfy03').html(x1[13]);
+                    $('#sjdh03').html(x1[14]);
+                    $('#fdjhm03').html(x1[15]);
+                    $('#cjhm03').html(x1[16]);
+                    $('#jkzmsh03').html(x1[17]);
+                    $('#xhdwmc03').html(x1[18]);
+                    $('#dh03').html(x1[19]);
+                    $('#nsrsbh03').html(x1[20]);
+                    $('#zh03').html(x1[21]);
+                    $('#dz03').html(x1[22]);
+                    $('#khyh03').html(x1[23]);
+                    $('#zzssl03').html(x1[24]);
+                    $('#zzsse03').html(x1[25]);
+                    $('#swjgdm03').html(x1[26]);
+                    $('#jshj03').html(x1[27]);
+                    $('#wspzhm03').html(x1[28]);
+                    $('#dw03').html(x1[29]);
+                    $('#xcrs03').html(x1[30]);
+                    $('#zfbz03').html(x1[31]);
+                    $('#swjgmc03').html(x1[32]);
+
+                    break;
+                case '04':
+                    $('#panel01').hide();
+                    $('#panel02').hide();
+                    $('#panel03').hide();
+                    $('#panel04').show();
+                    $('#panel10').hide();
+
+                    $('#tabs01').hide();
+                    $('#tabs02').hide();
+                    $('#tabs03').hide();
+                    $('#tabs04').show();
+                    $('#tabs10').hide();
+
+                    $('#pb04').html("发票来源:&nbsp;" + x1[2] + "<br>" + "发票类型: 货物运输业专用发票" + "<br>" + "查验次数: "
+                            +(parseInt(x1[3])+1));
+
+                    $('#img_cyjg04').attr("src", "/img/4.png");
+
+                    $('#fpdm04').html(x1[0]);
+                    $('#fphm04').html(x1[1]);
+                    $('#kprq04').html(x1[4].substr(0, 4) + "-" + x1[4].substr(4, 2) + "-" + x1[4].substr(6, 2));
+                    $('#jym04').html(x1[13]);
+                    $('#se04').html(x1[14]);
+                    $('#jshj04').html(x1[15]);
+                    $('#bz04').html(x1[16]);
+                    $('#jqph04').html(x1[17]);
+                    $('#kpjh04').html(x1[18]);
+                    $('#je04').html(x1[19]);
+                    $('#zfbz04').html(x1[20]);
+
+                    $('#xfmc04').html(x1[5]);
+                    $('#xfsbh04').html(x1[6]);
+                    $('#xfdzdh04').html(x1[7]);
+                    $('#xfyhzh04').html(x1[8]);
+                    $('#gfmc04').html(x1[9]);
+                    $('#gfsbh04').html(x1[10]);
+                    $('#gfdzdh04').html(x1[11]);
+                    $('#gfyhzh04').html(x1[12]);
+
+
+                    for (var i = 0; i < x2.length; i++) {
+                        var x3 = x2[i].split('█');
+
+                        $("#t04_3_").append(
+                                '<tr>' +
+                                '<th>' + (parseInt(i)+1) + '</th>' +
+                                '<th>' + x3[0] + '</th>' +
+                                '<th>' + x3[1] + '</th>' +
+                                '<th>' + x3[2] + '</th>' +
+                                '<th>' + x3[3] + '</th>' +
+                                '<th>' + x3[4] + '</th>' +
+                                '<th>' + x3[5] + '</th>' +
+                                '<th>' + x3[6] + '</th>' +
+                                '<th>' + x3[7] + '</th>' +
+                                '</tr>'
+                        );
+                    }
+
+                    break;
+                case '10':
+                    $('#panel01').hide();
+                    $('#panel02').hide();
+                    $('#panel03').hide();
+                    $('#panel04').hide();
+                    $('#panel10').show();
+
+                    $('#tabs01').hide();
+                    $('#tabs02').hide();
+                    $('#tabs03').hide();
+                    $('#tabs04').hide();
+                    $('#tabs10').show();
+
+                    $('#pb10').html("发票来源:&nbsp;" + x1[2] + "<br>" + "发票类型: 增值税电子发票" + "<br>" + "查验次数: " +
+                            x1[3]);
+
+                    $('#img_cyjg10').attr("src", "/img/4.png");
+
+                    $('#fpdm10').html(x1[0]);
+                    $('#fphm10').html(x1[1]);
+                    $('#kprq10').html(x1[4].substr(0, 4) + "-" + x1[4].substr(4, 2) + "-" + x1[4].substr(6, 2));
+                    $('#jym10').html(x1[13]);
+                    $('#se10').html(x1[14]);
+                    $('#jshj10').html(x1[15]);
+                    $('#bz10').html(x1[16]);
+                    $('#sbbh10').html(x1[17]);
+                    $('#je10').html(x1[18]);
+                    $('#zfbz10').html(x1[19]);
+
+                    $('#xfmc10').html(x1[5]);
+                    $('#xfsbh10').html(x1[6]);
+                    $('#xfdzdh10').html(x1[7]);
+                    $('#xfyhzh10').html(x1[8]);
+                    $('#gfmc10').html(x1[9]);
+                    $('#gfsbh10').html(x1[10]);
+                    $('#gfdzdh10').html(x1[11]);
+                    $('#gfyhzh10').html(x1[12]);
+
+                    for (var i = 0; i < x2.length; i++) {
+                        var x3 = x2[i].split('█');
+
+                        $("#t10_3_").append(
+                                '<tr>' +
+                                '<th>' + (parseInt(i)+1) + '</th>' +
+                                '<th>' + x3[0] + '</th>' +
+                                '<th>' + x3[1] + '</th>' +
+                                '<th>' + x3[2] + '</th>' +
+                                '<th>' + x3[3] + '</th>' +
+                                '<th>' + x3[4] + '</th>' +
+                                '<th>' + x3[5] + '</th>' +
+                                '<th>' + x3[6] + '</th>' +
+                                '<th>' + x3[7] + '</th>' +
+                                '</tr>'
+                        );
+                    }
+
+                    break;
+            }
+
+        }
+        else if (cyjg == "006" || cyjg == "009") {
+
+            var swjg = sessionStorage['swjg'];
+            var fpdm = sessionStorage['fpdm'];
+            var fphm = sessionStorage['fphm'];
+            var kprq = sessionStorage['kprq'];
+            var kjje = sessionStorage['kjje'];
+            var cysj = sessionStorage['cysj'];
+
+            switch (fplx) {
+                case '01':
+                    $('#panel01').show();
+                    $('#panel02').hide();
+                    $('#panel03').hide();
+                    $('#panel04').hide();
+                    $('#panel10').hide();
+                    $('#pb01').html("发票来源:&nbsp;" + swjg + "<br>" + "发票类型: 增值税专用发票" + "<br>" + "查验次数: -");
+
+                    if (cyjg == "006"){
+                        $('#img_cyjg01').attr("src", "/img/2.png");
+                    }
+                    else{
+                        $('#img_cyjg01').attr("src", "/img/3.png");
+                    }
+
+                    $('#fpdm01').html(fpdm);
+                    $('#fphm01').html(fphm);
+                    $('#kprq01').html(kprq);
+                    $('#kpje01').html(kjje);
+
+                    $('#kpje01').parent().nextAll().hide();
+
+                    break;
+                case '02':
+                    $('#panel01').hide();
+                    $('#panel02').show();
+                    $('#panel03').hide();
+                    $('#panel04').hide();
+                    $('#panel10').hide();
+
+                    $('#pb02').html("发票来源:&nbsp;" + swjg + "<br>" + "发票类型: 货物运输业专用发票" + "<br>" + "查验次数: -");
+
+                    if (cyjg == "006"){
+                        $('#img_cyjg02').attr("src", "/img/2.png");
+                    }
+                    else{
+                        $('#img_cyjg02').attr("src", "/img/3.png");
+                    }
+
+                    $('#fpdm02').html(fpdm);
+                    $('#fphm02').html(fphm);
+                    $('#kprq02').html(kprq);
+                    $('#kpje02').html(kjje);
+
+                    $('#kpje02').parent().nextAll().hide();
+
+                    break;
+                case '03':
+                    $('#panel01').hide();
+                    $('#panel02').hide();
+                    $('#panel03').show();
+                    $('#panel04').hide();
+                    $('#panel10').hide();
+                    $('#pb03').html("发票来源:&nbsp;" + swjg + "<br>" + "发票类型: 机动车销售统一发票" + "<br>" + "查验次数: -");
+
+                    if (cyjg == "006"){
+                        $('#img_cyjg03').attr("src", "/img/2.png");
+                    }
+                    else{
+                        $('#img_cyjg03').attr("src", "/img/3.png");
+                    }
+
+                    $('#fpdm03').html(fpdm);
+                    $('#fphm03').html(fphm);
+                    $('#kprq03').html(kprq);
+                    $('#kpje03').html(kjje);
+
+                    $('#kpje03').parent().nextAll().hide();
+
+                    break;
+                case '04':
+                    $('#panel01').hide();
+                    $('#panel02').hide();
+                    $('#panel03').hide();
+                    $('#panel04').show();
+                    $('#panel10').hide();
+                    $('#pb04').html("发票来源:&nbsp;" + swjg + "<br>" + "发票类型: 增值税普通发票" + "<br>" + "查验次数: -");
+
+                    if (cyjg == "006"){
+                        $('#img_cyjg04').attr("src", "/img/2.png");
+                    }
+                    else{
+                        $('#img_cyjg04').attr("src", "/img/3.png");
+                    }
+
+                    $('#fpdm04').html(fpdm);
+                    $('#fphm04').html(fphm);
+                    $('#kprq04').html(kprq);
+                    $('#kpje04').html(kjje);
+
+                    $('#kpje04').parent().nextAll().hide();
+
+                    break;
+                case '10':
+                    $('#panel01').hide();
+                    $('#panel02').hide();
+                    $('#panel03').hide();
+                    $('#panel04').hide();
+                    $('#panel10').show();
+                    $('#pb10').html("发票来源:&nbsp;" + swjg + "<br>" + "发票类型: 增值税普通发票(电子发票)" + "<br>" + "查验次数: -");
+
+                    if (cyjg == "006"){
+                        $('#img_cyjg10').attr("src", "/img/2.png");
+                    }
+                    else{
+                        $('#img_cyjg10').attr("src", "/img/3.png");
+                    }
+
+                    $('#fpdm10').html(fpdm);
+                    $('#fphm10').html(fphm);
+                    $('#kprq10').html(kprq);
+                    $('#kpje10').html(kjje);
+
+                    $('#kpje10').parent().nextAll().hide();
+
+                    break;
+            }
+
+            $('#tabs01').hide();
+            $('#tabs02').hide();
+            $('#tabs03').hide();
+            $('#tabs04').hide();
+            $('#tabs10').hide();
+        }
+    });
+
+</script>

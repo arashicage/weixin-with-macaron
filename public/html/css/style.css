@@ -1,0 +1,213 @@
+﻿@charset "utf-8";
+
+/* reset
+--------------------------------------------------------------------*/
+body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr{ margin:0; padding:0;}
+fieldset,img{ border:0;}
+q:before,q:after{ content:'';}
+abbr[title]{ border-bottom:1px dotted; cursor:help;}
+address,cite,dfn,em,var{ font-style:normal;}
+legend{ color:#000;}
+code,kbd,samp{ font-family:"Courier New",monospace;}
+hr{ border:none; height:1px;}
+h1,h2,h3,h4,h5,h6{ font-size:100%;}
+ol,ul {list-style:none outside none;}
+li {list-style: none;}
+input, select, textarea, button { font-size: 100%; line-height: inherit;}
+button { cursor: pointer;}
+table, thead, tbody, tfoot, tr, th, td, caption, col, colgroup { text-align: inherit; line-height: inherit;	font-size: 100%;}
+table {	border-collapse: collapse; border-spacing: 0;}
+thead {display: table-header-group;}
+tbody {display: table-row-group;}
+tfoot {display: table-footer-group;}
+tr {display: table-row;}
+th,td {display: table-cell;}
+caption {display: table-caption;}
+col {display: table-column;}
+colgroup {display: table-column-group;}
+
+/* clear
+--------------------------------------------------------------------*/
+.clearfix:after,.main:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+.clearfix {display: inline-block;}/*IE7*/
+* html .clearfix { zoom: 1; display: inline-block;}/* Hides from IE-mac \*/
+.clearfix { display:block;}/* End hide from IE-mac */
+.zoom { zoom: 1; overow: hidden;}
+.clear { clear:both;}
+
+/* layout
+--------------------------------------------------------------------*/
+body { background-color:#f7f7f7; font:normal 12px "MicroSoft YaHei","SimHei"; color:#525252; text-align:center;}
+#header, #nav .nav_main, #banner, #content, .footMain_main, #footer {
+	margin:0 auto;
+	width:1000px;
+	text-align:left;
+	position:relative;
+}
+p, b { line-height:20px; clear:both; overflow:hidden;}
+h1, h2{ font:normal 18px "MicroSoft YaHei","SimHei"; margin-top:5px; clear:both; overflow:hidden;}
+h2{ font-size:16px; color:#69C; width:746px; margin:20px auto 5px; font-weight:bold;}
+a {color:#999999; text-decoration:none;}
+a:hover{color:#3667d3;}
+a:active { star:expression(this.onFocus=this.blur());}
+:focus { outline:0;}
+.title { font:bold 15px/38px "MicroSoft YaHei","SimHei"; height:40px; background-color:#3667d3; width:100%; color:#fff; overflow:hidden; clear:both;}
+.title span { margin-left:10px;}
+#footer .title a { float:right; margin-right:10px; color:#32618f; font-size:12px;}
+#content .cms_r { float:right; width:730px; min-height:500px; margin-top:10px;}
+#content .cms_r .title { background:none; color:#666;}
+#content .funBtn a { margin-bottom:10px; display:block;}
+#content .contentLeft { width:250px; float:left;}
+#content .contentRight { width:730px; float:right; margin-top:20px; min-height:500px;}
+#content .cms_r .list_other { overflow:hidden;}
+
+/* header
+--------------------------------------------------------------------*/
+#headerbox{ width:100%; background:url(../images/1071386.jpg) no-repeat center top;}
+#header { height:125px; overflow:hidden;}
+#header .logo { float:left; margin-top:18px;}
+#header .tel { float:right; margin-top:50px;color:#98b9e3;}
+
+
+/* nav
+--------------------------------------------------------------------*/
+#navbox{width:100%; background:#1269c0; border-top:1px #005ab3 solid; box-shadow:0 2px 5px rgba(0,0,0,0.3);}
+#nav { width:1000px;height:39px; position:relative; z-index:9997; margin:0 auto;}
+#nav .nav_main li { position:relative; float:left;}
+#nav .nav_main li a { display:block; font-size:14px; line-height:39px; color:#fff; float:left; text-align:center; width:150px; height:39px;}
+#nav .nav_main li a.hasSub { background:url(../images/jiantou_xia.png) no-repeat 116px 16px; text-align:left; padding-left:45px; width:105px;}
+#nav .nav_main li a:hover, #nav .nav_main li a.air { background:#fff; color:#3667d3;}
+#nav .nav_main li a.hasSub:hover, #nav .nav_main li a.hasSub.air { background:url(../images/jiantou_shang.png) no-repeat #fff 116px 50%; color:#3667d3;}
+#nav .nav_main li a.hasSub15:hover, #nav .nav_main li a.hasSub15.air { background:url(../images/jiantou_shang.png) no-repeat #fff 90px 50%; color:#3667d3;}
+
+.nav_ge{ background:url(../images/nav_ge.gif) no-repeat left top; width:2px; height:35px;}
+
+/* sub 二级菜单
+--------------------------------------------------------------------*/
+#nav .nav_main li ul { position:absolute; z-index:9997; border:1px #1269c0 solid; border-top:none; top:39px; left:-1px; background:#fff; display:none; width:180px; box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+#nav .nav_main li ul li { display:inline-block;}
+#nav .nav_main li ul li a { font-size:14px; background:#fff; width:115px; padding:0 20px 0 45px; line-height:34px; height:34px; text-align:left; display:block; color:#333; overflow:hidden;}
+#nav .nav_main li ul li a:hover { background:#004db4; color:#fff;}
+#nav .nav_main .search { background:#fff; height:25px; line-height:25px; width:262px; float:right; margin-top:7px; -moz-border-radius:20px; -webkit-border-radius:20px; border-radius:20px; margin-right:10px;}
+#nav .nav_main .search .search_input { color:#999; height:19px; line-height:19px; overflow:hidden; width:200px; float:left; margin:5px 0 0 10px; background:none; border:none;}
+#nav .nav_main .search .search_btn { cursor:pointer; float:right; height:21px; width:24px; background:none; border:none; background:url(../images/search_btn.gif) no-repeat; margin:5px 4px 0;}
+#banner { height:220px; overflow:hidden; clear:both; margin-top:20px;}
+
+
+
+
+/* indexFn > 首页功能区
+--------------------------------------------------------------------*/
+#content .indexFn { width:1000px; /*float:right;*/ height:182px; margin-top:20px;}
+#content .indexFn li { width:193px; float:left; padding:20px 20px; height:142px;cursor:pointer; margin-right:20px;box-shadow:0 4px 5px rgba(0,0,0,0.3); border:1px solid #ccc; }
+#content .indexFn li.fn1 { background:url(../images/fn1.png) no-repeat #fff center 90px; }
+#content .indexFn li.fn1:hover { background-image:url(../images/fn1_h.png);}
+#content .indexFn li.fn2 { background:url(../images/fn2.png) no-repeat #fff center 90px;}
+#content .indexFn li.fn2:hover { background-image:url(../images/fn2_h.png);}
+#content .indexFn li.fn3 { background:url(../images/fn3.png) no-repeat #fff center 90px;}
+#content .indexFn li.fn3:hover { background-image:url(../images/fn3_h.png);}
+#content .indexFn li.fn4 { background:url(../images/fn4.png) no-repeat #fff center 90px;margin-right:0px; }
+#content .indexFn li.fn4:hover { background-image:url(../images/fn4_h.png);}
+#content .indexFn li:hover { background-color:#e6e8ed;}
+#content .indexFn li h1 { text-align:center; font-weight:bold; color:#3667d3; margin:0; text-shadow:1px 1px 0 #fff;}
+#content .indexFn li p { text-align:center; color:#999; line-height:15px; margin-top:5px; text-shadow:1px 1px 0 #fff;}
+
+
+
+
+
+
+
+
+/* leftNav > 左菜单
+--------------------------------------------------------------------*/
+.leftNav{ width:250px; overflow:hidden; clear:both; margin:50px auto 0; border-top:0px #297ed8 solid;}
+.leftNav a { display:block; width:200px; height:46px; font-size:14px; line-height:46px; padding-left:50px; margin-top:2px; background:url(../images/leftNav_1_bg.gif) no-repeat; color:#fff;}
+.leftNav a.leftNav_2 { background:url(../images/leftNav_2_bg.gif) no-repeat;}
+.leftNav a.leftNav_3 { background:url(../images/leftNav_3_bg.gif) no-repeat;}
+.leftNav a.leftNav_4 { background:url(../images/leftNav_4_bg.gif) no-repeat;}
+.leftNav a:hover, .leftNav a.air { background-position:0 -46px; color:#fff;}
+
+.ListNav { background:#fff; clear:both; margin:20px auto 0; padding:10px 10px 270px 10px;}
+.ListNav li{height:40px; font-size:14px; line-height:45px;padding-left:40px; color:#2789d0; border-bottom:1px dotted #ccc; background:url(../images/list_ico2.gif) no-repeat 20px center; cursor:pointer;}
+.ListNav li.List_title{background:url(../images/1071386.jpg) no-repeat 60% 50%;  font-size:16px; color:#fff;}
+
+/* footer
+--------------------------------------------------------------------*/
+#footerbox{ width:100%; background:#0069c2; padding-top:20px;padding-bottom:20px; margin-top:20px; }
+
+#footer { width:100%; margin-top:10px; height:70px; text-align:center;}
+#footer p { color:#98b9e3; text-align:center;}
+
+
+/* 浮动层(帮助留言QQ)
+--------------------------------------------------------------------*/
+.backToTop { width:60px; height:175px; z-index:10999; overflow:hidden;}
+.backToTop a.helpBtn { width:60px; height:59px; background:#eaeaea url(../images/floatDiv.gif) no-repeat; float:left;}
+.backToTop a.helpBtn:hover { background-position:-59px 0;}
+.backToTop a.liuyanBtn { width:60px; height:59px; background:#eaeaea url(../images/floatDiv.gif) no-repeat 0 -59px; float:left;}
+.backToTop a.liuyanBtn:hover { background-position:-59px -59px;}
+.backToTop a.qqBtn { width:60px; height:59px; background:#eaeaea url(../images/qq.png) no-repeat 0 -2px; float:left;}
+.backToTop a.qqBtn:hover { background-position:-59px -2px;}
+#popup { width:594px;} 
+#popup h2 { font-weight:normal; text-align:left; margin:0; margin-bottom:10px; width:auto; color:#666;}
+#popup div input { width:100px; height:30px; line-height:26px; margin-top:20px;}
+
+
+
+/* 通用表格样式
+--------------------------------------------------------------------*/
+.comm_table{ text-align:center;}
+.comm_table,.comm_table td,.comm_table th{ border:1px solid #b8b7b7;padding:10px;}
+.lr_txt{width:100%; background:; border:0px; text-align:center;font-family:"MicroSoft YaHei";}
+.comm_btn_div{margin:20px auto; text-align:center;}
+
+.comm_table2{ margin:0 auto;}
+.comm_table2 td{padding:10px; text-align:left;}
+.comm_table2 td input[type=text]{padding:5px; width:230px;}
+
+.tip_common{ background:url(../images/pencil.png) no-repeat left center; padding-left:30px; line-height:30px;}
+.tip_error{ background:url(../images/cross.png) no-repeat left center;padding-left:30px;line-height:30px;}
+.tip_right{ background:url(../images/ico_right2.jpg) no-repeat left center;padding-left:30px;line-height:30px;}
+.font_red{ color:#f00;}
+
+.chayan_div{background:#fff; padding:30px 0px;box-shadow:0 4px 5px rgba(0,0,0,0.3); border:1px solid #ccc;}
+
+.chayan_title{ background:#09F; height:40px; line-height:40px;}
+
+.comm_table button{ background:#fff; color:#000; padding:5px 20px; border:1px solid #888;font-family:"MicroSoft YaHei";}
+.comm_table .result_title{background:url(../images/1071386.jpg) no-repeat left top;}
+
+.td_left{ text-align:left;}
+.td_center{ text-align:center; background:#e0f2fe;}
+
+
+
+/* 通知公告&政策法规&下载中心&留言
+--------------------------------------------------------------------*/
+#content .list_left { width:94px; float:left; margin:20px 0 50px;}
+#content .list_right { float:right; padding-left:15px; margin:10px 0 50px;}
+#content .list_right ul li {  clear:both; overflow:hidden; height:40px; line-height:40px; border-bottom:1px #999 dotted; background:url(../images/list_ico.gif) no-repeat left center; padding-left:20px;}
+#content .list_right ul li a.title { float:left; width:600px; overflow:hidden; font-size:14px; font-weight:normal;}
+#content .list_right ul li a.xiangqing { float:right; color:#267ad0;}
+#content .list_right ul li a.xiangqing img { margin-top:12px;}
+#content .list_right ul li span { float:right; margin-right:15px; color:#999; font-size:12px; }
+#content .list_right h1 { text-align:center; font-size:20px;}
+#content .list_right .data { text-align:center; margin-top:10px; color:#999;}
+#content .list_right .list_main {line-height:24px; height:auto; font-size:14px; margin:20px 0 10px; padding:20px 0; border-bottom:1px #999 dotted; border-top:1px #999 dotted;}
+#content .list_right .list_other { overflow:hidden; clear:both; float:left;margin-top:10px; color:#267ad0;}
+#content .list_right ul.liuyan li { font-size:12px; background:none; height:auto; padding:15px 0;}
+#content .list_right ul.liuyan li .zixunren { color:#999;}
+#content .list_right ul.liuyan li .huifu { color:#267ad0; margin-top:5px;}
+#content .list_right .liuyanBox { width:612px; margin:50px auto 20px;}
+#content .list_right .liuyanBox textarea { width:600px; height:80px; border:1px #ccc solid; background-color:#fff; overflow-y:auto; padding:5px; line-height:18px;}
+
+#content .list_right .page { margin:30px auto 0; text-align:center;}
+#content .list_right .page a{ color:#267ad0;}
+#content .list_right .page a:hover{ color:#000;}

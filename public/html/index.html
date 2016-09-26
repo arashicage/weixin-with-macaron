@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+
+    <title>国家税务总局全国增值税发票统一查验平台</title>
+    <link rel="stylesheet" href="weui/css/weui.css"/>
+    <link rel="stylesheet" href="weui/example/example.css"/>
+    <link rel="stylesheet" href="jssdk/css/style.css">
+
+    <link href="css/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen"/>
+    <script charset="utf-8" type="text/javascript" src="js/jquery-1.7.min.js"></script>
+    <script charset="utf-8" type="text/javascript" src="js/cookies.js"></script>
+
+</head>
+
+<style>
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none !important;
+        margin: 0;
+    }
+
+    .weui_input {
+        /*        width: 100%;
+            border: 0;
+            outline: 0;
+            background-color: transparent;
+            font-size: inherit;
+            color: inherit;*/
+        padding-left: 10px;
+    }
+
+    .weui_cell_select .weui_select {
+        /*padding-right: 30px;*/
+        padding-left: 0px;
+    }
+
+    .weui_cell_hd.weui_cell_warn {
+        padding-right: 10px;
+    }
+
+    .hd {
+        padding: 1em 0;
+    }
+
+</style>
+
+<body>
+
+<div>
+
+    <div class="hd">
+        <h1 class="page_title" style="font-size:18px;line-height: 130%;">国家税务总局<br>全国增值税发票统一查验平台</h1>
+
+        <p class="page_desc" style="font-size:10px;line-height: 130%;">支持增值税专用发票、货物运输业增值税专用发票、<br>机动车销售统一发票、增值税普通发票（含电子发票）在线查验
+        </p>
+    </div>
+
+    <div class="hd" style="padding-top: 0px;padding-bottom: 0px;">
+        <img id="scanQRCode" src="img/gh_32f799deb7f9.jpg" alt=""
+             style="width: 30%;height: 30%;display: block; margin: 0px auto; vertical-align: middle;">
+
+        <p id="ts" class="page_desc">点击二维码扫码输入</p>
+    </div>
+
+    <div class="bd">
+
+        <div class="weui_cells weui_cells_form">
+
+            <div class="weui_cell weui_cell_select weui_select_after">
+                <div class="weui_cell_hd ">
+                    发票类型
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select id="fplx" name="fplx" class="weui_select">
+                        <option value="01">01-增值税专用发票</option>
+                        <option value="02">02-货物运输业增值税专用发票</option>
+                        <option value="03">03-机动车销售统一发票</option>
+                        <option value="04">04-增值税普通发票</option>
+                        <option value="10">10-增值税普通发票(电子发票)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="weui_cell ">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">发票代码</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="fpdm" name="fpdm" class="weui_input" type="number" placeholder="请输入发票代码(10位或12位)"
+                           maxlength="12"/>
+                </div>
+            </div>
+
+            <div class="weui_cell ">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">发票号码</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="fphm" name="fphm" class="weui_input" type="number" placeholder="请输入发票号码(8位)"
+                           maxlength="8"/>
+                </div>
+            </div>
+
+            <div class="weui_cell ">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">开票日期</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="kprq" name="kprq" class="weui_input" type="date" placeholder="请输入开票日期 YYYY-MM-DD"/>
+                </div>
+            </div>
+
+            <div id="kjje_cell" class="weui_cell ">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">开票金额</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="kjje" name="kjje" class="weui_input" placeholder="请输入开票金额"/>
+                </div>
+            </div>
+
+            <div id="jym_cell" class="weui_cell " style="display:none;">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">校&nbsp;&nbsp;验&nbsp;&nbsp;码</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="jym" name="jym" class="weui_input" placeholder="请输入验证码" maxlength="6"/>
+                </div>
+            </div>
+
+            <div class="weui_cell weui_vcode ">
+                <div class="weui_cell_hd">
+                    <label class="weui_label">验&nbsp;&nbsp;证&nbsp;&nbsp;码</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="captcha" name="captcha" class="weui_input" placeholder="请输入验证码"/>
+                </div>
+                <div class="weui_cell_ft weui_vimg_wrp">
+                    <i class="weui_icon_warn"></i>
+                    <img id="captcha_img" src="/weui/example/images/vcode0.png"/>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="weui_btn_area">
+            <input id="checkfp" class="weui_btn weui_btn_primary" type="submit" style="width: 80%;" value="提交">
+        </div>
+
+        <div class="weui_dialog_alert" id="dialog2" style="display: none;">
+            <div class="weui_mask"></div>
+            <div class="weui_dialog">
+                <div class="weui_dialog_hd"><strong class="weui_dialog_title">系统信息</strong></div>
+                <div class="weui_dialog_bd" id="errMsg">this is the default system info.</div>
+                <div class="weui_dialog_ft">
+                    <a href="javascript:;" class="weui_btn_dialog primary">确定</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+<script src="jssdk/js/jweixin-1.0.0.js"></script>
+
+<script src="jssdk/js/zepto.min.js"></script>
+
+</html>
+
+<script type="text/javascript">
+
+    var yzmSj = "";
+    var jmmy = "";
+    var fplx = "99";
+    var xsje = 1;
+    var swjgmc = "";
+    var ip = "";
+    var delayFlag = "";
+    var delayTime = 6;
+    var delayMessage = "";
+
+    //判定省名称,url
+    function whichCity(fpdm) {
+
+        var citys = [
+            {'code': '1100', 'name': '北京'},
+            {'code': '1200', 'name': '天津'},
+            {'code': '1300', 'name': '河北'},
+            {'code': '1400', 'name': '山西'},
+            {'code': '1500', 'name': '内蒙古'},
+            {'code': '2100', 'name': '辽宁'},
+            {'code': '2102', 'name': '大连'},
+            {'code': '2200', 'name': '吉林'},
+            {'code': '2300', 'name': '黑龙江'},
+            {'code': '3100', 'name': '上海'},
+            {'code': '3200', 'name': '江苏'},
+            {'code': '3300', 'name': '浙江'},
+            {'code': '3302', 'name': '宁波'},
+            {'code': '3400', 'name': '安徽'},
+            {'code': '3500', 'name': '福建'},
+            {'code': '3502', 'name': '厦门'},
+            {'code': '3600', 'name': '江西'},
+            {'code': '3700', 'name': '山东'},
+            {'code': '3702', 'name': '青岛'},
+            {'code': '4100', 'name': '河南'},
+            {'code': '4200', 'name': '湖北'},
+            {'code': '4300', 'name': '湖南'},
+            {'code': '4400', 'name': '广东'},
+            {'code': '4403', 'name': '深圳'},
+            {'code': '4500', 'name': '广西'},
+            {'code': '4600', 'name': '海南'},
+            {'code': '5000', 'name': '重庆'},
+            {'code': '5100', 'name': '四川'},
+            {'code': '5200', 'name': '贵州'},
+            {'code': '5300', 'name': '云南'},
+            {'code': '5400', 'name': '西藏'},
+            {'code': '6100', 'name': '陕西'},
+            {'code': '6200', 'name': '甘肃'},
+            {'code': '6300', 'name': '青海'},
+            {'code': '6400', 'name': '宁夏'},
+            {'code': '6500', 'name': '新疆'}];
+        var code = null;
+        var info = new Array();
+
+        if (fpdm.length == 12) {
+            code = fpdm.substring(1, 5);
+        } else {
+            code = fpdm.substring(0, 4);
+        }
+        if (code != "2102" && code != "3302" && code != "3502" && code != "3702" && code != "4403") {
+            code = code.substring(0, 2) + "00";
+        }
+        for (var i = 0; i < citys.length; i++) {
+            if (code == citys[i].code) {
+                info[0] = citys[i].name;
+                info[1] = "http://187837.cicp.net:23183/WebQuery/do/" + code;
+                //info[1]="https://fpcy.gszj.gov.cn/WebQuery/do/"+code;
+                break;
+            }
+        }
+        return info;
+    }
+
+    //显示消息框
+    function showMsg(msg) {
+
+        $('#errMsg').html(msg);
+        $('#dialog2').show();
+        $('#dialog2').find('.weui_btn_dialog').on('click', function () {
+            $('#dialog2').hide();
+        });
+
+    }
+
+    $('#captcha_img').click(function () {
+
+        var info;
+        var fpdm = $('#fpdm').val().trim();
+
+        if (fpdm.length == 0) {
+
+            showMsg("发票代码为空，请重新扫描或输入。");
+
+        } else {
+            info = whichCity(fpdm);
+
+            swjgmc = info[0];
+            ip = info[1];
+
+            refreshCaptcha();
+        }
+
+    });
+
+    $("#checkfp").click(function () {
+
+        var fplx = $("#fplx").val().trim();
+        var fpdm = $("#fpdm").val().trim();
+        var fphm = $("#fphm").val().trim();
+        var kprq = $("#kprq").val().trim();
+        var kjje = $("#kjje").val().trim();
+        var jym = $("#jym").val().trim();
+        var yzm = $("#captcha").val().trim();
+        var setText = "";
+
+        var param = null;
+        var url = "";
+
+        var info = whichCity(fpdm);
+        swjgmc = info[0];
+        ip = info[1];
+
+        var username = getCookie('username');
+        var loginSj = getCookie('dqsj');
+        var token = getCookie('Qw2#RSDEFRGTGTonj@QSAr3Cd5A6Rg');
+
+        if (fplx == "01" || fplx == "02" || fplx == "03") {
+            var index = kjje.indexOf(".");
+            if (index > 0) {
+                var arr = kjje.split(".");
+                if (arr[1] == "00" || arr[1] == "0") {
+                    kjje = arr[0];
+                }
+                else if (arr[1].charAt(1) == "0") {
+                    kjje = arr[0] + "." + arr[1].charAt(0);
+                }
+            }
+        } else {
+            kjje = jym;
+        }
+
+        param = {
+            'fpdm': fpdm,
+            'fphm': fphm,
+            'kprq': kprq.replace(new RegExp('-', 'gm'), ''),
+            'fpje': kjje,
+            'fplx': fplx,
+            'yzm': yzm,
+            'yzmSj': yzmSj,
+            'loginSj': loginSj,
+            'token': token,
+            'username': username,
+            'index': jmmy
+        };
+
+        delayMessage = "发票查验请求失败!";
+
+        url = ip + "/query";
+
+        $.ajax({
+            type: "post",
+            url: url,
+            dataType: "jsonp",
+            data: param,
+            jsonp: "callback",
+            success: function (jsonData) {
+                delayFlag = "1";
+                var cyjgdm = jsonData.key1;
+
+                if (cyjgdm == "001") {
+                    setText = "一致";
+                    var fpxx = fpdm + "≡" + fphm + "≡" + swjgmc + "≡" + jsonData.key2 + "≡" + yzmSj;
+
+                    var hwxx = jsonData.key3;
+
+                    var result = {"fplx": fplx, "fpxx": fpxx, "hwxx": hwxx};
+
+                    sessionStorage.clear();
+                    sessionStorage['fplx'] = fplx;
+                    sessionStorage['fpxx'] = fpxx;
+                    sessionStorage['hwxx'] = hwxx;
+
+                    window.location.href = "testx.html";
+
+                } else if (cyjgdm == "002") {
+
+                    showMsg("超过该张票当天查验次数(第二天可查)!");
+
+                } else if (cyjgdm == "003") {
+
+                    showMsg("超过该IP查验次数，请稍后查验!");
+
+                } else if (cyjgdm == "004") {
+
+                    showMsg("超过服务器最大请求数，请稍后访问!");
+
+                } else if (cyjgdm == "005") {
+
+                    showMsg("请求不合法!");
+
+                } else if (cyjgdm == "006") {
+                    setText = "不一致";
+                    param = {
+                        'fplx': fplx,
+                        'swjg': swjgmc,
+                        'fpdm': fpdm,
+                        'fphm': fphm,
+                        'kprq': kprq,
+                        'kjje': kjje,
+                        'cysj': yzmSj,
+                        'setText': setText
+                    };
+
+                    sessionStorage.clear();
+                    sessionStorage['fplx'] = fplx;
+                    sessionStorage['swjg'] = swjgmc;
+                    sessionStorage['fpdm'] = fpdm;
+                    sessionStorage['fphm'] = fphm;
+                    sessionStorage['kprq'] = kprq;
+                    sessionStorage['kjje'] = kjje;
+                    sessionStorage['cysj'] = yzmSj;
+                    sessionStorage['setText'] = setText;
+
+                    window.location.href = "testx.html";
+
+                } else if (cyjgdm == "007") {
+
+                    showMsg("验证码失效!");
+
+                } else if (cyjgdm == "008") {
+
+                    showMsg("验证码错误!");
+
+                } else if (cyjgdm == "009") {
+                    setText = "查无此票";
+                    param = {
+                        'fplx': fplx,
+                        'swjg': swjgmc,
+                        'fpdm': fpdm,
+                        'fphm': fphm,
+                        'kprq': kprq,
+                        'kjje': kjje,
+                        'cysj': yzmSj,
+                        'setText': setText
+                    };
+
+                    sessionStorage.clear();
+                    sessionStorage['fplx'] = fplx;
+                    sessionStorage['swjg'] = swjgmc;
+                    sessionStorage['fpdm'] = fpdm;
+                    sessionStorage['fphm'] = fphm;
+                    sessionStorage['kprq'] = kprq;
+                    sessionStorage['kjje'] = kjje;
+                    sessionStorage['cysj'] = yzmSj;
+                    sessionStorage['setText'] = setText;
+
+                    window.location.href = "testx.html";
+
+                } else if (cyjgdm == "011") {
+
+                    showMsg("认证失败，请重新登录!");
+
+                } else {
+
+                    showMsg("查验系统发生异常!");
+
+                }
+
+            }
+        });
+
+
+    });
+
+    function refreshCaptcha() {
+
+        var fpdm = $('#fpdm').val().trim();
+
+        var info = whichCity(fpdm);
+        swjgmc = info[0];
+        ip = info[1];
+
+
+        var url = ip + "/yzmQuery";
+        delayMessage = "验证码请求失败!";
+        $.ajax({
+            type: "post",
+            url: url,
+            dataType: "jsonp",
+            jsonp: "callback",
+            success: function (jsonData) {
+                delayFlag = "1";
+                var key1 = jsonData.key1;
+                var key2 = jsonData.key2;
+                var key3 = jsonData.key3;
+                if (key1 == "003") {
+
+                    showMsg("验证码请求太频繁!");
+
+                } else if (key1 == "005") {
+
+                    showMsg("非法请求!");
+
+                } else if (key1 == "01") {
+
+                    showMsg("获取验证码异常!");
+
+                } else if (key1 !== "") {
+                    $("#captcha_img").attr("src", "data:image/png;base64," + key1);
+
+                    yzmSj = key2;
+                    jmmy = key3;
+                }
+            }
+        });
+    }
+
+    //检测是否为日期格式
+    function IsDate(datestr) {
+        var reg = /^(\d{4})-(\d{2})-(\d{2})$/;
+        var str = datestr;
+        var arr = reg.exec(str);
+        if (str == "") return false;
+        if (!reg.test(str) &&
+                RegExp.$2 <= 12 &&
+                RegExp.$3 <= 31) {
+            return true;
+        }
+        return false;
+    }
+
+    //检测输入的信息
+    function checkInputs() {
+
+        if ($('#fpdm').val().length != 10 && $('#fpdm').val().length != 12) { //检查 发票代码
+            $('#errMsg').html("无效的发票代码，请重新扫描或输入。");
+            $('#dialog2').show();
+            $('#dialog2').find('.weui_btn_dialog').on('click', function () {
+                $('#dialog2').hide();
+            });
+            return
+        } else if ($('#fphm').val().length != 8) { //检查 发票号码
+            $('#errMsg').html("无效的发票号码，请重新扫描或输入。");
+            $('#dialog2').show();
+            $('#dialog2').find('.weui_btn_dialog').on('click', function () {
+                $('#dialog2').hide();
+            });
+            return
+        } else if (IsDate($('#kprq').val())) { //检查 开票日期
+            $('#errMsg').html("无效的开票日期，请重新扫描或输入。");
+            $('#dialog2').show();
+            $('#dialog2').find('.weui_btn_dialog').on('click', function () {
+                $('#dialog2').hide();
+            });
+            return
+        } else if (isNaN($('#kjje').val())) { //检查 开票金额
+            $('#errMsg').html("无效的发票金额，请重新扫描或输入。");
+            $('#dialog2').show();
+            $('#dialog2').find('.weui_btn_dialog').on('click', function () {
+                $('#dialog2').hide();
+            });
+            return
+        }
+        /*else if ($('#yzm').val().length < 6 && $('#yzm').val().length > 0) { //检查 验证码
+         $('#errMsg').html("无效的验证码，请重新扫描或输入。");
+         $('#dialog2').show();
+         $('#dialog2').find('.weui_btn_dialog').on('click', function () {
+         $('#dialog2').hide();
+         });
+         return
+         }
+         else{
+         $('#errMsg').html("输入检验通过!");
+         $('#dialog2').show();
+         $('#dialog2').find('.weui_btn_dialog').on('click', function () {
+         $('#dialog2').hide();
+         });
+         return
+         }*/
+    }
+
+    function fillStuff(res){
+        var fields = res.resultStr.split(',');
+
+        if (fields.length != 7) { //检查 是否有效的二维码
+            showMsg("非法或无法识别的二维码，请重新扫描。");
+        } else if (fields[1] != '01' && fields[1] != '02' && fields[1] != '03' && fields[1] != '04' && fields[1] != '10') { //检查 发票类型
+            showMsg("无效的发票类型，请重新扫描。");
+        } else if (fields[2].length != 10 && fields[2].length != 12) { //检查 发票代码
+            showMsg("无效的发票代码，请重新扫描。");
+        } else if (fields[3].length != 8) { //检查 发票号码
+            showMsg("无效的发票号码，请重新扫描。");
+        } else if (isNaN(fields[4])) { //检查 开票金额
+            showMsg("无效的开票金额，请重新扫描。");
+        } else if (IsDate(fields[5].substr(0, 4) + "-" + fields[5].substr(4, 2) + "-" + fields[5].substr(6, 2))) { //检查 开票日期
+            showMsg("无效的开票日期，请重新扫描。");
+        } else {
+            //检查无误
+            //1. 填写
+            $('#fplx').val(fields[1]);
+            $('#fpdm').val(fields[2]);
+            $('#fphm').val(fields[3]);
+            $('#kjje').val(fields[4]);
+            $('#kprq').val(fields[5].substr(0, 4) + "-" + fields[5].substr(4, 2) + "-" + fields[5].substr(6, 2));
+
+            if (fields[1] == '04') {
+                //$('#jym_cell').css('display','block');
+                //$('#kjje_cell').css('display','none');
+                $('#jym_cell').show();
+                $('#kjje_cell').hide();
+                $('#jym').val(fields[6]);
+            } else{
+                //$('#jym_cell').css('display','none');
+                //$('#kjje_cell').css('display','block');
+                $('#jym_cell').hide();
+                $('#kjje_cell').show();
+            }
+
+            //2. 获取验证码
+            refreshCaptcha();
+        }
+    }
+
+</script>
+
+<!--微信jssdk 相关-->
+<script>
+
+    $(function () {
+
+        var url = "http://712636.cicp.net/html/index.html";
+        // var url = "http://659770.cicp.net/html/index.html";
+
+        // 通过js 来初始化,否则需要通过(程序)硬编码来初始化
+        $.ajax({
+            url: '/c?url=' + url,
+            async: true,
+            dataType: 'json',
+            type: 'GET',
+            contentType: "application/json; charset=utf8",
+            success: function(data) {
+
+                wx.config({
+                    debug: false,
+                    appId: data.appid,
+                    timestamp: data.timestamp,
+                    nonceStr: data.nonceStr,
+                    signature: data.signature,
+                    jsApiList: [
+                        'scanQRCode',
+                        'hideOptionMenu'
+                    ]
+                });
+
+//                $('#ts').html(data.timestamp);
+
+            },
+            error: function() {
+                showMsg("获取wx.config 失败!");
+            }
+        });
+    });
+
+    /*
+    wx.config({
+        debug: false,
+        appId: 'wxdfa36c0c9e2a6cd5',
+        timestamp: '1448940485',
+        nonceStr: 'kcozwaYD9QXN17Tt',
+        signature: '92b95088a251471a3c287c2c238778804735eda4',
+        jsApiList: [
+            'scanQRCode',
+            'hideOptionMenu'
+        ]
+    });
+    */
+
+    wx.ready(function () {
+
+        // 隐藏右上角菜单
+        wx.hideOptionMenu();
+
+        document.querySelector('#scanQRCode').onclick = function () {
+            wx.scanQRCode({
+                needResult: 1,
+                desc: '扫描和识别发票的二维码',
+                scanType: ["qrCode"],
+                success: function (res) {
+
+                    fillStuff(res);
+
+                }
+            });
+        };
+
+    });
+
+    wx.error(function (res) {
+
+        alert(res.errMsg);
+
+    });
+
+</script>
+

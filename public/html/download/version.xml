@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<info>
+	<version>0.1.18</version>
+	<url>http://233551.cicp.net:28747/download/fpcy.apk</url>
+	<description>更新内容：~~1、修改查验服务器地址！</description>
+	<mark>0</mark>
+	<url_server>http://233551.cicp.net:28747/download/version.xml</url_server>
+  <dzfp_version>0.0.01</dzfp_version>
+	<dzfp_filepath>http://233551.cicp.net:28747/download/dzfp.txt</dzfp_filepath>
+</info>

@@ -1,0 +1,598 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>注册</title>
+<meta name="keywords" content="">
+<meta property="wb:webmaster" content="" />
+<link href="css/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+
+<style type="text/css" rel="stylesheet">
+/* reset--------------------------------------------------------------------*/body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr{ margin:0; padding:0;}fieldset,img{ border:0;}q:before,q:after{ content:'';}abbr[title]{ border-bottom:1px dotted; cursor:help;}address,cite,dfn,em,var{ font-style:normal;}legend{ color:#000;}code,kbd,samp{ font-family:"Courier New",monospace;}hr{ border:none; height:1px;}h1,h2,h3,h4,h5,h6{ font-size:100%;}ol,ul {list-style:none outside none;}li {list-style: none;}
+input, select, textarea, button { font-size: 100%; line-height: inherit;}button { cursor: pointer;}table, thead, tbody, tfoot, tr, th, td, caption, col, colgroup { text-align: inherit; line-height: inherit;	font-size: 100%;}table {border-collapse: collapse; border-spacing: 0;}thead {display: table-header-group;}tbody {display: table-row-group;}tfoot {display: table-footer-group;}tr {display: table-row;}th,td {display: table-cell;}caption {display: table-caption;}col {display: table-column;}
+colgroup {display: table-column-group;}/* clear--------------------------------------------------------------------*/.clearfix:after,.main:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}.clearfix {display: inline-block;}/*IE7*/* html .clearfix { zoom: 1; display: inline-block;}/* Hides from IE-mac \*/.clearfix { display:block;}/* End hide from IE-mac */.zoom { zoom: 1; overow: hidden;}.clear { clear:both;}/* layout--------------------------------------------------------------------*/body { background-color:#f7f7f7; font:normal 12px "MicroSoft YaHei","SimHei"; color:#525252; text-align:center;}#header, #nav .nav_main, #banner, #content, .footMain_main, #footer {margin:0 auto;width:1000px;text-align:left;position:relative;}p, b { line-height:20px; clear:both; overflow:hidden;}h1, h2{ font:normal 18px "MicroSoft YaHei","SimHei"; margin-top:5px; clear:both; overflow:hidden;}h2{ font-size:16px; color:#69C; width:746px; margin:20px auto 5px; font-weight:bold;}a {color:#999999; text-decoration:none;}a:hover{color:#3667d3;}a:active { star:expression(this.onFocus=this.blur());}:focus { outline:0;}.title { font:bold 15px/38px "MicroSoft YaHei","SimHei"; height:40px; background-color:#3667d3; width:100%; color:#fff; overflow:hidden; clear:both;}.title span { margin-left:10px;}#footer .title a { float:right; margin-right:10px; color:#32618f; font-size:12px;}#content .cms_r { float:right; width:730px; min-height:500px; margin-top:10px;}#content .cms_r .title { background:none; color:#666;}#content .funBtn a { margin-bottom:10px; display:block;}#content .contentLeft { width:250px; float:left;}#content .contentRight { width:730px; float:right; margin-top:20px; min-height:500px;}#content .cms_r .list_other { overflow:hidden;}/* header--------------------------------------------------------------------*/#headerbox{ width:100%; background:#1a87eb;}#header { height:125px; overflow:hidden;}#header .logo { float:left; margin-top:18px;height:90px; line-height:60px; font-size:28px;padding-left:100px;display:block;background:url(images/logo.png) no-repeat left center}#header .tel { float:right; margin-top:50px;color:#fff;padding-right:5px;}/* nav--------------------------------------------------------------------*/#navbox{width:100%; background:#1269c0; border-top:1px #005ab3 solid; box-shadow:0 2px 5px rgba(0,0,0,0.3);}#nav { width:1000px;height:39px; position:relative; z-index:9997; margin:0 auto;}#nav .nav_main li { position:relative; float:left;}#nav .nav_main li a { display:block; font-size:14px; line-height:39px; color:#fff; float:left; text-align:center; width:150px; height:39px;}#nav .nav_main li a.hasSub { background:url(images/jiantou_xia.png) no-repeat 116px 16px; text-align:left; padding-left:45px; width:105px;}#nav .nav_main li a:hover, #nav .nav_main li a.air { background:#fff; color:#3667d3;}#nav .nav_main li a.hasSub:hover, #nav .nav_main li a.hasSub.air { background:url(images/jiantou_shang.png) no-repeat #fff 116px 50%; color:#3667d3;}#nav .nav_main li a.hasSub15:hover, #nav .nav_main li a.hasSub15.air { background:url(images/jiantou_shang.png) no-repeat #fff 90px 50%; color:#3667d3;}.nav_ge{ background:url(images/nav_ge.gif) no-repeat left top; width:2px; height:35px;}/* sub 二级菜单--------------------------------------------------------------------*/#nav .nav_main li ul { position:absolute; z-index:9997; border:1px #1269c0 solid; border-top:none; top:39px; left:-1px; background:#fff; display:none; width:180px; box-shadow:0 2px 8px rgba(0,0,0,0.3);}#nav .nav_main li ul li { display:inline-block;}#nav .nav_main li ul li a { font-size:14px; background:#fff; width:115px; padding:0 20px 0 45px; line-height:34px; height:34px; text-align:left; display:block; color:#333; overflow:hidden;}#nav .nav_main li ul li a:hover { background:#004db4; color:#fff;}#nav .nav_main .search { background:#fff; height:25px; line-height:25px; width:262px; float:right; margin-top:7px; -moz-border-radius:20px; -webkit-border-radius:20px; border-radius:20px; margin-right:10px;}#nav .nav_main .search .search_input { color:#999; height:19px; line-height:19px; overflow:hidden; width:200px; float:left; margin:5px 0 0 10px; background:none; border:none;}#nav .nav_main .search .search_btn { cursor:pointer; float:right; height:21px; width:24px; background:none; border:none; background:url(images/search_btn.gif) no-repeat; margin:5px 4px 0;}#banner { height:220px; overflow:hidden; clear:both; margin-top:20px;}/* footer
+--------------------------------------------------------------------*/#footerbox{ width:100%; background:#0069c2; padding-top:20px;padding-bottom:20px; margin-top:20px; }#footer { width:100%; margin-top:10px; height:70px; text-align:center;}#footer p { color:#98b9e3; text-align:center;}
+/*******注册*************/
+#registered{width:978px;height:auto;margin:0 auto;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,0.2); border:1px solid #ccc; margin-top:20px;padding:20px; font-size:14px; text-align:left;}
+.reg_h2{background:url(images/ul_link.png) no-repeat left center;height:50px;line-height:50px;width:300px;text-align:center;font-size:20px; }
+.w100{width:80px;display:inline-block;float:left;height:21px;margin-left:10px;}
+.reg_input{width:200px;border:1px solid #ccc;height:21px;padding:3px;float:left;}
+.explain{background:#f8f8f8;border:1px solid #ccc;padding:4px;float:left;margin-left:10px;}
+.explain_error{background:#ffcdcb;border:1px solid #fb8b8b;padding:4px;float:left;margin-left:10px; color:#ee0000;}
+.radio_m{margin-right:20px;margin-top:5px;float:left;}
+.button_1{background:#8ec2f4;border:1px solid #87add2;margin-left:10px;color:#fff;height:28px;cursor:pointer;padding:0 10px; float:left;}
+.select_1{background:url(../images/inputbg.gif) repeat-x;border-color: #a7b5bc #ced9df #ced9df #a7b5bc;border-style: solid;border-width: 1px;cursor: pointer;float: left;height:28px;margin-right:10px;width: 130px;}
+.sub_re{width:120px;color:#fff;background:#40a8ff;margin-left:140px;border:none;text-align:center;font-size:18px;padding:10px;font-weight:bold;cursor:pointer}
+.sub_re1{color:#fff;background:#40a8ff;margin-left:140px;border:none;text-align:center;width:120px;font-size:18px;padding:5px 10px;font-weight:bold;cursor:pointer}
+.tab_mar td{padding:3px 5px;}
+.float1{ float:left;}
+.margin_l_10{ margin-left:10px;}
+/*提示字号*/
+.tishi_info_red {color: #f00;font-size: 12px;}
+.tishi_info_gray{color:#999;}
+.tishi_info_green{color:#59a84c;}
+a.xieyi{color:#3667d3;}
+a.xieyi:hover{color:#3667d3; text-decoration: underline;}
+.tip_right{ background:url(images/ico_right2.png) no-repeat left center;padding-left:30px;line-height:30px;margin-left: 10px;}
+</style>
+
+<script charset="utf-8" type="text/javascript"  src="js/jquery-1.7.min.js"></script>
+<script charset="utf-8"  type="text/javascript" src="js/jquery.alerts.js"></script>
+<script charset="utf-8" type="text/javascript"  src="js/showModalDialog.js"></script>
+<script type="text/javascript" src="js/cookies.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+</head>
+
+<body onload="init();">
+<!--header begin-->
+<div id="headerbox"><div id="header">
+  <div class="logo" ><a href="index.html" style=" color:#fff;">国家税务总局全国增值税发票统一查验平台</a></div>
+  <span style="font-size:13px; display:block; position:absolute; left:102px; top:80px; color:#0FF;font-style:italic;padding-right:10px;" id = "Hotnews"><i>
+  
+  </i></span>
+  <div class="tel">
+    
+    <span style="color:#fff; font-size:14px;"><i>咨询热线：<span style="color:#0FF;">12366</span></i></span><br />
+    <div style="padding-top:10px; text-align:right;display:none" id="ds1"><i><a href="login.html" style="color:#fff;">登录</a>　|　<a href="zhuce.html" style="color:#fff;">注册</a></i></div> 
+    <div style="padding-top:10px; text-align:right;" id="ds2"><i>欢迎您，<a href="xgxx.html" style="color:#fff; text-decoration:underline;" id="user">beanslee@sohu.com</a>　<a href="#" onclick="exit(0)" style="color:#0FF;">退出</a></i></div>
+  </div>
+</div>
+<div id="navbox">
+    <div id="nav">
+      <ul class="nav_main">
+        <li class="nav_ge"></li>
+        <li> <a href="index.html" class="" style="width:100px;">首页</a> </li>
+        <li class="nav_ge"></li>
+        <li> <a href="#" class="hasSub ">最新动态</a>
+          <ul>
+            <li><a href='xwbd/xwbd.html' >新闻报道</a></li>
+            <li><a href='tzgg/tzgg.html' >通知公告</a></li>
+            <li><a href='zcfg/zcfg.html' >政策法规</a></li>
+          </ul>
+        </li>
+        <li class="nav_ge"></li>
+        <li> <a href="#" class="hasSub ">发票常识</a>
+          <ul>
+             <li><a href='fpcs/fpzl.html' >发票种类</a></li>
+            <li><a href='fpcs/fpbs.html' >发票版式</a></li>
+            <li><a href='fpcs/fpzwsbff.html' >防伪措施</a></li>
+            <li><a href='fpcs/dzfp1.html' >电子发票</a></li>
+          </ul>
+        </li>
+        <li class="nav_ge"></li>
+        <li> <a href="#" class="hasSub ">常见问题</a>
+          <ul>
+            <li><a href='cjwt/fpcy.html' >发票查验</a></li>
+            <li><a href='cjwt/fpjgsm.html' >查验结果</a></li>
+            <li><a href='cjwt/wfjb.html' >违法举报</a></li>
+          </ul>
+        </li>
+        <li class="nav_ge"></li>
+        <li> <a href="xzzx.html" class=" ">下载中心</a> </li>
+        <li class="nav_ge"></li>
+        <li> <a href="#" class=" " onclick="getGrzx(0);" id="grzx">个人中心</a> </li>
+        <li class="nav_ge"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--header end--> 
+<!--content begin-->
+<div id="registered">
+ <table width="100%" border="0" cellpadding="0" cellspacing="0">
+ <form name="" method="">
+  <tr>
+    <th height="100" colspan="2" align="left" valign="top"><h2 class="reg_h2">用户注册</h2></th>
+  </tr>
+  <tr>
+    <td height="50" class="pad_1">
+      <span class="tishi_info_red float1 mar_8">*</span>
+      <label class="w100 mar_8">手机号码</label>
+      <input type="text" value="" name="" id="mobileIpt"  class="reg_input" />
+      <span class="explain" id="mobileIptjy">请填写手机号码</span>
+      </td>
+       <td width="30%" rowspan="11" align="center" valign="top">
+      <img src="images/process.jpg" />
+    </td>
+  </tr>
+  <tr>
+    <td height="50" class="pad_1">
+      <span class="tishi_info_red float1 mar_8">*</span>
+      <label class="w100 mar_8">用户密码</label>
+      <input type="password" value="" id="password" name="" class="reg_input" />
+      <span class="explain" id="passwordjy">6-16位字符,建议由字母/数字/符号两种以上组合</span>
+    </td>
+  </tr>
+  <tr>
+    <td height="50" class="pad_1">
+      <span class="tishi_info_red float1 mar_8">*</span>
+      <label class="w100 mar_8">确认密码</label>
+      <input type="password" value=""  id="confirpassword" name="" class="reg_input" />
+      <span class="explain" id="confirpasswordjy">请再次输入密码</span>
+      </td>
+  </tr>
+  
+  <tr>
+    <td height="50" class="pad_1">
+      <span class="tishi_info_red float1 mar_8">&nbsp;</span>
+      <label class="w100 mar_8">电子邮箱</label>
+      <input type="email" value="" id="email" name="" class="reg_input" />
+      <span id="emailjy"></span>
+      </td>
+  </tr>
+  <tr>
+    <td height="50" class="pad_1">
+      <span class="tishi_info_red float1 mar_8">&nbsp;</span>
+      <label class="w100 mar_8">用户姓名</label>
+      <input type="text" value=""  id="xm" name="" class="reg_input" />
+      </td>
+  </tr>
+  <tr>
+    <td height="50" class="pad_1">
+      <span class="tishi_info_red float1 mar_8">&nbsp;</span>
+      <label class="w100 mar_8">身份证号</label>
+      <input type="text" value="" id="codeNo"  name="" class="reg_input" />
+      <span id="codeNojy"></span>
+      </td>
+  </tr>
+  <tr>
+    <td height="50" class="pad_1">
+      <span class="tishi_info_red float1 mar_8">*</span>
+      <label class="w100 mar_8">短信验证码</label>
+      <input type="text" value="" name="" id="message" class="reg_input" style="width:110px;"/>
+      <input type="button" value="发送验证码" class="button_1" onclick="getMessage()" id="dxyzm"/></td>
+  </tr>
+  <tr>
+    <td height="50">
+      <span class="tishi_info_red float1 mar_8">&nbsp;</span>
+      <label class="w100 mar_8" style="width:50px;"></label>
+      <input name="" type="checkbox" value="" />
+      <span class="color_7">我已阅读并同意《<a href="#" class="xieyi" onclick="getXieyi()">全国增值税发票统一查验平台用户注册协议</a>》</span>
+      </td>
+  </tr>
+  <tr>
+    <td>
+     <input type="button" value="立即注册"  class="sub_re" id="unregister"  style="background:#999999" />
+     <input type="button" value="立即注册" class="sub_re"  id="register" onclick="save()" style="display:none" />
+    </td>
+  </tr>
+  </form>
+ </table> 
+</div>
+<!--content end--> 
+<!--footer begin-->
+<div id="footerbox">
+  <div id="footer">
+    <p>版权所有：国家税务总局 京ICP备05036792号</p>
+    <p>地址：北京市海淀区羊坊店西路5号 邮编：100038</p>
+    <p>技术支持服务：电子税务管理中心   长城计算机软件与系统有限公司</p>
+  </div>
+</div>
+<!--footer end-->
+</body>
+</html>
+  
+<script type="text/javascript">
+
+  var dxkey="";
+  var wait=60;
+  var psFlag=false;
+  var delayFlag="";
+  var delayTime = 5;
+  var delayMessage=""; 
+
+
+function init(){
+   $('#mobileIpt').val("");
+   $('#email').val("");
+   $('#xm').val("");
+   $('#codeNo').val("");
+   $('#message').val("");
+}
+
+
+  $('#password').blur(function(){
+    var password = $('#password').val(); 
+    var confirpassword = $('#confirpassword').val();  
+    $('#passwordjy').removeClass();
+    psFlag=passwordIsRight(password);
+    if(psFlag){
+      if(confirpassword!=""){
+        $('#confirpasswordjy').removeClass();
+        if(confirpassword!=password){         
+            $('#confirpasswordjy').addClass('explain_error');
+            $('#confirpasswordjy').html("两次密码输入不一致");
+        }else{
+          $('#confirpasswordjy').addClass('tip_right');
+          $('#confirpasswordjy').html("&nbsp");
+        }
+      }
+    }else{
+      $('#confirpasswordjy').removeClass();
+      $('#confirpasswordjy').addClass('explain');
+      $('#confirpasswordjy').html("请再次输入密码");
+    } 
+
+    CyButtonDiasble();
+  });
+  
+  function passwordIsRight(password){
+    if(password.length>0){
+      if(password.length<6||password.length>16){
+        $('#passwordjy').addClass('explain_error');
+        $('#passwordjy').html("6-16位字符,建议由字母/数字/符号两种以上组合");
+        return false;
+      }else if(checkPass(password)<2){
+        $('#passwordjy').addClass('explain_error');
+        $('#passwordjy').html("密码太简单,请尝试“字母+数字”的组合");
+        return false;
+      }
+      else{        
+        $('#passwordjy').addClass('tip_right');
+        $('#passwordjy').html("&nbsp");  
+        return true;      
+      }
+    } else{
+        $('#passwordjy').addClass('explain');
+        $('#passwordjy').html("6-16位字符,建议由字母/数字/符号两种以上组合");
+        return false;
+    } 
+    return true;
+  }
+
+  $('#confirpassword').blur(function(){
+    var password = $('#password').val();  
+    if(psFlag){
+      var confirpassword = $('#confirpassword').val(); 
+
+      $('#confirpasswordjy').removeClass();
+      if(confirpassword!=""){
+        if(confirpassword!=password){
+          $('#confirpasswordjy').addClass('explain_error');
+          $('#confirpasswordjy').html("两次密码输入不一致");
+        }else{
+          $('#confirpasswordjy').addClass('tip_right');
+          $('#confirpasswordjy').html("&nbsp");
+        }      
+      }else{
+        $('#confirpasswordjy').addClass('explain');
+        $('#confirpasswordjy').html("请再次输入密码");
+      }
+    }
+    CyButtonDiasble();
+  });
+
+  $('#mobileIpt').blur(function(){
+    var phoneNumber = $('#mobileIpt').val();
+    
+    $('#mobileIptjy').removeClass();
+    if(phoneNumber!=""){
+      if(!valiMobile(phoneNumber)){
+        $('#mobileIptjy').addClass('explain_error');
+        $('#mobileIptjy').html("请输入11位有效的手机号码");
+      }else{
+        $('#mobileIptjy').addClass('tip_right');
+        $('#mobileIptjy').html("&nbsp");
+      }
+    }else{
+      $('#mobileIptjy').addClass('explain');
+      $('#mobileIptjy').html("请填写手机号码");
+    }
+
+    CyButtonDiasble();
+  });
+
+  function valiMobile(mobile){
+    var strRegex = /^(13|14|15|17|18)\d{9}$/;
+    return strRegex.test(mobile);
+  }
+
+  $('#email').blur(function(){
+    var mail = $('#email').val(); 
+    $('#emailjy').removeClass();  
+    if(mail!=""){
+      if(!valiEmail(mail)){
+        $('#emailjy').addClass('explain_error');
+        $('#emailjy').html("请填写真实邮箱号码，以便向您发送邮件");
+      }else{
+        $('#emailjy').addClass('tip_right');
+        $('#emailjy').html("&nbsp");
+      }
+    }else{      
+      $('#emailjy').html("&nbsp");
+    }
+  });
+
+  function valiEmail(mail){
+    var strRegex = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+    return strRegex.test(mail);
+  }
+
+  $('#codeNo').blur(function(){
+    var code = $('#codeNo').val();
+    $('#codeNojy').removeClass();
+    if(code!=""){
+      if(!valiSfzh(code)){
+        $('#codeNojy').addClass('explain_error');
+        $('#codeNojy').html("请填写真实身份证号码");
+      }else{
+        $('#codeNojy').addClass('tip_right');
+        $('#codeNojy').html("&nbsp");
+      }
+    }else{
+
+      $('#codeNojy').html("&nbsp");
+    }
+  });
+
+  function valiSfzh(code){
+    var strRegex =  /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+    return strRegex.test(code)
+  }
+
+  $("input[type='checkbox']").change(function (){
+       CyButtonDiasble();
+  });
+
+  $("#message").keyup(function(){
+      CyButtonDiasble();
+  });
+
+  function save(){
+    var userName = $('#mobileIpt').val(); 
+
+    var password = $('#password').val(); 
+    var phoneNumber = $('#mobileIpt').val();
+   
+    var message=$("#message").val();
+
+    var mail = $('#email').val();
+    var code = $('#codeNo').val(); 
+    var xm = $('#xm').val(); 
+    if(validateAllInfo(password,phoneNumber,message,mail,code)){
+        var param={'username':userName,'phonenumb':phoneNumber,'maildress':mail,'password':password,'sfzh':code,'xm':xm,'dxverify':message,'dxkey':dxkey};
+
+        var url=getzjDz()+"/regin";
+        delayMessage="注册失败!"
+        showTime();
+        $.ajax({
+          type: "post", 
+          url: url,
+          data:param,
+          dataType: "jsonp",          
+          jsonp: "callback",
+          success: function(jsonData) { 
+            delayFlag="1"; 
+            var key=jsonData.key;
+
+            if(key=="01"){
+              window.location="zhuce-2.html";
+            }else if(key=="02"){
+              jAlert("手机号已被注册!","提示");  
+              clearPassword(); 
+              $('#message').val("");           
+              wait=0;
+            }else if(key=="03"){
+              jAlert("获取验证码的手机号与注册手机号不一致!","提示");
+              clearPassword();
+              $('#message').val("");
+              wait=0;
+            }else if(key=="04"){
+              jAlert("短信验证码失效!","提示");
+              clearPassword();
+              wait=0;
+            }else if(key=="05"){
+              jAlert("短信验证码错误!","提示");
+             clearPassword();
+            }else if(key=="07"){
+              jAlert("手机号已被注册!","提示");
+              clearPassword();
+              $('#message').val("");
+              wait=0;
+            }
+               
+          }
+      });
+    }
+  }
+
+  function clearPassword(){
+    $('#password').val("");
+    $('#passwordjy').removeClass(); 
+    $('#passwordjy').addClass('explain');
+    $('#passwordjy').html("6-16位字符,建议由字母/数字/符号两种以上组合");
+    $('#confirpassword').val("");
+    $('#confirpasswordjy').removeClass(); 
+    $('#confirpasswordjy').addClass('explain');
+    $('#confirpasswordjy').html("请再次输入密码");
+  }
+
+  function validateAllInfo(password,phoneNumber,message,mail,code){
+
+    if(password==""){
+      jAlert("密码不能为空!","错误");
+      return false;
+    }
+
+    if(password.length<6||password.length>16){
+      return false;
+    }
+    if(checkPass(password)<2){
+      return false;
+    }
+    if($('#confirpassword').val()==""){
+      jAlert("确认密码不能为空!","错误");
+      return false;
+    }
+    if($('#confirpassword').val()!=password){
+      return false;
+    }
+    if(phoneNumber==""){
+      jAlert("手机号不能为空!","错误");
+      return false;
+    }
+    if(!valiMobile(phoneNumber)){
+      return false;
+    }
+    if(message==""){
+      jAlert("手机验证码不能为空!","错误");
+      return false;
+    }
+    if(dxkey==""){
+      jAlert("手机验证码不正确!","错误");
+      return false;
+    }
+    if(mail!=""&&!valiEmail(mail)){
+      return false;
+    }
+    if(code!=""&&!valiSfzh(code)){
+      return false;
+    }
+    return true;
+  }
+
+
+  function getMessage(){
+    var phoneNumber = $('#mobileIpt').val();
+    var password = $('#password').val(); 
+
+    if(phoneNumber==""){
+      jAlert("手机号码不能为空!","错误");
+    }else if(!valiMobile(phoneNumber)){
+      jAlert("请输入正确的手机号码!","错误");
+    }else if(password==""){
+       jAlert("密码不能为空!","错误");
+    }else if($('#confirpassword').val()!=password){
+      jAlert("两次密码输入不一致！!","错误");
+    }
+    else{
+      var params={'phonenumb':phoneNumber};
+      var url=getzjDz()+"/reginSendMessage";
+
+        $.ajax({
+          type: "post", 
+          url: url,
+          data:params,
+          dataType: "jsonp",
+          jsonp: "callback",
+          success: function(jsonData) {
+  
+            var value=jsonData.key1;
+            var dxyzmSj=jsonData.key2;
+            dxkey=jsonData.key3;
+              
+            if(value=="01"){
+              waitTime();
+            }else if(value=="02"){
+              jAlert("该手机号已被注册！","提示");
+            }else{
+              jAlert("失败！","提示");
+            }
+          }
+      });
+    }
+  }
+
+  function waitTime() {  
+    if (wait == 0) {  
+        $('#dxyzm').attr("disabled",false);            
+        $('#dxyzm').val("发送验证码"); 
+        $('#mobileIpt').attr("disabled",false);  
+        wait = 60;  
+    } else {
+        $('#dxyzm').attr("disabled",true);  
+        $('#mobileIpt').attr("disabled",true);          
+        $('#dxyzm').val("重新发送(" + wait + "s)"); 
+        wait--;  
+        setTimeout(function() {  
+            waitTime()  
+        },  
+        1000)  
+    }  
+  } 
+
+function CyButtonDiasble(){
+    var password = $('#password').val(); 
+    var phoneNumber = $('#mobileIpt').val();   
+    var message=$("#message").val();
+
+    if(validateInputInfo(password,phoneNumber,message)){
+      $('#unregister').hide();
+      $('#register').show();
+    }else{
+      $('#register').hide();
+      $('#unregister').show();
+    }
+}
+
+function validateInputInfo(password,phoneNumber,message){
+    if(!$("input[type='checkbox']").is(':checked') ){
+      return false;
+    }
+    if(password==""){
+      return false;
+    }
+    if(password.length<6||password.length>16){
+      return false;
+    }
+    if(checkPass(password)<2){
+      return false;
+    }
+    if($('#confirpassword').val()==""){
+      return false;
+    }
+    if($('#confirpassword').val()!=password){
+      return false;
+    }
+    if(phoneNumber==""){
+      return false;
+    }
+    if(!valiMobile(phoneNumber)){
+      return false;
+    }
+    if(message==""){
+      return false;
+    }
+    return true;
+  }
+  
+function showTime(){  
+    delayTime -= 1;  
+    if(delayTime==0){  
+      if(delayFlag==""){
+        jAlert(delayMessage,"提示");
+        delayTime=6;
+      }
+      delayFlag="";
+    }else{
+       setTimeout("showTime()",1000); 
+    }       
+}  
+
+function getXieyi(){
+   window.showModalDialog('xieyi.html','',"dialogWidth:1100px;dialogHeight:500px;center:yes;"); 
+}
+
+</script>

@@ -1,0 +1,547 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>国家税务总局全国增值税发票统一查验平台</title>
+    <meta name="keywords" content="">
+    <meta property="wb:webmaster" content="" />
+    <link href="css/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+    <style type="text/css" rel="stylesheet">
+        /* reset--------------------------------------------------------------------*/body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr{ margin:0; padding:0;}fieldset,img{ border:0;}q:before,q:after{ content:'';}abbr[title]{ border-bottom:1px dotted; cursor:help;}address,cite,dfn,em,var{ font-style:normal;}legend{ color:#000;}code,kbd,samp{ font-family:"Courier New",monospace;}hr{ border:none; height:1px;}h1,h2,h3,h4,h5,h6{ font-size:100%;}ol,ul {list-style:none outside none;}li {list-style: none;}
+        input, select, textarea, button { font-size: 100%; line-height: inherit;}button {cursor: pointer;}table, thead, tbody, tfoot, tr, th, td, caption, col, colgroup { text-align: inherit; line-height: inherit; font-size: 100%;}table {border-collapse: collapse; border-spacing: 0;}thead {display: table-header-group;}tbody {display: table-row-group;}tfoot {display: table-footer-group;}tr {display: table-row;}th,td {display: table-cell;}caption {display: table-caption;}col {display: table-column;}
+        colgroup {display: table-column-group;}/* clear--------------------------------------------------------------------*/.clearfix:after,.main:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}.clearfix {display: inline-block;}/*IE7*/* html .clearfix { zoom: 1; display: inline-block;}/* Hides from IE-mac \*/.clearfix { display:block;}/* End hide from IE-mac */.zoom { zoom: 1; overow: hidden;}.clear { clear:both;}/* layout--------------------------------------------------------------------*/body { background-color:#f7f7f7; font:normal 12px "MicroSoft YaHei","SimHei"; color:#525252; text-align:center;}#header, #nav .nav_main, #banner, #content, .footMain_main, #footer {margin:0 auto;width:1000px;text-align:left;position:relative;}p, b { line-height:20px; clear:both; overflow:hidden;}h1, h2{ font:normal 18px "MicroSoft YaHei","SimHei"; margin-top:5px; clear:both; overflow:hidden;}h2{ font-size:16px; color:#69C; width:746px; margin:20px auto 5px; font-weight:bold;}a {color:#999999; text-decoration:none;}a:hover{color:#3667d3;}a:active { star:expression(this.onFocus=this.blur());}:focus { outline:0;}.title { font:bold 15px/38px "MicroSoft YaHei","SimHei"; height:40px; background-color:#3667d3; width:100%; color:#fff; overflow:hidden; clear:both;}.title span { margin-left:10px;}#footer .title a { float:right; margin-right:10px; color:#32618f; font-size:12px;}#content .cms_r { float:right; width:730px; min-height:500px; margin-top:10px;}#content .cms_r .title { background:none; color:#666;}#content .funBtn a { margin-bottom:10px; display:block;}#content .contentLeft { width:250px; float:left;}#content .contentRight { width:730px; float:right; margin-top:20px; min-height:500px;}#content .cms_r .list_other { overflow:hidden;}/* header--------------------------------------------------------------------*/#headerbox{ width:100%; background:#1a87eb;}#header { height:125px; overflow:hidden;}#header .logo { float:left; margin-top:18px;height:90px; line-height:60px; font-size:28px;padding-left:100px;display:block;background:url(images/logo.png) no-repeat left center}#header .tel { float:right; margin-top:50px;color:#fff;padding-right:5px;}/* nav--------------------------------------------------------------------*/#navbox{width:100%; background:#1269c0; border-top:1px #005ab3 solid; box-shadow:0 2px 5px rgba(0,0,0,0.3);}#nav { width:1000px;height:39px; position:relative; z-index:9997; margin:0 auto;}#nav .nav_main li { position:relative; float:left;}#nav .nav_main li a { display:block; font-size:14px; line-height:39px; color:#fff; float:left; text-align:center; width:150px; height:39px;}#nav .nav_main li a.hasSub { background:url(images/jiantou_xia.png) no-repeat 116px 16px; text-align:left; padding-left:45px; width:105px;}#nav .nav_main li a:hover, #nav .nav_main li a.air { background:#fff; color:#3667d3;}#nav .nav_main li a.hasSub:hover, #nav .nav_main li a.hasSub.air { background:url(images/jiantou_shang.png) no-repeat #fff 116px 50%; color:#3667d3;}#nav .nav_main li a.hasSub15:hover, #nav .nav_main li a.hasSub15.air { background:url(images/jiantou_shang.png) no-repeat #fff 90px 50%; color:#3667d3;}.nav_ge{ background:url(images/nav_ge.gif) no-repeat left top; width:2px; height:35px;}/* sub 二级菜单--------------------------------------------------------------------*/#nav .nav_main li ul { position:absolute; z-index:9997; border:1px #1269c0 solid; border-top:none; top:39px; left:-1px; background:#fff; display:none; width:180px; box-shadow:0 2px 8px rgba(0,0,0,0.3);}#nav .nav_main li ul li { display:inline-block;}#nav .nav_main li ul li a { font-size:14px; background:#fff; width:115px; padding:0 20px 0 45px; line-height:34px; height:34px; text-align:left; display:block; color:#333; overflow:hidden;}#nav .nav_main li ul li a:hover { background:#004db4; color:#fff;}#nav .nav_main .search { background:#fff; height:25px; line-height:25px; width:262px; float:right; margin-top:7px; -moz-border-radius:20px; -webkit-border-radius:20px; border-radius:20px; margin-right:10px;}#nav .nav_main .search .search_input { color:#999; height:19px; line-height:19px; overflow:hidden; width:200px; float:left; margin:5px 0 0 10px; background:none; border:none;}#nav .nav_main .search .search_btn { cursor:pointer; float:right; height:21px; width:24px; background:none; border:none; background:url(images/search_btn.gif) no-repeat; margin:5px 4px 0;}#banner { height:220px; overflow:hidden; clear:both; margin-top:20px;}/* footer
+--------------------------------------------------------------------*/#footerbox{ width:100%; background:#0069c2; padding-top:20px;padding-bottom:20px;}#footer { width:100%; margin-top:10px; height:70px; text-align:center;}#footer p { color:#98b9e3; text-align:center;}/* 通用表格样式--------------------------------------------------------------------*/.comm_table{ text-align:center;}.comm_table,.comm_table td,.comm_table th{ border:1px solid #b8b7b7;padding:10px;}.lr_txt{width:100%; background:; border:0px; text-align:center;font-family:"MicroSoft YaHei";}.comm_btn_div{margin:20px auto; text-align:center;}.comm_table2{ margin:0 auto;}.comm_table2 td{padding:10px; text-align:left;}.comm_table2 td input[type=text]{padding:5px; width:230px;}.tip_common{ background:url(images/pencil.png) no-repeat left center; padding-left:30px; line-height:30px;}.tip_error{ background:url(images/cross.png) no-repeat left center;padding-left:30px;line-height:30px;}.tip_right{ background:url(images/ico_right2.jpg) no-repeat left center;padding-left:30px;line-height:30px;}.font_red{ color:#f00;}.chayan_div{background:#fff; padding:30px 0px;box-shadow:0 4px 5px rgba(0,0,0,0.3); border:1px solid #ccc;}.chayan_title{ background:#09F; height:40px; line-height:40px;}.comm_table button{ background:#fff; color:#000; padding:5px 20px; border:1px solid #888;font-family:"MicroSoft YaHei";}.td_left{ text-align:left;}.td_center{ text-align:center; background:#e0f2fe;}
+        button{box-shadow:0 1px 2px rgba(0,0,0,0.2); height:30px; line-height:30px; padding:0 20px;-moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;font:normal 12px "MicroSoft YaHei","SimSun"; margin:0 5px;}
+        .gray_button{border:1px solid #c5c5c5; background:#ddd;box-shadow:0 5px 5px rgba(0,0,0,0.2);color:#999;}
+        .white_button{border:1px solid #888; background:#fff;box-shadow:0 5px 5px rgba(0,0,0,0.2);}
+        .blue_button{border:1px solid #005bbb; background:#007bd5; color:#fff;box-shadow:0 5px 5px rgba(0,0,0,0.2);}
+        .red_button{border:1px solid #b23a30; background:#dc3224;color:#fff;box-shadow:0 5px 5px rgba(0,0,0,0.2);}
+        .green_button{border:1px solid #427e3d; background:#58a952;color:#fff;box-shadow:0 5px 5px rgba(0,0,0,0.2);}
+        .black_button{border:1px solid #b8b8b8; background:#e0e0e0; color:#555;box-shadow:0 5px 5px rgba(0,0,0,0.2);}
+        .sm_btn{box-shadow:0 5px 4px rgba(0,0,0,0.2); height:55px;padding:0 30px 0px 50px;-moz-border-radius:50px; -webkit-border-radius:50px; border-radius:50px;font:normal 20px "MicroSoft YaHei","SimSun"; margin-bottom:30px; display:block;}a.sm_btn { line-height:55px; color:#000;} span.arrow-right {
+                                                                                                                                                                                                                                                                                                width: 0px;
+                                                                                                                                                                                                                                                                                                height: 0px;
+                                                                                                                                                                                                                                                                                                border-top: 10px solid transparent;
+                                                                                                                                                                                                                                                                                                border-bottom: 10px solid transparent;
+                                                                                                                                                                                                                                                                                                border-left: 25px solid #fff;
+                                                                                                                                                                                                                                                                                                font-size: 0px;
+                                                                                                                                                                                                                                                                                                line-height: 0px; float:right; margin-top:15px;
+                                                                                                                                                                                                                                                                                            }
+        .tip_common_right{ background:url(images/ico_right2.png) no-repeat left center; padding-left:30px; line-height:30px;}
+        .tip_common_wrong{ background:url(images/cross.png) no-repeat left center; padding-left:30px; line-height:30px;}
+        .hidetr{
+            display: none;
+        }
+    </style>
+    <script language="javascript">
+
+        if(top != self){
+            location.href = "about:blank";
+        }
+
+    </script>
+    <script charset="utf-8" type="text/javascript"  src="js/jquery-1.7.min.js"></script>
+    <script charset="utf-8"  type="text/javascript" src="js/jquery.alerts.js"></script>
+    <script charset="utf-8" type="text/javascript"  src="js/showModalDialog.js"></script>
+    <script charset="utf-8" type="text/javascript" src="js/cookies.js"></script>
+    <script charset="utf-8" type="text/javascript" src="js/common.js"></script>
+    <script charset="utf-8" type="text/javascript"  src="js/validate.js"></script>
+
+</head>
+
+<body onload="arw();">
+<!--header begin-->
+<div id="headerbox"><div id="header">
+    <div class="logo" ><a href="index.html" style=" color:#fff;">国家税务总局全国增值税发票统一查验平台</a></div>
+  <span style="font-size:13px; display:block; position:absolute; left:102px; top:80px; color:#0FF;font-style:italic;padding-right:10px;" id = "Hotnews"><i>
+  </i></span>
+    <div class="tel">
+
+        <span style="color:#fff; font-size:14px;"><i>咨询热线：<span style="color:#0FF;">12366</span></i></span><br />
+        <!-- <div style="padding-top:10px; text-align:right;display:none" id="ds1"><i><a href="login.html" style="color:#fff;">登录</a>　|　<a href="zhuce.html" style="color:#fff;">注册</a></i></div>
+        <div style="padding-top:10px; text-align:right;" id="ds2"><i>欢迎您，<a href="xgxx.html" style="color:#fff; text-decoration:underline;" id="user">beanslee@sohu.com</a>　<a href="#" onclick="exit(0)" style="color:#0FF;">退出</a></i></div> -->
+    </div>
+</div>
+    <div id="navbox">
+        <div id="nav">
+            <ul class="nav_main">
+                <li class="nav_ge"></li>
+                <li> <a href="index.html" class="" style="width:100px;">首页</a> </li>
+                <li class="nav_ge"></li>
+                <li> <a href="#" class="hasSub ">最新动态</a>
+                    <ul>
+                        <li><a href='xwbd/xwbd.html' >新闻报道</a></li>
+                        <li><a href='tzgg/tzgg.html' >通知公告</a></li>
+                        <li><a href='zcfg/zcfg.html' >政策法规</a></li>
+                    </ul>
+                </li>
+                <li class="nav_ge"></li>
+                <li> <a href="#" class="hasSub ">发票常识</a>
+                    <ul>
+                        <li><a href='fpcs/fpzl.html' >发票种类</a></li>
+                        <li><a href='fpcs/fpbs.html' >发票版式</a></li>
+                        <li><a href='fpcs/fpzwsbff.html' >防伪措施</a></li>
+                        <li><a href='fpcs/dzfp1.html' >电子发票</a></li>
+                    </ul>
+                </li>
+                <li class="nav_ge"></li>
+                <li> <a href="#" class="hasSub ">常见问题</a>
+                    <ul>
+                        <li><a href='cjwt/fpcy.html' >发票查验</a></li>
+                        <li><a href='cjwt/fpjgsm.html' >查验结果</a></li>
+                        <li><a href='cjwt/wfjb.html' >违法举报</a></li>
+                    </ul>
+                </li>
+                <li class="nav_ge"></li>
+                <li> <a href="xzzx.html" class=" ">下载中心</a> </li>
+                <li class="nav_ge"></li>
+                <!-- <li> <a href="#" class=" " id="grzx" onclick="getGrzx(0);">个人中心</a> </li>
+                <li class="nav_ge"></li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+<!--header end-->
+<!--content begin-->
+<div id="content" class="clearfix" style="padding-top:50px;">
+    <div style="float:left; width:300px; padding:0px 0px 20px 30px;">
+        <a href="fpcysm.html"  class="sm_btn" style="background:#a7e00e">发票查验说明<span class="arrow-right"></span></a>
+        <a href="cjwt/fpjgsm.html"  class="sm_btn" style="background:#ffbf00">查验结果说明<span class="arrow-right"></span></a>
+        <a href="fpcs/fpzwsbff.html"  class="sm_btn" style="background:#51caf0">发票真伪识别方法<span class="arrow-right"></span></a>
+        <div style="line-height:25px; padding:20px 20px 0px 20px; ">1、从2015年12月20日开始查验。<br />2、每票每天最多查验5次。 <br />3、只提供本年度的发票查验。</div>
+    </div>
+    <table  border="0" class="comm_table2" style=" float:right; ">
+        <tr>
+            <td ><span class="font_red">*</span>发票代码：</td>
+            <td ><input type="text" id="fpdm" maxlength="12"/></td>
+            <td width="200"><div id="fpdmjy" class="tip_common">请输入发票代码</div></td>
+        </tr>
+        <tr>
+            <td><span class="font_red">*</span>发票号码：</td>
+            <td><input type="text" id="fphm" maxlength="8"/></td>
+            <td><div id="fphmjy" class="tip_common">请输入发票号码</div></td>
+        </tr>
+        <tr>
+            <td><span class="font_red">*</span>开票日期：</td>
+            <td><input type="text" id="kprq" maxlength="8" value="YYYYMMDD" style="color:#999999"/></td>
+            <td><div id="kprqjy" class="tip_common">请输入开票日期</div></td>
+        </tr>
+
+        <tr id="kjje_tr">
+            <td ><span class="font_red">*</span><span id="context">开具金额：</span></td>
+            <td><input type="text" id="kjje"/></td>
+            <td><div id="kjjejy" class="tip_common">请输入开具金额</div></td>
+        </tr>
+        <tr id="jym_tr" style="display:none;">
+            <td ><span class="font_red">*</span><span>校验码：</span></td>
+            <td><input type="text" id="jym"  maxlength="6"/></td>
+            <td><div id="jymjy" class="tip_common">请输入校验码后六位</div></td>
+        </tr>
+        <tr>
+            <td><span class="font_red">*</span>验证码：</td>
+            <td><input type="text" style="width:140px;color:#999999" value="请输入验证码或答案" id="yzm"/><a href="#"><img id="yzm_img" src="images/code.png" style="vertical-align:middle;margin-left:10px; width:75px;height:30px" /></a></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div class="comm_btn_div clearfix" style=" margin-left:150px; text-align:left;">
+                    <button  class="gray_button" style="cursor:default;" id="uncheckfp" disabled="true">查验</button>
+                    <button class="blue_button" onmousemove="this.className='green_button';" onmouseout="this.className='blue_button';" id="checkfp" style="display:none">查验</button>
+                    <button class="blue_button" onmousemove="this.className='green_button';" onmouseout="this.className='blue_button';" id="reset">重置</button></div>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<!--content end-->
+<!--footer begin-->
+<div id="footerbox">
+    <div id="footer">
+        <p>版权所有：国家税务总局 京ICP备05036792号</p>
+        <p>地址：北京市海淀区羊坊店西路5号 邮编：100038</p>
+        <p>技术支持服务：电子税务管理中心   长城计算机软件与系统有限公司</p>
+    </div></div>
+<!--footer end-->
+<dl style="position:absolute; right:5px; top:250px;"><dt><a href="download/fpcy_android.apk"><img src="images/android.png" width="130" /></a></dt><dd><a href="download/fpcy_android.apk"><img src="images/android_btn.gif" /></a></dd></dl>
+<!--<dl style="position:absolute; right:5px; top:380px;"><dt><a href="upload/fpcy_ios.rar"><img src="images/ios.gif" /></a></dt><dd><a href="upload/fpcy_ios.rar"><img src="images/ios_btn.gif" /></a></dd></dl>-->
+</body>
+</html>
+
+<script type="text/javascript">
+
+    var yzmSj="";
+    var jmmy="";
+    var fplx="99";
+    var xsje=1;
+    var swjgmc="";
+    var ip="";
+    var delayFlag="";
+    var delayTime = 6;
+    var delayMessage="";
+
+    $("#fpdm").keyup(function(){
+        var fpdm=$("#fpdm").val().trim();
+        if(fpdm.length==10||fpdm.length>=12){
+            afcdm(fpdm);
+        }else{
+            $("#fpdmjy").removeClass();
+            $("#fpdmjy").addClass("tip_common");
+            $("#fpdmjy").html("请输入发票代码");
+        }
+        acb(fplx,xsje);
+
+    });
+
+    $('#fpdm').blur(function(){
+        var fpdm=$("#fpdm").val().trim();
+        if(fpdm.length!=0&&fpdm.length!=10&&fpdm.length<12){
+            afcdm(fpdm);
+        }
+        acb(fplx,xsje);
+    });
+
+
+    $("#fphm").keyup(function(){
+        var fphm=$("#fphm").val().trim();
+        if(fphm.length>=8){
+            ahmch(fphm);
+        }else{
+            $("#fphmjy").removeClass();
+            $("#fphmjy").addClass("tip_common");
+            $("#fphmjy").html("请输入发票号码");
+        }
+        acb(fplx,xsje);
+    });
+
+    $('#fphm').blur(function(){
+        var fphm=$("#fphm").val().trim();
+        if(fphm.length!=0&&fphm.length<8){
+            ahmch(fphm);
+        }
+        acb(fplx,xsje);
+
+    });
+
+    $("#kjje").keyup(function(){
+        var kjje=$("#kjje").val().trim();
+        var fpdm=$("#fpdm").val().trim();
+
+        var classInfo=$("#kjjejy").attr('class');
+        $("#kjjejy").removeClass(classInfo);
+
+        if(!aje(fpdm,kjje)){
+            $("#kjjejy").addClass("tip_common_wrong");
+            $("#kjjejy").addClass("font_red");
+            if(fplx=="02"){
+                $("#kjjejy").html("合计金额有误!");
+            }else if(fplx=="03"){
+                $("#kjjejy").html("不含税价有误!");
+            }else{
+                $("#kjjejy").html("开票金额有误!");
+            }
+        }else{
+            $("#kjjejy").addClass("tip_common_right");
+            $("#kjjejy").html("&nbsp;");
+        }
+
+        acb(fplx,xsje);
+    });
+
+    $("#kjje").blur(function(){
+        var kjje=$("#kjje").val().trim();
+        var fpdm=$("#fpdm").val().trim();
+
+        var classInfo=$("#kjjejy").attr('class');
+        $("#kjjejy").removeClass(classInfo);
+
+        if(kjje.length!=0){
+            if(!aje(fpdm,kjje)){
+                $("#kjjejy").addClass("tip_common_wrong");
+                $("#kjjejy").addClass("font_red");
+                if(fplx=="02"){
+                    $("#kjjejy").html("合计金额有误!");
+                }else if(fplx=="03"){
+                    $("#kjjejy").html("不含税价有误!");
+                }else{
+                    $("#kjjejy").html("开票金额有误!");
+                }
+            }else{
+                $("#kjjejy").addClass("tip_common_right");
+                $("#kjjejy").html("&nbsp;");
+            }
+        }else{
+            $("#kjjejy").removeClass();
+            $("#kjjejy").addClass("tip_common");
+            if(fplx=="02"){
+                $("#kjjejy").html("请输入合计金额");
+            }else if(fplx=="03"){
+                $("#kjjejy").html("请输入不含税价");
+            }else{
+                $("#kjjejy").html("请输入开具金额");
+            }
+
+        }
+        acb(fplx,xsje);
+    });
+
+    function jymChange(jym){
+        $("#jymjy").removeClass();
+        if(!ajy(jym)){
+            $("#jymjy").addClass("tip_common_wrong");
+            $("#jymjy").addClass("font_red");
+            $("#jymjy").html("校验码有误!");
+        }else{
+            $("#jymjy").addClass("tip_common_right");
+            $("#jymjy").html("&nbsp;");
+        }
+    }
+
+    $('#jym').keyup(function(){
+        var jym=$("#jym").val().trim();
+        if(jym.length==6){
+            jymChange(jym);
+        }else{
+            $("#jymjy").removeClass();
+            $("#jymjy").addClass("tip_common");
+            $("#jymjy").html("请输入校验码后六位");
+        }
+        acb(fplx,xsje);
+    });
+
+    $('#jym').blur(function(){
+        var jym=$("#jym").val().trim();
+        if(jym.length>0&&jym.length<6){
+            jymChange(jym);
+        }
+        acb(fplx,xsje);
+    });
+
+    $("#kprq").keyup(function(){
+        var kprq=$("#kprq").val().trim();
+        if(kprq.length>=8){
+            kprqChange(kprq);
+        }else{
+            $("#kprqjy").removeClass();
+            $("#kprqjy").addClass("tip_common");
+            $("#kprqjy").html("请输入开票日期");
+        }
+
+        acb(fplx,xsje);
+    });
+
+    $('#kprq').focus(function(){
+        var value= $('#kprq').val();
+        var defaultValue="YYYYMMDD";
+        if(value==defaultValue){
+            $('#kprq').val('');
+            $('#kprq').css('color','#000000');
+        }
+    });
+
+    $("#kprq").blur(function(){
+        var kprq=$("#kprq").val().trim();
+        if(kprq==""){
+            $('#kprq').val("YYYYMMDD");
+            $('#kprq').css('color','#999999');
+        }
+        if(kprq.length!=0){
+            kprqChange(kprq);
+        }else{
+            $("#kprqjy").removeClass();
+            $("#kprqjy").addClass("tip_common");
+            $("#kprqjy").html("请输入开票日期");
+        }
+        acb(fplx,xsje);
+    });
+
+    $('#yzm').focus(function(){
+        var value= $('#yzm').val();
+        var defaultValue="请输入验证码或答案";
+        if(value==defaultValue){
+            $('#yzm').val('');
+            $('#yzm').css('color','#000000');
+        }
+    });
+
+    $('#yzm').blur(function(){
+        var value= $('#yzm').val();
+        if(value==""){
+            $('#yzm').val('请输入验证码或答案');
+            $('#yzm').css('color','#999999');
+        }
+    });
+
+    $("#yzm").keyup(function(){
+        var yzm=$("#yzm").val().trim();
+        var classInfo=$("#yzmjy").attr('class');
+        $("#yzmjy").removeClass(classInfo);
+        if(!avym(yzm)){
+            $("#yzmjy").addClass("tip_common_wrong");
+            $("#yzmjy").addClass("font_red");
+        }else{
+            $("#yzmjy").html("&nbsp");
+        }
+        acb(fplx,xsje);
+    });
+
+
+    $("#yzm_img").click(function(){
+        var fpdm=$("#fpdm").val().trim();
+        var fphm=$("#fphm").val().trim();
+        if(fpdm==""&&fphm==""){
+            jAlert('请先输入发票代码和发票号码!','提示');
+        }else{
+            getYzmXx();
+        }
+
+    });
+
+    $('#reset').click(function(){
+        arw();
+        location.reload();
+    });
+
+    $("#checkfp").click(function(){
+        var fpdm=$("#fpdm").val().trim();
+        var fphm=$("#fphm").val().trim();
+        var kprq=$("#kprq").val().trim();
+        var kjje=$("#kjje").val().trim();
+        var jym=$("#jym").val().trim();
+        var yzm=$("#yzm").val().trim();
+        var setText="";
+
+        var param=null;
+        var url="";
+
+        var username=getCookie('username');
+        var loginSj = getCookie('dqsj');
+        var token=getCookie('Qw2#RSDEFRGTGTonj@QSAr3Cd5A6Rg');
+
+        if(avai(fplx,xsje)){
+
+            if(fplx=="01"||fplx=="02"||fplx=="03"){
+                var index=kjje.indexOf(".");
+                if(index>0){
+                    var arr=kjje.split(".");
+                    if(arr[1]=="00"||arr[1]=="0"){
+                        kjje=arr[0];
+                    }
+                    else if(arr[1].charAt(1)=="0"){
+                        kjje=arr[0]+"."+arr[1].charAt(0);
+                    }
+                }
+            }else{
+                kjje=jym;
+            }
+
+            param={'fpdm':fpdm,'fphm':fphm,'kprq':kprq,'fpje':kjje,'fplx':fplx,'yzm':yzm,'yzmSj':yzmSj,'loginSj':loginSj,'token':token,'username':username,'index':jmmy};
+
+            delayMessage="发票查验请求失败!";
+            showTime();
+
+            url=ip+"/query";
+            $.ajax({
+                type: "post",
+                url: url,
+                dataType: "jsonp",
+                data:param,
+                jsonp: "callback",
+                success: function(jsonData) {
+                    delayFlag="1";
+                    var cyjgdm=jsonData.key1;
+
+
+                    if(cyjgdm=="001"){
+                        var fpxx=fpdm+"≡"+fphm+"≡"+swjgmc+"≡"+jsonData.key2+"≡"+yzmSj;
+
+                        var hwxx=jsonData.key3;
+
+                        var result={"fplx":fplx,"fpxx":fpxx,"hwxx":hwxx};
+                        window.showModalDialog('cyjg.html',result,"dialogTop:10px;dialogWidth:1100px;dialogHeight:700px;");
+
+                    }else if(cyjgdm=="002"){
+                        jAlert("超过该张票当天查验次数(第二天可查)!","提示");
+                    }else if(cyjgdm=="003"){
+                        jAlert("超过该IP查验次数，请稍后查验!","提示");
+                    }else if(cyjgdm=="004"){
+                        jAlert("超过服务器最大请求数，请稍后访问!","提示");
+                    }else if(cyjgdm=="005"){
+                        jAlert("请求不合法!","提示");
+                    }else if(cyjgdm=="006"){
+                        setText = "不一致";
+                        param={'fplx':fplx,'swjg':swjgmc,'fpdm':fpdm,'fphm':fphm,'kprq':kprq,'kjje':kjje,'cysj':yzmSj,'setText':setText};
+                        window.showModalDialog('jgbyz.html',param,"dialogWidth:800px;dialogHeight:400px;center:yes;scroll:no");
+
+                    } else if(cyjgdm=="007"){
+                        jAlert("验证码失效!","提示");
+                    } else if(cyjgdm=="008"){
+                        jAlert("验证码错误!","提示");
+                    }else if(cyjgdm=="009"){
+                        setText = "查无此票";
+                        param={'fplx':fplx,'swjg':swjgmc,'fpdm':fpdm,'fphm':fphm,'kprq':kprq,'kjje':kjje,'cysj':yzmSj,'setText':setText};
+                        window.showModalDialog('jgbyz.html',param,"dialogWidth:800px;dialogHeight:400px;center:yes;scroll:no");
+                    }else if(cyjgdm=="011"){
+                        jAlert("认证失败，请重新登录!","提示");
+                    }else{
+                        jAlert("查验系统发生异常!","系统错误");
+                    }
+
+                }
+            });
+
+        }
+    });
+
+    function getYzmXx(){
+        var url=ip+"/yzmQuery";
+
+        delayMessage="验证码请求失败!";
+        showTime();
+        $.ajax({
+            type: "post",
+            url: url,
+            dataType: "jsonp",
+            jsonp: "callback",
+            success: function(jsonData) {
+                delayFlag="1";
+                var key1=jsonData.key1;
+                var key2=jsonData.key2;
+                var key3=jsonData.key3;
+                if(key1=="003"){
+                    jAlert("验证码请求太频繁!","警告");
+                    $('#yzm_img').hide();
+                    setTimeout(showYzm,60*1000);
+                }else if(key1=="005"){
+                    jAlert("非法请求!","警告");
+                }else if(key1="01"){
+                    jAlert("获取验证码异常!!","警告");
+                }else if(key1!=""){
+                    $("#yzm_img").attr("src","data:image/png;base64,"+key1);
+                    yzmSj=key2;
+                    jmmy=key3;
+                }
+
+            }
+        });
+    }
+
+    function showYzm(){
+        yzmSj="";
+        getYzmXx();
+        $('#yzm_img').show();
+    }
+
+    function showTime(){
+        delayTime -= 1;
+        if(delayTime==0){
+            if(delayFlag==""){
+                jAlert(delayMessage,"提示");
+                delayTime=6;
+            }
+            delayFlag="";
+        }else{
+            setTimeout("showTime()",1000);
+        }
+    }
+
+</script>

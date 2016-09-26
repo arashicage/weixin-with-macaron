@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>用户登录</title>
+<meta name="keywords" content="">
+<meta property="wb:webmaster" content="" />
+<link href="css/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+
+<style type="text/css" rel="stylesheet">
+/* reset--------------------------------------------------------------------*/body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr{ margin:0; padding:0;}fieldset,img{ border:0;}q:before,q:after{ content:'';}abbr[title]{ border-bottom:1px dotted; cursor:help;}address,cite,dfn,em,var{ font-style:normal;}legend{ color:#000;}code,kbd,samp{ font-family:"Courier New",monospace;}hr{ border:none; height:1px;}h1,h2,h3,h4,h5,h6{ font-size:100%;}ol,ul {list-style:none outside none;}li {list-style: none;}
+input, select, textarea, button { font-size: 100%; line-height: inherit;}button { cursor: pointer;}table, thead, tbody, tfoot, tr, th, td, caption, col, colgroup { text-align: inherit; line-height: inherit;	font-size: 100%;}table {border-collapse: collapse; border-spacing: 0;}thead {display: table-header-group;}tbody {display: table-row-group;}tfoot {display: table-footer-group;}tr {display: table-row;}th,td {display: table-cell;}caption {display: table-caption;}col {display: table-column;}
+colgroup {display: table-column-group;}/* clear--------------------------------------------------------------------*/.clearfix:after,.main:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}.clearfix {display: inline-block;}/*IE7*/* html .clearfix { zoom: 1; display: inline-block;}/* Hides from IE-mac \*/.clearfix { display:block;}/* End hide from IE-mac */.zoom { zoom: 1; overow: hidden;}.clear { clear:both;}/* layout--------------------------------------------------------------------*/body { background-color:#f7f7f7; font:normal 12px "MicroSoft YaHei","SimHei"; color:#525252; text-align:center;}#header, #nav .nav_main, #banner, #content, .footMain_main, #footer {margin:0 auto;width:1000px;text-align:left;position:relative;}p, b { line-height:20px; clear:both; overflow:hidden;}h1, h2{ font:normal 18px "MicroSoft YaHei","SimHei"; margin-top:5px; clear:both; overflow:hidden;}h2{ font-size:16px; color:#69C; width:746px; margin:20px auto 5px; font-weight:bold;}a {color:#999999; text-decoration:none;}a:hover{color:#3667d3;}a:active { star:expression(this.onFocus=this.blur());}:focus { outline:0;}.title { font:bold 15px/38px "MicroSoft YaHei","SimHei"; height:40px; background-color:#3667d3; width:100%; color:#fff; overflow:hidden; clear:both;}.title span { margin-left:10px;}#footer .title a { float:right; margin-right:10px; color:#32618f; font-size:12px;}#content .cms_r { float:right; width:730px; min-height:500px; margin-top:10px;}#content .cms_r .title { background:none; color:#666;}#content .funBtn a { margin-bottom:10px; display:block;}#content .contentLeft { width:250px; float:left;}#content .contentRight { width:730px; float:right; margin-top:20px; min-height:500px;}#content .cms_r .list_other { overflow:hidden;}/* header--------------------------------------------------------------------*/#headerbox{ width:100%; background:#1a87eb;}#header { height:125px; overflow:hidden;}#header .logo { float:left; margin-top:18px;height:90px; line-height:60px; font-size:28px;padding-left:100px;display:block;background:url(images/logo.png) no-repeat left center}#header .tel { float:right; margin-top:50px;color:#fff;padding-right:5px;}/* nav--------------------------------------------------------------------*/#navbox{width:100%; background:#1269c0; border-top:1px #005ab3 solid; box-shadow:0 2px 5px rgba(0,0,0,0.3);}#nav { width:1000px;height:39px; position:relative; z-index:9997; margin:0 auto;}#nav .nav_main li { position:relative; float:left;}#nav .nav_main li a { display:block; font-size:14px; line-height:39px; color:#fff; float:left; text-align:center; width:150px; height:39px;}#nav .nav_main li a.hasSub { background:url(images/jiantou_xia.png) no-repeat 116px 16px; text-align:left; padding-left:45px; width:105px;}#nav .nav_main li a:hover, #nav .nav_main li a.air { background:#fff; color:#3667d3;}#nav .nav_main li a.hasSub:hover, #nav .nav_main li a.hasSub.air { background:url(images/jiantou_shang.png) no-repeat #fff 116px 50%; color:#3667d3;}#nav .nav_main li a.hasSub15:hover, #nav .nav_main li a.hasSub15.air { background:url(images/jiantou_shang.png) no-repeat #fff 90px 50%; color:#3667d3;}.nav_ge{ background:url(images/nav_ge.gif) no-repeat left top; width:2px; height:35px;}/* sub 二级菜单--------------------------------------------------------------------*/#nav .nav_main li ul { position:absolute; z-index:9997; border:1px #1269c0 solid; border-top:none; top:39px; left:-1px; background:#fff; display:none; width:180px; box-shadow:0 2px 8px rgba(0,0,0,0.3);}#nav .nav_main li ul li { display:inline-block;}#nav .nav_main li ul li a { font-size:14px; background:#fff; width:115px; padding:0 20px 0 45px; line-height:34px; height:34px; text-align:left; display:block; color:#333; overflow:hidden;}#nav .nav_main li ul li a:hover { background:#004db4; color:#fff;}#nav .nav_main .search { background:#fff; height:25px; line-height:25px; width:262px; float:right; margin-top:7px; -moz-border-radius:20px; -webkit-border-radius:20px; border-radius:20px; margin-right:10px;}#nav .nav_main .search .search_input { color:#999; height:19px; line-height:19px; overflow:hidden; width:200px; float:left; margin:5px 0 0 10px; background:none; border:none;}#nav .nav_main .search .search_btn { cursor:pointer; float:right; height:21px; width:24px; background:none; border:none; background:url(images/search_btn.gif) no-repeat; margin:5px 4px 0;}#banner { height:220px; overflow:hidden; clear:both; margin-top:20px;}/* footer
+--------------------------------------------------------------------*/#footerbox{ width:100%; background:#0069c2; padding-top:20px;padding-bottom:20px;}#footer { width:100%; margin-top:10px; height:70px; text-align:center;}#footer p { color:#98b9e3; text-align:center;}
+/*******登录*************/
+#login_main{width:100%;height:490px;margin:0 auto;background:url(images/login_bg.gif) no-repeat center top #f7f7f7}
+.login_main1{width:1000px;height:490px;position:relative;margin:0 auto;}
+.login_box{width:360px;height:380px;position:absolute;right:0;top:55px;}
+.login_top{width:360px;background:#1d1a35;height:50px;line-height:50px;color:#fff;text-align:center;font-size:20px;font-weight:normal}
+.login_bottom{width:270px;background:#fff;height:290px;box-shadow: 0 5px 10px #ccc;padding:40px 40px 0 50px;}
+.user{background:url(images/login_user.png) no-repeat center #e6e6e6;}
+.password{background:url(images/login_password.png) no-repeat center #e6e6e6;}
+.code{background:url(images/login_code.png) no-repeat center #e6e6e6;}
+.login_pad label{width:37px;height:37px;display:inline-block;float:left;}
+.login_pad{padding:7px 0;display:block;width:270px;float:left;}
+.login_pad1{padding:10px 0 20px 0;display:block;width:270px;float:left;}
+.zc_1{margin-left:20px; color:#000!important; font-size:15px;}
+.zc_2{margin-left:70px;color:#40A9FF!important}
+/************** 表单 ************/
+.input_1{background:#e6e6e6;height:37px;line-height:37px;border:none;width:200px;padding:0 10px;float:left;margin-left:2px;}
+.input_2{width:100px;margin-right:10px;background:#e6e6e6;height:37px;line-height:37px;border:none;padding:0 10px;float:left;margin-left:2px;}
+.sub_1{background:#40a8ff;border:none;width:257px;height:37px;padding:5px 0;cursor:pointer;font-size:18px;color:#fff;font-family: "Microsoft YaHei";}
+</style>
+
+<script charset="utf-8" type="text/javascript"  src="js/jquery-1.7.min.js"></script>
+<script charset="utf-8"  type="text/javascript" src="js/jquery.alerts.js"></script>
+<script type="text/javascript" src="js/cookies.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+</head>
+
+<body onload="init();">
+<!--header begin-->
+<div id="headerbox"><div id="header">
+  <div class="logo" ><a href="index.html" style=" color:#fff;">国家税务总局全国增值税发票统一查验平台</a></div>
+  <span style="font-size:13px; display:block; position:absolute; left:102px; top:80px; color:#0FF;font-style:italic;padding-right:10px;" id = "Hotnews"><i>
+  </i></span>
+  <div class="tel">
+    
+    <span style="color:#fff; font-size:14px;"><i>咨询热线：<span style="color:#0FF;">12366</span></i></span><br />
+    <div style="padding-top:10px; text-align:right;display:none" id="ds1"><i><a href="login.html" style="color:#fff;">登录</a>　|　<a href="zhuce.html" style="color:#fff;">注册</a></i></div> 
+    <div style="padding-top:10px; text-align:right;" id="ds2"><i>欢迎您，<a href="xgxx.html" style="color:#fff; text-decoration:underline;" id="user">beanslee@sohu.com</a>　<a href="#" onclick="exit(0)" style="color:#0FF;">退出</a></i></div>
+  </div>
+</div>
+<div id="navbox">
+    <div id="nav">
+      <ul class="nav_main">
+        <li class="nav_ge"></li>
+        <li> <a href="index.html" class="" style="width:100px;">首页</a> </li>
+        <li class="nav_ge"></li>
+        <li> <a href="#" class="hasSub ">最新动态</a>
+          <ul>
+            <li><a href='xwbd/xwbd.html' >新闻报道</a></li>
+            <li><a href='tzgg/tzgg.html' >通知公告</a></li>
+            <li><a href='zcfg/zcfg.html' >政策法规</a></li>
+          </ul>
+        </li>
+        <li class="nav_ge"></li>
+        <li> <a href="#" class="hasSub ">发票常识</a>
+          <ul>
+             <li><a href='fpcs/fpzl.html' >发票种类</a></li>
+            <li><a href='fpcs/fpbs.html' >发票版式</a></li>
+            <li><a href='fpcs/fpzwsbff.html' >防伪措施</a></li>
+            <li><a href='fpcs/dzfp1.html' >电子发票</a></li>
+          </ul>
+        </li>
+        <li class="nav_ge"></li>
+        <li> <a href="#" class="hasSub ">常见问题</a>
+          <ul>
+            <li><a href='cjwt/fpcy.html' >发票查验</a></li>
+            <li><a href='cjwt/fpjgsm.html' >查验结果</a></li>
+            <li><a href='cjwt/wfjb.html' >违法举报</a></li>
+          </ul>
+        </li>
+        <li class="nav_ge"></li>
+        <li> <a href="xzzx.html" class=" ">下载中心</a> </li>
+        <li class="nav_ge"></li>
+        <li> <a href="#" class=" " id="grzx" onclick="getGrzx(0);">个人中心</a> </li>
+        <li class="nav_ge"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--header end--> 
+<!--content begin-->
+<div id="login_main">
+  <div class="login_main1">
+    <div class="login_box">
+      <h1 class="login_top">用户登录</h1>
+      <div class="login_bottom">
+        <form name="" method="" action="">
+          <span class="login_pad">
+            <label class="user"></label>
+            <input type="text"  class="input_1"  id="username" value="手机号" style="color:#999999"/>
+          </span>
+          <span class="login_pad">
+            <label class="password"></label>
+            <input type="password" name="" id="password" class="input_1" />
+          </span>
+          <span class="login_pad">
+            <label class="code"></label>
+            <input type="text" name="" id="yzm"  class="input_2" value="验证码" style="color:#999999" />
+           <img src="images/code.png" title="点击图片刷新" id="yzm_img" style="cursor: pointer; margin-top:3px;"/>
+          </span>
+          <span class="login_pad1">
+            <input type="radio" name="RadioGroup1" value="单选" id="RadioGroup1_0" />
+            <label>记住密码</label>
+            <a href="zhuce.html" class="zc_1">注册</a>
+            <a href="wjmm.html" class="zc_2">忘记密码？</a>
+          </span>
+          <span class="login_pad">
+            <input type="button" name="" id="login" value="登录" class="sub_1"/>
+          </span>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--content end--> 
+<!--footer begin-->
+<div id="footerbox">
+  <div id="footer">
+    <p>版权所有：国家税务总局 京ICP备05036792号</p>
+    <p>地址：北京市海淀区羊坊店西路5号 邮编：100038</p>
+    <p>技术支持服务：电子税务管理中心   长城计算机软件与系统有限公司</p>
+  </div>
+</div>
+<!--footer end-->
+</body>
+</html>
+ 
+<script type="text/javascript">
+var delayFlag="";
+var delayTime = 6;
+var delayMessage="";
+
+var log_count=0;
+
+function init(){
+   $('#username').val("手机号");
+   $('#username').css('color','#999999');
+   $('#yzm').val("验证码");
+   $('#yzm').css('color','#999999');
+}
+
+ var jmmy="";
+
+ $(document).ready(function(){
+  getYzmXx();
+ });
+
+ $('#username').focus(function(){
+    var value= $('#username').val();
+    var defaultValue="手机号";
+    if(value==defaultValue){
+      $('#username').val('');
+      $('#username').css('color','#000000');
+    }
+  });
+
+  $('#username').blur(function(){
+    var value = $('#username').val();   
+    if(value==""){    
+      $('#username').val("手机号");
+      $('#username').css('color','#999999');
+    }
+  });
+
+  $('#login').click(function(){
+    var userName = $('#username').val();
+    var password = $('#password').val(); 
+    var yzm=$('#yzm').val();
+
+    if(userName==""){
+      jAlert("手机号不能为空!","提示");
+    }else if(password==""){
+      jAlert("密码不能为空!","提示");
+    }else if(yzm==""){
+      jAlert("验证码不能为空!","提示");
+    }
+    else if(!validateUserName(userName)){
+      jAlert("手机号错误!","提示");
+    }
+    else if(password.length<6||password.length>16){
+      jAlert("密码错误!","提示");
+    }else if(checkPass(password)<2){
+      jAlert("密码错误!","提示");
+    }
+    else{
+
+        var param = {'username':userName ,'password':password,'verify':yzm,'index':jmmy};
+
+        var url=getzjDz()+"/login";
+        delayMessage="登录失败!";
+        showTime();
+        $.ajax({
+            type: "post", 
+            url: url,
+            data:param,
+            dataType: "jsonp",            
+            jsonp: "callback",
+            success: function(jsonData) {
+                 delayFlag="1";
+                 var key1=jsonData.key1;                 
+
+                 if(key1=="01"){
+                    var dqsj=jsonData.key2;
+                    var token=jsonData.key3;
+
+                    clearCookie("username");
+                    clearCookie("dqsj");
+                    clearCookie("Qw2#RSDEFRGTGTonj@QSAr3Cd5A6Rg");
+                    setCookie("username",userName,7*24*60*60*1000);
+                    setCookie("dqsj",dqsj,7*24*60*60*1000);
+                    setCookie("Qw2#RSDEFRGTGTonj@QSAr3Cd5A6Rg",token,7*24*60*60*1000);
+
+                    window.location="index.html";
+
+
+                 }else if(key1=="02"){
+                  var sycs=jsonData.key2;                
+                  jAlert("剩余"+sycs+"次登录机会!","提示");                 
+                 }else if(key1=="03"){
+                  jAlert("手机号不存在!","提示");
+                 }else if(key1=="04"){
+                  jAlert("验证码失效!","提示");
+                 }else if(key1=="05"){
+                  jAlert("验证码出错!","提示");
+                 }else if(key1=="06"){
+                  var sxsj=jsonData.key2;
+                  jAlert("用户被锁定，"+sxsj+"分钟后才能进行登录!","提示");
+                 }
+            }
+        });
+    }
+  });
+
+ $('#yzm').focus(function(){
+    var value= $('#yzm').val();
+    var defaultValue="验证码";
+    if(value==defaultValue){
+      $('#yzm').val('');
+      $('#yzm').css('color','#000000');
+    }
+  });
+
+  $("#yzm").blur(function(){
+    var yzm=$("#yzm").val();
+    if(yzm==""){    
+      $('#yzm').val("验证码");
+      $('#yzm').css('color','#999999');
+    }
+    var strRegex=/^-?[a-zA-Z0-9]+$/;  
+    if(yzm.length>0){
+      if(!strRegex.test(yzm)||!validateYzm(yzm)){
+         jAlert("验证码错误！","提示");
+      }
+    }
+  });
+
+  $("#yzm_img").click(function(){
+    getYzmXx();
+  });
+
+  function validateUserName(userName){
+    var strRegex = /^(13|14|15|17|18)\d{9}$/;    
+    return strRegex.test(userName);
+  }
+
+  function validateYzm(yzm){
+    var code;
+
+    for(var i=0;i<yzm.length;i++){
+      code=yzm.charCodeAt(i);
+      if((code>65248)||(code==12288)){
+        return false;
+      }
+    }
+    return true ;
+  }
+
+  function getYzmXx(){
+    var url=getzjDz()+"/yzmQuery";
+    delayMessage="验证码请求失败!";
+    showTime();
+
+    $.ajax({
+      type: "post", 
+      url: url,
+      dataType: "jsonp",
+      jsonp: "callback",
+      success: function(jsonData) {
+           delayFlag="1";
+           var key1=jsonData.key1;
+           var key2=jsonData.key2;
+           var key3=jsonData.key3;
+           if(key1=="003"){
+             jAlert("验证码请求太频繁!","警告");
+             $('#yzm_img').hide();
+             setTimeout(showYzm,60*1000);
+           }else if(key1=="005"){
+            jAlert("非法请求!","警告");
+           }else if(key1!=""){
+              
+              $("#yzm_img").attr("src","data:image/png;base64,"+key1);
+              jmmy=key3;
+           }
+           
+        }
+    });
+  }
+
+  function showYzm(){
+    yzmSj="";
+    getYzmXx();
+    $('#yzm_img').show();
+  }
+ 
+  function showTime(){  
+      delayTime -= 1;  
+      if(delayTime==0){  
+        if(delayFlag==""){
+          jAlert(delayMessage,"提示");
+        }
+        delayFlag="";
+      }else{
+         setTimeout("showTime()",1000); 
+      }   
+      
+  }
+
+</script>

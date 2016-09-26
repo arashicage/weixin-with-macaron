@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>发票查验APP下载页面</title>
+
+</head>
+<body>
+
+<div style="float:right;"><img src="images/arrow_top.gif" width="90"/></div>
+<div style="background:#f7f7f7; border:1px solid #ccc; top: 20px; float:left;padding:15px; font-size:60px; line-height: 75px;"><span style="float:left;"><img src="images/icon_logo_piao.png" width="90" style=" vertical-align:top;"/></span>下载应用请点击右上角按钮选择<span style="color:#2c6db6;">&lceil; 在浏览器中打开 &rfloor;</span></div>
+
+<script type="text/javascript">
+        // 获取终端的相关信息
+        var Terminal = {
+            // 辨别移动终端类型
+            platform : function(){
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return {
+                    // android终端或者uc浏览器
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1,
+                    // 是否为iPhone或者QQHD浏览器
+                    iPhone: u.indexOf('iPhone') > -1 ,
+                    // 是否iPad
+                    iPad: u.indexOf('iPad') > -1
+                };
+            }(),
+            // 辨别移动终端的语言：zh-cn、en-us、ko-kr、ja-jp...
+            language : (navigator.browserLanguage || navigator.language).toLowerCase()
+        }
+    
+        // 根据不同的终端，跳转到不同的地址
+        var theUrl = 'http://187837.cicp.net:23183/download/fpcy_android.apk';
+        if(Terminal.platform.android){
+            theUrl = 'http://187837.cicp.net:23183/download/fpcy_android.apk';
+			//alert('android');
+        }else if(Terminal.platform.iPhone){
+            theUrl = 'http://187837.cicp.net:23183/download/fpcy_android.apk';
+			//alert('iPhone');
+        }else if(Terminal.platform.iPad){
+            // 还可以通过language，区分开多国语言版
+			//alert(Terminal.language);
+            switch(Terminal.language){
+                case 'en-us':
+                    theUrl = 'http://187837.cicp.net:23183/download/fpcy_android.apk';
+                    break;
+                case 'ko-kr':
+                    theUrl = 'http://187837.cicp.net:23183/download/fpcy_android.apk';
+                    break;
+                case 'ja-jp':
+                    theUrl = 'http://187837.cicp.net:23183/download/fpcy_android.apk';
+                    break;
+                default:
+                    theUrl = 'http://187837.cicp.net:23183/download/fpcy_android.apk';
+            }
+        }
+    
+        location.href = theUrl;
+    </script>
+</body>
+</html>

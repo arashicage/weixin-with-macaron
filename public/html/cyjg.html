@@ -1,0 +1,969 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width" />
+<meta name="keywords" content="jquery, plugin, qr, qrcode" />
+<meta name="description" content="A jQuery plugin to add qr codes to your pages" />
+<title>增值税专用发票</title>
+<style type="text/css" rel="stylesheet">
+/* reset--------------------------------------------------------------------*/body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr{ margin:0; padding:0;}fieldset,img{ border:0;}q:before,q:after{ content:'';}abbr[title]{ border-bottom:1px dotted; cursor:help;}address,cite,dfn,em,var{ font-style:normal;}legend{ color:#000;}code,kbd,samp{ font-family:"Courier New",monospace;}hr{ border:none; height:1px;}h1,h2,h3,h4,h5,h6{ font-size:100%;}ol,ul {list-style:none outside none;}li {list-style: none;}
+input, select, textarea, button { font-size: 100%; line-height: inherit;}button { cursor: pointer;}table, thead, tbody, tfoot, tr, th, td, caption, col, colgroup { text-align: inherit; line-height: inherit;	font-size: 100%;}table {border-collapse: collapse; border-spacing: 0;}thead {display: table-header-group;}tbody {display: table-row-group;}tfoot {display: table-footer-group;}tr {display: table-row;}th,td {display: table-cell;}caption {display: table-caption;}col {display: table-column;}
+colgroup {display: table-column-group;}/* clear--------------------------------------------------------------------*/.clearfix:after,.main:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}.clearfix {display: inline-block;}/*IE7*/* html .clearfix { zoom: 1; display: inline-block;}/* Hides from IE-mac \*/.clearfix { display:block;}/* End hide from IE-mac */.zoom { zoom: 1; overow: hidden;}.clear { clear:both;}/* layout--------------------------------------------------------------------*/body { background-color:#f7f7f7; font:normal 12px "MicroSoft YaHei","SimHei"; color:#525252; text-align:center;}#header, #nav .nav_main, #banner, #content, .footMain_main, #footer {margin:0 auto;width:1000px;text-align:left;position:relative;}p, b { line-height:20px; clear:both; overflow:hidden;}h1, h2{ font:normal 18px "MicroSoft YaHei","SimHei"; margin-top:5px; clear:both; overflow:hidden;}h2{ font-size:16px; color:#69C; width:746px; margin:20px auto 5px; font-weight:bold;}a {color:#999999; text-decoration:none;}a:hover{color:#3667d3;}a:active { star:expression(this.onFocus=this.blur());}:focus { outline:0;}.title { font:bold 15px/38px "MicroSoft YaHei","SimHei"; height:40px; background-color:#3667d3; width:100%; color:#fff; overflow:hidden; clear:both;}.title span { margin-left:10px;}#content .cms_r { min-height:500px; margin:0 auto;}#content .cms_r .title { background:none; color:#666;}
+/* 通用表格样式--------------------------------------------------------------------*/.comm_table{ text-align:center;}.comm_table,.comm_table td,.comm_table th{ border:1px solid #b8b7b7;padding:10px;}.lr_txt{width:100%; background:; border:0px; text-align:center;font-family:"MicroSoft YaHei";}.comm_btn_div{margin:20px auto; text-align:center;}.comm_table2{ margin:0 auto;}.comm_table2 td{padding:10px; text-align:left;}.comm_table2 td input[type=text]{padding:5px; width:230px;}.tip_common{ background:url(images/pencil.png) no-repeat left center; padding-left:30px; line-height:30px;}.tip_error{ background:url(images/cross.png) no-repeat left center;padding-left:30px;line-height:30px;}.tip_right{ background:url(images/ico_right2.jpg) no-repeat left center;padding-left:30px;line-height:30px;}.font_red{ color:#f00;}.chayan_div{background:#fff; padding:30px 0px;box-shadow:0 4px 5px rgba(0,0,0,0.3); border:1px solid #ccc;}.chayan_title{ background:#09F; height:40px; line-height:40px;}.td_left{ text-align:left;}.td_center{ text-align:center; background:#e0f2fe;}/*----resule table----*/.fppy_table,.fppy_table td{ border:1px solid #aaa; border-collapse:collapse; line-height:25px; background:#fafafa; margin:0 auto;}.fppy_table td.borderBottomNo{border:0px;}.fppy_table td.borderRightNo{border:0px;}.fppy_table td.borderNo{border:0px;}table.fppy_table_box{border:0px;border-collapse:collapse;}table.fppy_table_box td{border:0px solid #ccc; border-collapse:collapse;}.fppy_table_box td.borderTop{border-top:1px solid #aaa;}.fppy_table_box td.borderRight{ border-right:1px solid #aaa;}.align_center{ text-align:center;}.align_left{ text-align:left;}.content_td_blue{color:#574B9D;}button{box-shadow:0 1px 2px rgba(0,0,0,0.2); height:30px; line-height:30px; padding:0 20px;-moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;font:normal 12px "MicroSoft YaHei","SimSun"; margin:0 5px; z-index:1000; position:relative;}
+.gray_button{border:1px solid #c5c5c5; background:#f7f7f7;box-shadow:0 1px 2px rgba(0,0,0,0.2);}
+.white_button{border:1px solid #888; background:#fff;box-shadow:0 5px 5px rgba(0,0,0,0.2);}
+.blue_button{border:1px solid #005bbb; background:#007bd5; color:#fff;box-shadow:0 5px 5px rgba(0,0,0,0.2);}
+.red_button{border:1px solid #b23a30; background:#dc3224;color:#fff;box-shadow:0 5px 5px rgba(0,0,0,0.2);}
+.green_button{border:1px solid #427e3d; background:#58a952;color:#fff;box-shadow:0 5px 5px rgba(0,0,0,0.2);}
+.black_button{border:1px solid #b8b8b8; background:#e0e0e0; color:#555;box-shadow:0 5px 5px rgba(0,0,0,0.2);}
+.tab-page{display:none;}
+/*打印样式设置*/
+.printdiv
+{ 
+  width:938px; 
+  height:100%;
+}
+</style>
+<script  charset="utf-8" type="text/javascript" src="js/jquery-1.7.min.js"></script>
+<script  charset="utf-8" type="text/javascript" src="js/jquery.PrintArea.js"></script>
+<script  charset="utf-8" type="text/javascript" src="js/result.js"></script>
+
+</head>
+
+<body >
+<!-- <div style="background:url(images/shuiyin.png) repeat; width:100%; height:150%; position:absolute; left:0px; top:0px;z-index:99;"></div> -->
+<!--content begin-->
+<div id="content" class="clearfix">
+  
+  <div class="cms_r" id="cms_r" style="clear:both; margin:0 auto; width:1000px;">
+    <div class="title">发票查验明细</div>
+    <div class="cms_r_main">
+      <div class="chayan_div" style="padding:30px;">
+      <div id="print_area" class="printdiv" >
+        <table  border="1" class="comm_table" width="100%" >
+          <tr>
+            <td colspan="4" style="background-color:#2498ef;"><span style="font-size:16px; color:#fff; float:left;">查验结果：
+            <strong id="cyjg">一致</strong><span style="padding-left:50px;" id="cycs">查验次数：第1次</span>
+            <span style="padding-left:50px;" id="cysj">查验时间：2015-07-08 09:37:22</span></span>
+            <span style="float:right">
+            <button id="printfp" class="white_button" onmousemove="this.className='gray_button';" onmouseout="this.className='white_button';">打印</button></span>
+            </td>
+          </tr>
+        </table>
+        <!--原始信息-->
+      
+        <div id='bg_div' style="background:url(images/shuiyin.png) repeat; width:100%; position:absolute;left:0px; top:0px;z-index:99;"></div>
+          <div id="tabPage2">
+            <div class="tab-page" id="tabPage-zzszyfp">
+              <h1 id="fpcc_zp" style="color:#574B9D;padding:5px 0px 5px 0px; text-align:center;"><strong>北京增值税专用发票</strong></h1>
+              <table border="0" cellpadding="0" cellspacing="0" style="width:100%" >
+                <tr height="30">                 
+                  <td class="align_left">发票代码：<span class="content_td_blue" id="fpdm_zp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">发票号码：<span class="content_td_blue" id="fphm_zp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">开票日期：<span class="content_td_blue" id="kprq_zp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">校验码：<span class="content_td_blue" id="jym_zp"></span></td>
+                  <td>&nbsp;</td>                
+                  <td class="align_left" id="jqxx_zp" style="display:none">机器编号：<span class="content_td_blue" id="jqbh_zp"></span></td>
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
+              <table style="width:100%" border="0" cellspacing="0" cellpadding="0" class="fppy_table">
+              <tr>
+                <td rowspan="4" class="align_center" width="20"><p>购</p>
+                <p>买</p>
+                <p>方</p></td>
+                <td class="align_left borderNo" width="85">名称：</td>
+                <td nowrap class="align_left borderNo bgcolorWhite"><span class="content_td_blue" id="gfmc_zp"></span></td>
+
+                <td rowspan="4" class="align_center" width="20">
+                <p>税</p>
+                <p>控</p>
+                <p>码</p></td>
+                <td id="password_zp" rowspan="4" nowrap class="align_left " width="350">&nbsp;</td> 
+                </tr>
+                <tr >
+                  <td class="align_left borderNo">纳税人识别号：</td>
+                  <td colspan="3" nowrap class="align_left borderNo"><span class="content_td_blue" id="gfsbh_zp"></span></td>
+                </tr>
+                <tr>
+                  <td class="align_left borderNo">地址、电话：</td>
+                  <td colspan="3" nowrap class="align_left borderNo"><span class="content_td_blue" id="gfdzdh_zp"> </span></td>
+                </tr>
+                <tr>
+                  <td class="align_left borderNo">开户行及账号：</td>
+                  <td colspan="3" nowrap class="align_left borderNo"><span class="content_td_blue" id="gfyhzh_zp"></span></td>
+
+                </tr>
+                
+                <!--表头-->
+                <tr>
+                  <td colspan="5" ><table cellspacing="0" cellpadding="0" style="width:100%;" class="fppy_table_box">
+                    <tr id="tab_head_zp">
+                      <td class="align_center borderRight" width="30%">货物或应税劳务名称</td>
+                      <td class="align_center borderRight" width="10%">规格型号</td>
+                      <td class="align_center borderRight" width="5%">单位</td>
+                      <td class="align_center borderRight" width="10%">数量</td>
+                      <td class="align_center borderRight" width="10%">单价</td>
+                      <td class="align_center borderRight" width="15%">金额</td>
+                      <td class="align_center borderRight" width="5%">税率</td>
+                      <td class="align_center" width="15%">税额</td>
+                    </tr>
+                    <tr >
+                      <td class="align_center borderRight">合计</td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center borderRight"><span class="content_td_blue" id="je_zp"></span></td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center"><span class="content_td_blue" id="se_zp"></span></td>
+                    </tr>
+                    <tr >
+                      <td class="align_center borderRight borderTop" >价税合计（大写）</td>
+                      <td colspan="7" class="align_center borderTop" ><span class="align_left"><span class="content_td_blue" id="jshjdx_zp"></span><span style="padding:0 20px;">（小写）</span><span class="content_td_blue" id="jshjxx_zp"></span></span></td>
+                    </tr>
+                  </table></td>
+                </tr>
+                <!--表头结束-->
+                <tr>
+                  <td rowspan="4" class="align_center"><p>销</p>
+                  <p>售</p>
+                  <p>方</p></td>
+                  <td class="align_left borderNo">名称：</td>
+                  <td class="align_left borderNo"><span class="content_td_blue" id="xfmc_zp"></span></td>
+                  <td rowspan="4" class="align_center" width="20" ><p>备</p>
+                  <p>注</p></td>
+                  <td rowspan="4" class="align_left" width="350" id="bz_zp">&nbsp;</td>
+                </tr>
+                <tr >
+                  <td class="align_left borderNo">纳税人识别号：</td>
+                  <td class="align_left borderNo"><span class="content_td_blue" id="xfsbh_zp"></span></td>
+                </tr>
+                <tr>
+                  <td class="align_left borderNo">地址、电话：</td>
+                  <td class="align_left borderNo"><span class="content_td_blue" id="xfdzdh_zp"></span></td>
+                </tr>
+                <tr>
+                  <td class="align_left borderNo">开户行及账号：</td>
+                  <td class="align_left borderNo"><span class="content_td_blue" id="xfyhzh_zp"></span></td>
+                </tr>
+              </table>
+              
+            </div>
+
+            <div class="tab-page" id="tabPage-zzsptfp">
+              <h1 id="fpcc_pp" style="color:#574B9D;padding:5px 0px 5px 0px; text-align:center;"><strong>山东省增值税普通发票</strong></h1>
+              <table border="0" cellpadding="0" cellspacing="0" style="width:100%" >
+                <tr height="30">
+                 <td class="align_left">发票代码：<span class="content_td_blue" id="fpdm_pp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">发票号码：<span class="content_td_blue" id="fphm_pp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">开票日期：<span class="content_td_blue" id="kprq_pp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">校验码：<span class="content_td_blue" id="jym_pp"></span></td>
+                  <td>&nbsp;</td>                
+                  <td class="align_left" id="jqxx_pp" style="display:none">机器编号：<span class="content_td_blue" id="jqbh_pp"></span></td>
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
+              <table style="width:100%" border="0" cellspacing="0" cellpadding="0" class="fppy_table">
+              <tr>
+                <td rowspan="4" class="align_center" width="20"><p>购</p>
+                <p>买</p>
+                <p>方</p></td>
+                <td class="align_left borderNo" width="85">名称：</td>
+                <td  nowrap class="align_left borderNo bgcolorWhite"><span class="content_td_blue" id="gfmc_pp"></span></td>
+                <td rowspan="4" class="align_center" width="20"> <p>税</p>
+                <p>控</p>
+                <p>码</p></td>
+                <td rowspan="4" nowrap class="align_center" width="250" id="password_pp">&nbsp;</td>        
+                </tr>
+                <tr >
+                  <td class="align_left borderNo">纳税人识别号：</td>
+                  <td  nowrap class="align_left borderNo"><span class="content_td_blue" id="gfsbh_pp"></span></td>
+                </tr>
+                <tr>
+                  <td class="align_left borderNo">地址、电话：</td>
+                  <td  nowrap class="align_left borderNo"><span class="content_td_blue" id="gfdzdh_pp"> </span></td>
+                </tr>
+                <tr>
+                  <td class="align_left borderNo">开户行及账号：</td>
+                  <td  nowrap class="align_left borderNo"><span class="content_td_blue" id="gfyhzh_pp"></span></td>
+                </tr>
+                
+                <!--表头-->
+                <tr>
+                  <td colspan="5" ><table cellspacing="0" cellpadding="0" style="width:100%;" class="fppy_table_box">
+                    <tr id="tab_head_pp">
+                      <td class="align_center borderRight" width="30%">货物或应税劳务名称</td>
+                      <td class="align_center borderRight" width="10%">规格型号</td>
+                      <td class="align_center borderRight" width="5%">单位</td>
+                      <td class="align_center borderRight" width="10%">数量</td>
+                      <td class="align_center borderRight" width="10%">单价</td>
+                      <td class="align_center borderRight" width="15%">金额</td>
+                      <td class="align_center borderRight" width="5%">税率</td>
+                      <td class="align_center" width="15%">税额</td>
+                    </tr>
+                    <tr >
+                      <td class="align_center borderRight">合计</td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center borderRight"><span class="content_td_blue" id="je_pp"></span></td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center"><span class="content_td_blue" id="se_pp"></span></td>
+                    </tr>
+                    <tr >
+                      <td class="align_center borderRight borderTop" >价税合计（大写）</td>
+                      <td colspan="7" class="align_center borderTop" ><span class="align_left"><span class="content_td_blue" id="jshjdx_pp">&otimes;</span><span style="padding:0 20px;">（小写）</span><span class="content_td_blue" id="jshjxx_pp"></span></span></td>
+                    </tr>
+                  </table></td>
+                </tr>
+                <!--表头结束-->
+                <tr>
+                  <td rowspan="4" class="align_center"><p>销</p>
+                  <p>售</p>
+                  <p>方</td>
+                  <td class="align_left borderNo">名称：</td>
+                  <td class="align_left borderNo"><span class="content_td_blue" id="xfmc_pp"></span></td>
+                  <td rowspan="4" class="align_center" width="20"><p>备</p>
+                  <p>注</p></td>
+                  <td rowspan="4" class="align_left" width="350" id="bz_pp">&nbsp;</td>
+                </tr>
+                <tr >
+                  <td class="align_left borderNo">纳税人识别号：</td>
+                  <td class="align_left borderNo"><span class="content_td_blue" id="xfsbh_pp"></span></td>
+                </tr>
+                <tr>
+                  <td class="align_left borderNo">地址、电话：</td>
+                  <td class="align_left borderNo"><span class="content_td_blue" id="xfdzdh_pp"></span></td>
+                </tr>
+                <tr>
+                  <td class="align_left borderNo">开户行及账号：</td>
+                  <td class="align_left borderNo"><span class="content_td_blue" id="xfyhzh_pp"></span></td>
+                </tr>
+              </table>
+              
+            </div>
+
+            <div class="tab-page" id="tabPage-jsfp">
+            <h1 id="fpcc_jp" style="color:#574B9D;padding:5px 0px 5px 0px; text-align:center;"><strong>卷式发票</strong></h1>
+              <div  style="background-color:#f7f7f7;border:1px dashed #ccc; line-height:30px; width:500px; margin:0 auto; padding:20px;">
+             
+                <table cellspacing="0" cellpadding="0" class="fppy_table_box" width="100%">
+                  <tr >
+                    <td colspan="4" class="align_left">发票代码：<span class="content_td_blue"  id="fpdm_jp"></span></td>
+                  </tr>
+                  <tr >
+                    <td colspan="4" class="align_left">发票号码：<span class="content_td_blue"  id="fphm_jp"></span></td>
+                  </tr>
+                  <tr >
+                    <td colspan="4" class="align_left">机器编码：<span class="content_td_blue"  id="sbbh_jp"></span></td>
+                  </tr>
+                  <tr >
+                    <td colspan="4" class="align_left">购货单位：<span class="content_td_blue"  id="gfmc_jp"></span></td>
+                  </tr>
+                  <tr >
+                    <td colspan="4" class="align_left">购货单位税号：<span class="content_td_blue"  id="gfsh_jp"></span></td>
+                  </tr>
+                  <tr >
+                    <td class="align_center">&nbsp;</td>
+                    <td class="align_center">&nbsp;</td>
+                    <td class="align_center">&nbsp;</td>
+                    <td class="align_center">&nbsp;</td>
+                  </tr>
+                  <tr >
+                    <td colspan="2" class="align_left">开票日期：<span class="content_td_blue" id="kprq_jp"></span></td>
+                    <td colspan="2" class="align_left">收货员：<span class="content_td_blue"  id="shy_jp"></span></td>
+                  </tr>
+                  <tr >
+                    <td class="align_center">&nbsp;</td>
+                    <td class="align_center">&nbsp;</td>
+                    <td class="align_center">&nbsp;</td>
+                    <td class="align_center">&nbsp;</td>
+                  </tr>
+                  <tr id="tab_head_jp">
+                    <td class="align_center">项目</td>
+                    <td class="align_center">数量</td>
+                    <td class="align_center">含税单价</td>
+                    <td class="align_center">含税金额</td>
+                  </tr>
+                  <tr >
+                    <td colspan="4" class="align_left">合计金额（小写）：<span class="content_td_blue" id="je_jp"></span></td>
+                  </tr>
+                  <tr >
+                    <td colspan="4" class="align_left">合计税额（小写）：<span class="content_td_blue" id="se_jp"></span></td>
+                  </tr>
+                  <tr >
+                    <td colspan="4" class="align_left">价税合计（小写）：<span class="content_td_blue" id="jshj_jp"></span></td>
+                  </tr>
+                  <tr >
+                    <td colspan="4" class="align_left" >校验码：<span class="content_td_blue" id="jym_jp"></span></td>
+                  </tr>
+                  <tr >
+                    <td colspan="4" class="align_left">销货单位：<span class="content_td_blue" id="xfmc_jp"></span></td>
+                  </tr>
+                  <tr >
+                    <td colspan="4" class="align_left">销货单位税号：<span class="content_td_blue"  id="xfsh_jp"></span></td>
+                  </tr>
+                </table>
+
+              </div>
+            </div>
+
+            <div class="tab-page" id="tabPage-jdcfp">
+              <h1 id="fpcc_jdcfp" style="color:#574B9D;padding:5px 0px 5px 0px; text-align:center;"><strong>机动车销售统一发票</strong></h1>
+              <table border="0" cellpadding="0" cellspacing="0" style="width:100%" >
+                <tr height="30">                  
+                  <td class="align_left">发票代码：<span class="content_td_blue" id="fpdm_jdcfp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">发票号码：<span class="content_td_blue" id="fphm_jdcfp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">开票日期：<span class="content_td_blue" id="kprq_jdcfp"> </span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
+              <table style="width:100%" border="0" cellspacing="0" cellpadding="0" class="fppy_table">
+              <tr>
+                <td class="align_center" ><p>机 打 代 码</p>
+                  <p>机 打 号 码</p>
+                  <p>机 器 编 码</p></td>
+                <td colspan="4" nowrap class="align_left"><p class="content_td_blue" id="jddm_jdcfp"></p>
+                  <p class="content_td_blue" id="jdhm_jdcfp"></p>
+                  <p class="content_td_blue" id="jqbm_jdcfp"></p></td>
+                <td class="align_center" > <p>税</p>
+                <p>控</p>
+                <p>码</p></td>
+                <td colspan="5"  class="align_center" id="skm_jdcfp">&nbsp;</td> 
+                </tr>
+                <tr >
+                  <td class="align_center" ><p>购买方名称及</p>
+                    <p>身份证号码/</p>
+                    <p>组织机构代码</p></td>
+                  <td colspan="4" nowrap class="align_center"><p class="content_td_blue" id="ghdw_jdcfp"></p>
+                    <p class="content_td_blue" id="sfzhm_jdcfp"></p></td>
+                  <td class="align_center">纳税人识别号</td>
+                  <td colspan="4" class="align_center"><p class="content_td_blue"  id="gfsbh_jdcfp"></p></td>
+                  </tr>
+                <tr>
+                  <td class="align_center"><p>车 辆 类 型</p></td>
+                  <td colspan="2" nowrap class="align_center"><span class="content_td_blue" id="cllx_jdcfp"></span></td>
+                  <td nowrap class="align_center">厂牌号码</td>
+                  <td colspan="3" class="align_center" ><p class="content_td_blue" id="cpxh_jdcfp"></p></td>
+                  <td class="align_center">产地</td>
+                  <td colspan="2" class="align_center"><p class="content_td_blue" id="cd_jdcfp"></p></td>
+                  </tr>
+                <tr>
+                  <td class="align_center">合 格 证 号</td>
+                  <td colspan="2" nowrap class="align_center"><span class="content_td_blue" id="hgzs_jdcfp"></span></td>
+                  <td colspan="2" nowrap class="align_center">进口证明书号</td>
+                  <td colspan="2" class="align_center" ><span class="content_td_blue" id="jkzmsh_jdcfp"></span></td>
+                  <td class="align_center" >商检单号</td>
+                  <td colspan="2" class="align_center" id="sjdh_jdcfp">&nbsp;</td>
+                  </tr>
+                <tr>
+                  <td class="align_center">发动机号码</td>
+                  <td colspan="4" nowrap class="align_center" id="fdjhm_jdcfp">&nbsp;</td>
+                  <td nowrap class="align_center">车辆识别代码/车架号码</td>
+                  <td colspan="4" nowrap class="align_center" id="cjhm_jdcfp">&nbsp;</td>
+                  </tr>
+                <tr>
+                  <td class="align_center">价 税 合 计</td>
+                  <td colspan="9" nowrap class="align_center"><span class="align_left"><span class="content_td_blue" id="jshjdx_jdcfp"></span><span style="padding:0 20px;">（小写）</span><span class="content_td_blue" id="jshjxx_jdcfp"></span></span></td>
+                  </tr>
+                <tr>
+                  <td class="align_center">销货单位名称</td>
+                  <td colspan="4" nowrap class="align_center" id="xhdwmc_jdcfp">&nbsp;</td>
+                  <td class="align_center">电话</td>
+                  <td colspan="4" class="align_center" id="dh_jdcfp">&nbsp;</td>
+                  </tr>
+                <tr>
+                  <td class="align_center">纳税人识别号</td>
+                  <td colspan="4" nowrap class="align_center" id="nsrsbh_jdcfp">&nbsp;</td>
+                  <td class="align_center">账号</td>
+                  <td colspan="4" class="align_center" id="zh_jdcfp">&nbsp;</td>
+                  </tr>
+                <tr>
+                  <td class="align_center">地 址</td>
+                  <td colspan="3" nowrap class="align_center"><p class="content_td_blue" id="dz_jdcfp"></p></td>
+                  <td nowrap class="align_center">开户银行</td>
+                  <td colspan="5" class="align_center">
+                    <p class="content_td_blue" id="khyh_jdcfp"></p></td>
+                  </tr>
+                <tr>
+                  <td class="align_center"><p>增值税税率</p>
+                    <p>或 征 收 率</p></td>
+                  <td nowrap class="align_center" width="20%"><p class="content_td_blue" id="zzssl_jdcfp"></p></td>
+                  <td nowrap class="align_center"><p>增值税</p>
+                    <p>税额</p></td>
+                  <td nowrap class="align_center"><p class="content_td_blue" id="zzsse_jdcfp"></p></td>
+                  <td class="align_center"><p>主管税务</p>
+                    <p>机关及代码</p></td>
+                  <td colspan="5" class="align_center"><p class="content_td_blue" id="swjg_dm_jdcfp"></p></td>
+                  </tr>
+                <tr>
+                  <td class="align_center" width="10%">不 含 税 价</td>
+                  <td colspan="2" nowrap class="align_left" width="20%">小写
+                    <span class="content_td_blue" id="cjfy_jdcfp"></span></td>
+                  <td nowrap class="align_center" width="15%">完税凭证号码</td>
+                  <td colspan="2" class="align_center" width="24%"><p class="content_td_blue" id="wspzhm_jdcfp"></p></td>
+                  <td class="align_center" width="5%">吨位</td>
+                  <td class="align_center" width="8%"><p class="content_td_blue" id="dw_jdcfp"></p></td>
+                  <td class="align_center" width="10%">限乘人数</td>
+                  <td class="align_center" width="8%"><p class="content_td_blue" id="xcrs_jdcfp"></p></td>
+                </tr>
+                <!--表头-->
+                <!--表头结束-->
+              </table>
+              
+            </div>
+
+            <div class="tab-page" id="tabPage-dzfp">
+              <h1 id="fpcc_dzfp" style="color:#574B9D;padding:5px 0px 5px 0px; text-align:center;"><strong>广东增值税普通发票（电子）</strong></h1>
+              <table border="0" cellpadding="0" cellspacing="0" style="width:100%" >
+                <tr height="30">                  
+                  <td class="align_left">发票代码：<span class="content_td_blue" id="fpdm_dzfp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">发票号码：<span class="content_td_blue" id="fphm_dzfp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">开票日期：<span class="content_td_blue" id="kprq_dzfp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">校验码：<span class="content_td_blue" id="jym_dzfp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">设备编号：<span class="content_td_blue" id='sbbh_dzfp'></span></td>
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
+              <table style="width:100%" border="0" cellspacing="0" cellpadding="0" class="fppy_table">
+              <tr>
+                <td rowspan="4" class="align_center" width="20"><p>购</p>
+                <p>买</p>
+                <p>方</p></td>
+                <td class="align_left borderNo" width="85">名称：</td>
+                <td  nowrap class="align_left borderNo bgcolorWhite"><span class="content_td_blue" id='gfmc_dzfp'></span></td>
+                <td rowspan="4" class="align_center" width="20"> <p>税</p>
+                <p>控</p>
+                <p>码</p></td>
+                <td rowspan="4" nowrap class="align_left " width="350" id="password_dzfp">&nbsp;</td>
+                </tr>
+                <tr >
+                  <td class="align_left borderNo">纳税人识别号：</td>
+                  <td  nowrap class="align_left borderNo"><span class="content_td_blue" id='gfsbh_dzfp'></span></td>
+                </tr>
+                <tr>
+                  <td class="align_left borderNo">地址、电话：</td>
+                  <td  nowrap class="align_left borderNo"><span class="content_td_blue" id='gfdzdh_dzfp'></span></td>
+                </tr>
+                <tr>
+                  <td class="align_left borderNo">开户行及账号：</td>
+                  <td  nowrap class="align_left borderNo"><span class="content_td_blue" id='gfyhzh_dzfp'></span></td>
+                </tr>
+                
+                <!--表头-->
+                <tr>
+                  <td colspan="5" ><table cellspacing="0" cellpadding="0" style="width:100%;" class="fppy_table_box">
+                    <tr id="tab_head_dzfp">
+                      <td class="align_center borderRight" width="30%">货物或应税劳务、服务名称</td>
+                      <td class="align_center borderRight" width="10%">规格型号</td>
+                      <td class="align_center borderRight" width="5%">单位</td>
+                      <td class="align_center borderRight" width="10%">数量</td>
+                      <td class="align_center borderRight" width="10%">单价</td>
+                      <td class="align_center borderRight" width="15%">金额</td>
+                      <td class="align_center borderRight" width="5%">税率</td>
+                      <td class="align_center" width="15%">税额</td>
+                    </tr>
+                    <tr >
+                      <td class="align_center borderRight">合计</td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center borderRight"><span class="content_td_blue" id="je_dzfp"></span></td>
+                      <td class="align_center borderRight">&nbsp;</td>
+                      <td class="align_center"><span class="content_td_blue" id="se_dzfp"></span></td>
+                    </tr>
+                    <tr >
+                      <td class="align_center borderRight borderTop" >价税合计（大写）</td>
+                      <td colspan="7" class="align_center borderTop" ><span class="align_left"><span class="content_td_blue" id="jshjdx_dzfp"></span><span style="padding:0 20px;">（小写）</span><span class="content_td_blue" id="jshjxx_dzfp"></span></span></td>
+                    </tr>
+                  </table></td>
+                </tr>
+                <!--表头结束-->
+                <tr>
+                  <td rowspan="4" class="align_center"><p>销</p>
+                  <p>售</p>
+                  <p>方</p></td>
+                  <td class="align_left borderNo">名称：</td>
+                  <td class="align_left borderNo"><span class="content_td_blue" id="xfmc_dzfp"></span></td>
+                  <td rowspan="4" class="align_center" width="20"><p>备</p>
+                  <p>注</p></td>
+                  <td rowspan="4" class="align_left" width="350" id="bz_dzfp">&nbsp;</td>
+                </tr>
+                <tr >
+                  <td class="align_left borderNo">纳税人识别号：</td>
+                  <td class="align_left borderNo"><span class="content_td_blue" id="xfsbh_dzfp"></span></td>
+                </tr>
+                <tr>
+                  <td class="align_left borderNo">地址、电话：</td>
+                  <td class="align_left borderNo"><span class="content_td_blue" id="xfdzdh_dzfp"></span></td>
+                </tr>
+                <tr>
+                  <td class="align_left borderNo">开户行及账号：</td>
+                  <td class="align_left borderNo"><span class="content_td_blue" id="xfyhzh_dzfp"></span></td>
+                </tr>
+              </table>
+              
+            </div>
+
+            <div class="tab-page" id="tabPage-hyzp">
+              <h1 id="fpcc_hyzp" style="color:#574B9D;padding:5px 0px 5px 0px; text-align:center;"><strong>货物运输业增值税专用发票</strong></h1>
+              <table border="0" cellpadding="0" cellspacing="0" style="width:100%" >
+                <tr height="30">                 
+                  <td class="align_left">发票代码：<span class="content_td_blue" id="fpdm_hyzp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">发票号码：<span class="content_td_blue"  id="fphm_hyzp"></span></td>
+                  <td>&nbsp;</td>
+                   <td class="align_left">开票日期：<span class="content_td_blue" id="kprq_hyzp"></span></td>
+                  <td>&nbsp;</td>
+                  <td class="align_left">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
+              <table style="width:100%" border="0" cellspacing="0" cellpadding="0" class="fppy_table">
+              <tr>
+                <td colspan="2" class="align_center" width="10%"><p>承运人及</p>
+                  <p>纳税人识别号</p></td>
+                <td colspan="5" nowrap class="align_center"><p class="content_td_blue" id="cyrmc_hyzp"></p>
+                  <p class="content_td_blue" id="cyrsbh_hyzp"></p></td>
+                <td rowspan="2" class="align_center" width="3%"> <p>税</p>
+                <p>控</p>
+                <p>码</p>
+                <td colspan="5" rowspan="2" class="align_center" id="password_hyzp">&nbsp;</td> 
+                </tr>
+                <tr >
+                  <td colspan="2" class="align_center" ><p>实际受票方及</p>
+                    <p>纳税人识别号</p></td>
+                  <td colspan="5" nowrap class="align_center"><p class="content_td_blue" id="spfmc_hyzp"></p>
+                  <p class="content_td_blue" id="spfsbh_hyzp"></p></td>
+                  </tr>
+                <tr>
+                  <td colspan="2" class="align_center"><p>收货人及</p>
+                    <p>纳税人识别号</p></td>
+                  <td colspan="4" nowrap class="align_center"><p class="content_td_blue" id="shrmc_hyzp"></p>
+                  <p class="content_td_blue" id="shrsbh_hyzp"></p></td>
+                  <td colspan="2" class="align_center" width="10%"><p>发货人及</p>
+                    <p>纳税人识别号</p></td>
+                  <td colspan="4" class="align_center"><p class="content_td_blue" id="fhrmc_hyzp"></p>
+                  <p class="content_td_blue" id="fhrsbh_hyzp"></p></td>
+                  </tr>
+                <tr>
+                  <td colspan="3" class="align_center">起运地、经由、到达地</td>
+                  <td colspan="9" nowrap class="align_left" id="qyd_hyzp">&nbsp; </td>
+                  </tr>
+                <tr>
+                  <td class="align_center" width="3%"><p>费</p>
+                    <p>用</p>
+                    <p>项</p>
+                    <p>目</p>
+                    <p>及</p>
+                    <p>金</p>
+                    <p>额</p></td>
+                  <td colspan="8" valign="top">
+                  <table cellspacing="0" cellpadding="0" style="width:50%;float:left" class="fppy_table_box">
+                    <tr id="tab_head1_hyzp">
+                      <td class="align_center" >费用项目</td>
+                      <td class="align_center" >金额</td>
+                    </tr>
+                  </table>
+                    <table cellspacing="0" cellpadding="0" style="width:50%; float:right" class="fppy_table_box">
+                      <tr id="tab_head2_hyzp" style="height:30px">
+                        <td class="align_center" >费用项目</td>
+                        <td class="align_center" >金额</td>
+                      </tr>
+                    </table>
+                    
+                  </td>
+                  <td class="align_center" width="1%"><p>运</p>
+                    <p>输</p>
+                    <p>货</p>
+                    <p>物</p>
+                    <p>信</p>
+                    <p>息</p></td>
+                  <td colspan="2" class="align_center" id="yshwxx_hyzp">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="align_center" >合计金额</td>
+                  <td colspan="2" nowrap class="align_left" width="20%"><span class="content_td_blue" id="hjje_hyzp"></span></td>
+                  <td nowrap class="align_center" width="10%">税率</td>
+                  <td colspan="2" nowrap class="align_center" width="10%"><span class="content_td_blue" id="sl_hyzp"></span></td>
+                  <td class="align_center" width="10%">税额</td>
+                  <td colspan="2" class="align_center" width="10%"><span class="content_td_blue" id="se_hyzp"></span></td>
+                  <td class="align_center" width="10%">税控盘号</td>
+                  <td class="align_center" width="20%"><span class="content_td_blue" id="skph_hyzp"> </span></td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="align_center" >价税合计(大写)</td>
+                  <td colspan="10" nowrap class="align_center"><span class="align_left"><span class="content_td_blue" id="jshjdx_hyzp"></span><span style="padding:0 20px;">（小写）</span><span class="content_td_blue" id="jshjxx_hyzp"></span></span></td>
+                  </tr>
+                <tr>
+                  <td colspan="2" class="align_center">车种车号</td>
+                  <td colspan="2" nowrap class="align_center" id="czch_hyzp">&nbsp;</td>
+                  <td nowrap class="align_center">车船吨位</td>
+                  <td nowrap class="align_center" id="ccdw_hyzp">&nbsp;</td>
+                  <td rowspan="2" class="align_center" width="3%"><p>备</p>
+                    <p>注</p></td>
+                  <td colspan="5" rowspan="2" class="align_center" id="bz_hyzp">&nbsp;</td>
+                  </tr>
+                <tr>
+                  <td colspan="2" class="align_left"><p>主管税务机关</p>
+                    <p>及代码</p></td>
+                  <td colspan="4" nowrap class="align_center"><p class="content_td_blue" id="swjg_mc_hyzp"></p>
+                    <p class="content_td_blue" id="swjg_dm_hyzp"></p></td>
+                </tr>
+                <!--表头-->
+                <!--表头结束-->
+              </table>
+              
+            </div>
+
+          </div>
+      <!--原始信息  end-->
+      </div>
+
+        <div style="padding:30px 35px 0px 0px; color:#999;">说明：发票信息不符时不得作为财务报销凭证，任何单位和个人有权拒收并举报！</div>
+      </div>
+      
+      <!-- <div class="comm_btn_div clearfix"> <button class="blue_button" onmousemove="this.className='green_button';" onmouseout="this.className='blue_button';" onclick="close_window()">返回</button></div> -->
+      
+    </div>
+  </div>
+  </div>
+</div>
+<!--content end-->
+
+<script type="text/javascript">
+
+  var data = window.dialogArguments;
+
+  var fplx=data.fplx;
+  var hwxxs=data.hwxx;  
+  var fpxxs=data.fpxx;
+  var cycs=0;
+
+  $(document).ready(function(){
+
+      if(fplx=="01"){
+        $('#tabPage-zzszyfp').show();
+        if(fpxxs!=null&&fpxxs!=""){
+          var fpxx=fpxxs.split("≡"); 
+          cycs=Number(fpxx[3])+1;
+          $('#fpdm_zp').text(fpxx[0]);
+          $('#fphm_zp').text(fpxx[1]);
+          $('#fpcc_zp').text(fpxx[2]+"增值税专用发票");
+          $('#cycs').text("查验次数：第"+cycs+"次");
+          $('#cysj').text("查验时间："+fpxx[21]);
+          $('#kprq_zp').text(FormatDate(fpxx[4]));
+
+          if(fpxx[17].trim().length!=0){
+            $('#jqxx_zp').show();
+            $('#jqbh_zp').text(fpxx[17]);
+          } 
+
+          $('#gfmc_zp').text(fpxx[5]);
+          $('#gfsbh_zp').text(fpxx[6]);
+          $('#gfdzdh_zp').text(fpxx[7]);
+          $('#gfyhzh_zp').text(fpxx[8]);
+
+          $('#xfmc_zp').text(fpxx[9]);
+          $('#xfsbh_zp').text(fpxx[10]);
+          $('#xfdzdh_zp').text(fpxx[11]);
+          $('#xfyhzh_zp').text(fpxx[12]);
+
+          $('#je_zp').text('￥'+GetJeToDot(fpxx[13]));
+          $('#se_zp').text('￥'+GetJeToDot(fpxx[14]));
+          $('#jshjxx_zp').text('￥'+GetJeToDot(fpxx[15]));
+          $('#jshjdx_zp').html('&otimes;'+NoToChinese(GetJeToDot(fpxx[15]),"01"));
+          $('#bz_zp').text(fpxx[16]);
+
+          $('#jym_zp').text(fpxx[19]);
+          
+          var flag=fpxx[20];
+          if(flag=='Y'){
+              $('#cyjg').text("已作废");
+          }    
+
+
+          if(hwxxs!=""){
+            var html=GetHwxxHtml(hwxxs);
+            $("#tab_head_zp").after(html);
+          }          
+        }
+      }else if(fplx=="04"){
+        $('#tabPage-zzsptfp').show(); 
+
+        if(fpxxs!=null&&fpxxs!=""){
+          var fpxx=fpxxs.split("≡");  
+          cycs=Number(fpxx[3])+1;      
+          $('#fpdm_pp').text(fpxx[0]);
+          $('#fphm_pp').text(fpxx[1]);
+          $('#fpcc_pp').text(fpxx[2]+"增值税普通发票");
+          $('#cycs').text("查验次数：第"+cycs+"次");
+          $('#cysj').text("查验时间："+fpxx[21]);
+          $('#kprq_pp').text(FormatDate(fpxx[4]));
+
+          if(fpxx[17].trim().length!=0){
+            $('#jqxx_pp').show();
+            $('#jqbh_pp').text(fpxx[17]);
+          }         
+
+          $('#xfmc_pp').text(fpxx[5]);
+          $('#xfsbh_pp').text(fpxx[6]);
+          $('#xfdzdh_pp').text(fpxx[7]);
+          $('#xfyhzh_pp').text(fpxx[8]);
+
+          
+          $('#gfmc_pp').text(fpxx[9]);
+          $('#gfsbh_pp').text(fpxx[10]);
+          $('#gfdzdh_pp').text(fpxx[11]);
+          $('#gfyhzh_pp').text(fpxx[12]);
+
+         
+          $('#je_pp').text('￥'+GetJeToDot(fpxx[19]));
+          $('#se_pp').text('￥'+GetJeToDot(fpxx[14]));
+          $('#jshjxx_pp').text('￥'+GetJeToDot(fpxx[15]));
+          $('#jshjdx_pp').html('&otimes;'+NoToChinese(GetJeToDot(fpxx[15]),"04"));
+          $('#bz_pp').text(fpxx[16]);
+         
+          $('#jym_pp').text(fpxx[13]);
+          
+          var zfbz=fpxx[20];
+          if(zfbz=='Y'){
+              $('#cyjg').text("已作废");
+          } 
+
+          if(hwxxs!=""){
+            var html=GetHwxxHtml(hwxxs);
+            $("#tab_head_pp").after(html);
+          }
+        }        
+      }else if(fplx=="02"){
+        
+        $('#tabPage-hyzp').show(); 
+        if(fpxxs!=null&&fpxxs!=""){
+          var fpxx=fpxxs.split("≡");   
+          cycs=Number(fpxx[3])+1;     
+          $('#fpdm_hyzp').text(fpxx[0]);
+          $('#fphm_hyzp').text(fpxx[1]);
+          $('#fpcc_hyzp').text(fpxx[2]+"货物运输业增值税专用发票");
+          $('#cycs').text("查验次数：第"+cycs+"次");
+          $('#cysj').text("查验时间："+fpxx[26]);
+          $('#kprq_hyzp').text(FormatDate(fpxx[4]));
+
+          $('#cyrmc_hyzp').text(fpxx[5]);
+          $('#cyrsbh_hyzp').text(fpxx[6]);
+          $('#spfmc_hyzp').text(fpxx[7]);
+          $('#spfsbh_hyzp').text(fpxx[8]);
+          
+          $('#shrmc_hyzp').text(fpxx[9]);
+          $('#shrsbh_hyzp').text(fpxx[10]);
+          $('#fhrmc_hyzp').text(fpxx[11]);
+          $('#fhrsbh_hyzp').text(fpxx[12]);
+
+          $('#hjje_hyzp').text('￥'+GetJeToDot(fpxx[13]));
+          $('#yshwxx_hyzp').text(fpxx[14]);          
+          $('#qyd_hyzp').text(fpxx[15]);
+
+          $('#sl_hyzp').text(fpxx[16]+"%");
+
+          $('#se_hyzp').text('￥'+GetJeToDot(fpxx[17]));
+          $('#skph_hyzp').text(fpxx[18]);
+          $('#jshjxx_hyzp').text('￥'+GetJeToDot(fpxx[19]));
+          $('#jshjdx_hyzp').html('&otimes;'+NoToChinese(GetJeToDot(fpxx[19]),"02"));
+
+          $('#czch_hyzp').text(fpxx[20]);
+          $('#ccdw_hyzp').text(fpxx[21]);
+          $('#swjg_dm_hyzp').text(fpxx[22]);
+          $('#swjg_mc_hyzp').text(fpxx[23]);
+
+          $('#bz_hyzp').text(fpxx[24]);
+          
+          var zfbz=fpxx[25];
+          if(zfbz=='Y'){
+              $('#cyjg').text("已作废");
+          }
+
+          if(hwxxs!=""){
+
+            var html=GethyzpHwxxHtml(hwxxs,0);
+            $("#tab_head1_hyzp").after(html);
+            html=GethyzpHwxxHtml(hwxxs,1);
+            $("#tab_head2_hyzp").after(html);
+          }
+        } 
+
+      }else if(fplx=="03"){
+        $('#tabPage-jdcfp').show(); 
+        if(fpxxs!=null&&fpxxs!=""){
+          var fpxx=fpxxs.split("≡"); 
+          cycs=Number(fpxx[3])+1;       
+          $('#fpdm_jdcfp').text(fpxx[0]);
+          $('#fphm_jdcfp').text(fpxx[1]);
+          $('#fpcc_jdcfp').text(fpxx[2]+"机动车销售统一发票");
+          $('#cycs').text("查验次数：第"+cycs+"次");
+          $('#cysj').text("查验时间："+fpxx[33]);
+          $('#kprq_jdcfp').text(FormatDate(fpxx[4]));
+
+          $('#jddm_jdcfp').text(fpxx[0]);
+          $('#jdhm_jdcfp').text(fpxx[1]);
+          $('#jqbm_jdcfp').text(fpxx[5]);
+
+          $('#ghdw_jdcfp').text(fpxx[6]);
+          $('#sfzhm_jdcfp').text(fpxx[7]);
+          $('#gfsbh_jdcfp').text(fpxx[8]);
+
+          
+          $('#cllx_jdcfp').text(fpxx[9]);
+          $('#cpxh_jdcfp').text(fpxx[10]);
+          $('#cd_jdcfp').text(fpxx[11]);
+          $('#hgzs_jdcfp').text(fpxx[12]);
+
+          $('#jshjxx_jdcfp').text('￥'+GetJeToDot(fpxx[27]));
+          $('#jshjdx_jdcfp').html('&otimes;'+NoToChinese(GetJeToDot(fpxx[27]),"03"));
+          
+          $('#sjdh_jdcfp').text(fpxx[14]);
+          $('#fdjhm_jdcfp').text(fpxx[15]);
+          $('#cjhm_jdcfp').text(fpxx[16]);
+          $('#jkzmsh_jdcfp').text(fpxx[17]);
+
+          $('#xhdwmc_jdcfp').text(fpxx[18]);
+          $('#dh_jdcfp').text(fpxx[19]);
+          $('#nsrsbh_jdcfp').text(fpxx[20]);
+          $('#zh_jdcfp').text(fpxx[21]);
+          $('#dz_jdcfp').text(fpxx[22]);
+
+          $('#khyh_jdcfp').text(fpxx[23]);
+          $('#zzssl_jdcfp').text(fpxx[24]+"%");
+          $('#zzsse_jdcfp').text(GetJeToDot(fpxx[25]));
+
+          $('#swjg_dm_jdcfp').html(fpxx[32]+"<br/>"+fpxx[26]);
+          $('#cjfy_jdcfp').text(AddDot(fpxx[13]));
+          $('#wspzhm_jdcfp').text(fpxx[28]);
+          $('#dw_jdcfp').text(AddDot(fpxx[29]));
+          $('#xcrs_jdcfp').text(fpxx[30]);
+          
+          var zfbz=fpxx[31];
+          if(zfbz=='Y'){
+              $('#cyjg').text("已作废");
+          }
+        }  
+
+      }else if(fplx=="10"){
+        $('#tabPage-dzfp').show();  
+        if(fpxxs!=null&&fpxxs!=""){
+          var fpxx=fpxxs.split("≡");  
+          cycs=Number(fpxx[3])+1;       
+          $('#fpdm_dzfp').text(fpxx[0]);
+          $('#fphm_dzfp').text(fpxx[1]);
+          $('#fpcc_dzfp').text(fpxx[2]+"电子增值税普通发票");
+          $('#cycs').text("查验次数：第"+cycs+"次");
+          $('#cysj').text("查验时间："+fpxx[20]);
+          $('#kprq_dzfp').text(FormatDate(fpxx[4]));
+
+          $('#xfmc_dzfp').text(fpxx[5]);
+          $('#xfsbh_dzfp').text(fpxx[6]);
+          $('#xfdzdh_dzfp').text(fpxx[7]);
+          $('#xfyhzh_dzfp').text(fpxx[8]);
+          
+          $('#gfmc_dzfp').text(fpxx[9]);
+          $('#gfsbh_dzfp').text(fpxx[10]);
+          $('#gfdzdh_dzfp').text(fpxx[11]);
+          $('#gfyhzh_dzfp').text(fpxx[12]);
+         
+          $('#je_dzfp').text('￥'+GetJeToDot(fpxx[18]));
+          $('#se_dzfp').text('￥'+GetJeToDot(fpxx[14]));
+          $('#jshjxx_dzfp').text('￥'+GetJeToDot(fpxx[15]));
+
+          $('#jshjdx_dzfp').html('&otimes;'+NoToChinese(GetJeToDot(fpxx[15]),"10"));
+          $('#bz_dzfp').text(fpxx[16]);
+
+          $('#sbbh_dzfp').text(fpxx[17]);
+          $('#jym_dzfp').text(fpxx[13]);
+          
+          var zfbz=fpxx[19];
+          if(zfbz=='Y'){
+              $('#cyjg').text("已作废");
+          }
+
+          if(hwxxs!=""){
+
+            var html=GetDzHwxxHtml(hwxxs);
+            $("#tab_head_dzfp").after(html);
+          }
+        }      
+      }else if(fplx=="11"){
+
+        $('#tabPage-jsfp').show();
+        if(fpxxs!=null&&fpxxs!=""){
+          var fpxx=fpxxs.split("≡");
+          cycs=Number(fpxx[3])+1;         
+          $('#fpdm_jp').text(fpxx[0]);
+          $('#fphm_jp').text(fpxx[1]);
+          $('#fpcc_jp').text(fpxx[2]+"卷式发票");
+          $('#cycs').text("查验次数：第"+cycs+"次");
+          $('#cysj').text("查验时间："+fpxx[17]);
+          $('#kprq_jp').text(FormatDate(fpxx[4]));
+
+          $('#xfmc_jp').text(fpxx[5]);
+          $('#xfsh_jp').text(fpxx[6]); 
+          
+          $('#gfmc_jp').text(fpxx[7]);
+          $('#gfsh_jp').text(fpxx[8]);
+
+          $('#sbbh_jp').text(fpxx[9]);          
+          $('#se_jp').text('￥'+GetJeToDot(fpxx[10]));
+          $('#jshj_jp').text('￥'+GetJeToDot(fpxx[11]));
+          $('#bz_jp').text(fpxx[12]);
+
+          $('#je_jp').text('￥'+GetJeToDot(fpxx[14]));   
+          $('#jym_jp').text(fpxx[13]);
+
+          $('#shy_jp').text(fpxx[15]);
+          
+          var zfbz=fpxx[16];
+          if(zfbz=='Y'){
+              $('#cyjg').text("已作废");
+          }
+
+          if(hwxxs!=""){
+            var html=GetjsfpHwxxHtml(hwxxs);
+            $("#tab_head_jp").after(html);
+          }
+
+        }         
+      } else{
+        alert("发票信息不合法!");
+      }     
+
+      var tableHeight=$('#tabPage2').height();
+      $('#bg_div').height(tableHeight+150);
+  });
+
+  $("button#printfp").click(function(){ 
+    $("button#printfp").hide();
+    $("div#print_area").printArea(); 
+    $("button#printfp").show();
+  }); 
+
+</script>
+</body>
+</html>
+
